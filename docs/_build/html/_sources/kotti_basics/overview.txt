@@ -7,8 +7,8 @@ A website is a website is a website. Not.
 For the modern day World Wide Web, websites are built using several main
 development approaches, including::
 
-    - Browser-, client-side (your computer) focus using JavaScript, with the
-      server software kept as a simple storage system.
+    - Client-side (web browser on your computer) focus using JavaScript, with
+      the server software kept as a simple storage system.
     - Server-side focus using languages like Java, Python, and others, with a
       robust database storage system.
     - Combinations that blur these two approaches.
@@ -20,12 +20,12 @@ engine.
 
 As a user, you don't have to know about the languages used, nor the focus on
 browser- or server-side programming. You just use the website. However,
-understanding the nature of the software will help you appreciate it, and build
-confidence in it.
+understanding the nature of the software will help you to appreciate it, to
+build confidence in it.
 
-The choice of approach made by Kotti, and the software components used, say
-several things about its origin and development by seasoned content management
-system professionals and software developers::
+The choice of approach made by Kotti, and the software components used, reflect
+several goals desired by the seasoned content management system professionals
+and software developers who make Kotti::
 
     - Keep the core simple, using a natural design.
     - Use and re-use best-of-breed software components.
@@ -38,10 +38,14 @@ dedicated software developers has assembled. The future looks bright for the
 adoption of Kotti for small and large websites, for internal company systems,
 for social media, and many other niches. It is a capable CMS.
 
-The design of Kotti originates on the view of content storage as something like
-an outline or tree, where content is nested in a meaningful way.  This is the
-natural aspect. The Document content type is the most important part of this
-concept. Documents are added to a Kotti website in the way word-processor
-documents are created, but in the context of the web. Documents contain text
-and may include images, files, and links to other documents.  Kotti's design
-makes linking documents to one another easy.
+The design of Kotti has content storage as something like an outline or tree,
+where content is nested in a meaningful way.  This is the natural aspect. The
+Document content type is the most important part of this concept. Documents are
+added to a Kotti website in the way word-processor documents are created, but
+in the context of the web. Documents contain text and may include images,
+files, and links to other documents.  Kotti's design makes linking documents to
+one another easy.
+
+A fresh Kotti website looks simple enough:
+
+.. Image:: ../images/not_logged_in.png

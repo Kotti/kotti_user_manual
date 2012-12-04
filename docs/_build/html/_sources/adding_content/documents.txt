@@ -8,8 +8,13 @@ and images are added in course, where they are needed within the sections. Befor
 know it, a nested structure of documents is complete. Kotti makes this a very natural
 process, principally through the design of the Document content type.
 
-The web form for adding a Document has the title at the top, then the description, then
-the body. The title and description have simple text fields for keyboard entry. The body has a special widget, something like that seen in Word processor software, for formatting text, headings, and paragraphs. Each of these Document properties has its own special nature.
+.. Image:: ../images/add_menu.png
+
+The web form for adding a Document has the title at the top, then the
+description, then the body. The title and description have simple text fields
+for keyboard entry. The body has a special widget, something like that seen in
+Word processor software, for formatting text, headings, and paragraphs. Each of
+these Document properties has its own special nature.
 
 Title
 -----
@@ -24,7 +29,7 @@ to the creation of the World Wide Web. When you add a Document, you don't have
 to worry so much about the rules of making good URLs, because Kotti takes care
 it.
 
-The following table shows what the URLs are for titles of documents added to a
+The following table shows what the URLs for titles of documents added to a
 website section for recipes:
 
 ========================= ====================================================
