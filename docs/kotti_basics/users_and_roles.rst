@@ -5,16 +5,16 @@ Users and Roles
 A website usually is simply a presentation of text and images and other content
 available for view by anyone. The content of the website is added by any number
 of ways to build websites, but there is often no concept of "logging in" to see
-content. The content is simply added, and it is viewable by all who visit the
-website. This can be called anonymous viewing, and the general website visitor
-can be called an anonymous user.
+content. The content is simply added somehow, and it is viewable by all who
+visit the website. This can be called anonymous viewing, and the general
+website visitor can be called an anonymous user.
 
 A CMS does involve the concept of "logging in," at least for the person adding
 content in the first place, and it involves the concept of having content in
-public vs. private state: public, for availability for viewing by the anonymous
-user, as for a typical website, and private, for restricting the availability
-of viewing to the "logged in" user. Once a user has logged in, they can be
-called an authorized or an authenticated user.
+public vs. private state: public, for allowing open viewing by the anonymous
+user, as for a typical website, and private, for restricting viewing to the
+"logged in" user. Once a user has logged in, they can be called an authorized
+or an authenticated user.
 
 In its simplest form, Kotti allows a special user, called the Admin user, to
 log in and add and edit content. If the Kotti website is so simple that only
@@ -28,6 +28,8 @@ user has full rights to do anything to the website.
           View, Contents, Edit, Share, Actions, Add, Navigate. You our user
           name is at the far right, where there is a pull-down menu for setting
           your personal site preferences.
+
+.. Image:: ../images/main_menu.png
 
 For a larger Kotti website, where several people add content, the Admin user
 may create the accounts for other people. One common approach is to divide the
@@ -54,7 +56,7 @@ creation process. The system can be configured so that new registrants
 automatically receive a confirmation email. These new users can also
 automatically be assigned to a group.
 
-Many different scenarios are possible for building roles for users of the CMS.
+Many different scenarios are possible for creating roles for users of the CMS.
 For a large multi-level organization, user groups can be created that mimic
 that organization. Rights can be assigned so that users in one group are
 restricted in what they can view, what they can add and edit. In the classic
@@ -64,11 +66,11 @@ For example, a reporter can only write and compile articles, together with
 photographers. An editor can edit their work, but is not allowed to publish.
 Only managers can publish content.
 
-Even a small business with a handful of employees, or a small non-profit with a
-handful of members, can benefit from some form of structure like this. Kotti
+Even a small business with a handful of employees, or a small non-profit with
+just a few members, can benefit from some form of structure like this. Kotti
 can handle needs of small and large organizations and companies.
 
-The term used for the setup for scenarios described above is workflow. A
+The term used for the setup for scenarios described above is ``workflow``. A
 workflow is a set of policies created for a given CMS setup, wherein user
 groups and roles are defined, and relationships and responsibilities are set.
 Consider a newspaper workflow, a small non-profit workflow, a supply house
