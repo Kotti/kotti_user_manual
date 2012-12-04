@@ -9,7 +9,8 @@ MENU_HEIGHT = 40
 
 doc_files = ['../docs/kotti_basics/overview.rst',
              '../docs/kotti_basics/users_and_roles.rst',
-             '../docs/adding_content/documents.rst']
+             '../docs/adding_content/documents.rst',
+             '../docs/editing_content/view_selection.rst']
 
 chrome_driver_path = "{0}/chromedriver".format(os.getcwd())
 
@@ -49,31 +50,35 @@ def main_menu(browser):
     im = im.crop((0, TOOLBAR_HEIGHT, width, TOOLBAR_HEIGHT + MENU_HEIGHT))
     im.save("../docs/images/main_menu.png")
 
-def capture_menu(browser, image_name, link_text, menu_class_name):
+def capture_menu(browser, image_name, link_text,
+                 margin_division_factor, menu_height_factor):
     elem = browser.find_element_by_link_text(link_text)
     elem.click()
 
     left, top = (elem.location['x'], elem.location['y'])
     menu_width, menu_height = (elem.size['width'], elem.size['height'])
-    left -= menu_width / 4
-    top -= menu_height / 4
+    left -= menu_width / margin_division_factor
+    top -= menu_height / margin_division_factor
 
     image_path = "../docs/images/{0}.png".format(image_name)
     browser.save_screenshot(image_path)
 
-    elem = browser.find_element_by_class_name(menu_class_name)
+    elem = browser.find_element_by_class_name("dropdown-menu")
 
     im = Image.open(image_path)
     width, height = (elem.size['width'],
-                     menu_height + 3 * elem.size['height'])
-    im = im.crop((left, top, left + width + width/4, top + height + height/4))
+                     menu_height + menu_height_factor * elem.size['height'])
+    im = im.crop((left,
+                  top,
+                  left + width + width/margin_division_factor,
+                  top + height + height/margin_division_factor))
     im.save(image_path)
 
 def actions_menu(browser):
-    capture_menu(browser, "actions_menu", "Actions", "actions-menu")
+    capture_menu(browser, "actions_menu", "Actions", 4, 3)
 
 def add_menu(browser):
-    capture_menu(browser, "add_menu", "Add", "dropdown-menu")
+    capture_menu(browser, "add_menu", "Add", 4, 3)
 
 browser = log_in(browser)
 
