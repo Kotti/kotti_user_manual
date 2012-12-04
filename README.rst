@@ -18,29 +18,30 @@ Run Kotti::
 
   pserve app.ini
 
-In a second terminal
+In a Second Terminal
 --------------------
 
 For using Chrome, see the list of drivers at
 http://code.google.com/p/chromedriver/downloads/list, then download the
 chromedriver to the scripts directory.
 
-Look at capture_main.py in the scripts/ directory::
-
-  #!/usr/bin/env python
-  import os
-  from selenium import webdriver
-
-  chrome_driver_path = "{0}/chromedriver".format(os.getcwd())
-
-  browser = webdriver.Chrome(chrome_driver_path)
-  browser.get('http://127.0.0.1:5000/')
-  browser.save_screenshot('main.png')
-  browser.quit()
-
 Then run the script::
 
-  python capture_main.py
+  python kotti_capture.py
 
-You should then have a main.png file in the scripts/ directory, along with a
-chromedriver.log.
+This script saves images in the scripts/ directory, and stores a
+chromedriver.log locally.
+
+Using the Script
+----------------
+
+In docs/ .rst files, add images as you normally would, according to Sphinx
+documentation. The entries will have the form ``.. Image::
+../images/add_menu.png``. The script reads the docs files, looking for such
+image entries, then calls the matching function, as with ``add_menu()``. 
+
+Write functions that are dedicated to producing a given image, using whatever
+steps are needed in python-selenium operations. It can be necessary to perform
+several find, text and key entry, and click operations to achieve the desired
+state before capturing the image. See existing functions for the pattern,
+paying attention to the passing and order of creation for the browser object.
