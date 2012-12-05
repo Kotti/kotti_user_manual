@@ -2,6 +2,7 @@
 import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from PIL import Image
 
 TOOLBAR_HEIGHT = 40
@@ -51,7 +52,8 @@ def main_menu(browser):
     im.save("../docs/images/main_menu.png")
 
 def capture_menu(browser, image_name, link_text,
-                 margin_division_factor, menu_height_factor):
+                 margin_division_factor, menu_height_factor,
+                 submenu_link_text=None):
     elem = browser.find_element_by_link_text(link_text)
     elem.click()
 
@@ -60,22 +62,50 @@ def capture_menu(browser, image_name, link_text,
     left -= menu_width / margin_division_factor
     top -= menu_height / margin_division_factor
 
-    image_path = "../docs/images/{0}.png".format(image_name)
-    browser.save_screenshot(image_path)
-
     elem = browser.find_element_by_class_name("dropdown-menu")
+    dropdown_menu_width, dropdown_menu_height = \
+            (elem.size['width'], elem.size['height'])
 
-    im = Image.open(image_path)
-    width, height = (elem.size['width'],
-                     menu_height + menu_height_factor * elem.size['height'])
+    if submenu_link_text:
+
+        elem = browser.find_element_by_link_text(submenu_link_text)
+        hov = ActionChains(browser).move_to_element(elem)
+        hov.perform()
+
+        image_path = "../docs/images/{0}.png".format(image_name)
+        browser.save_screenshot(image_path)
+
+        im = Image.open(image_path)
+
+        submenu_width, submenu_height = (elem.size['width'],
+                                         elem.size['height'])
+
+        width, height = \
+                (dropdown_menu_width + submenu_width,
+                 menu_height + \
+                         menu_height_factor * dropdown_menu_height + \
+                         menu_height_factor * submenu_height)
+
+    else:
+        image_path = "../docs/images/{0}.png".format(image_name)
+        browser.save_screenshot(image_path)
+
+        im = Image.open(image_path)
+
+        width, height = \
+                (dropdown_menu_width,
+                 menu_height + menu_height_factor * elem.size['height'])
+
     im = im.crop((left,
                   top,
                   left + width + width/margin_division_factor,
                   top + height + height/margin_division_factor))
+
     im.save(image_path)
 
 def actions_menu(browser):
-    capture_menu(browser, "actions_menu", "Actions", 4, 3)
+    capture_menu(browser, "actions_menu", "Actions", 4, 3,
+                 submenu_link_text='Set default view')
 
 def add_menu(browser):
     capture_menu(browser, "add_menu", "Add", 4, 3)
