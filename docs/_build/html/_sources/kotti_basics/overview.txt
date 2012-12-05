@@ -7,9 +7,9 @@ A website is a website is a website. Not.
 For the modern day World Wide Web, websites are built using several main
 development approaches, including::
 
-    - Client-side (web browser on your computer) focus using JavaScript, with
+    - Client-side focus (web browser on your computer), using JavaScript, with
       the server software kept as a simple storage system.
-    - Server-side focus using languages like Java, Python, and others, with a
+    - Server-side focus, using languages like Java, Python, and others, with a
       robust database storage system.
     - Combinations that blur these two approaches.
 
@@ -46,6 +46,15 @@ in the context of the web. Documents contain text and may include images,
 files, and links to other documents.  Kotti's design makes linking documents to
 one another easy.
 
-A fresh Kotti website looks simple enough:
+A fresh default Kotti website looks simple enough:
 
 .. Image:: ../images/not_logged_in.png
+
+There is a simple header area with a Search box. The symbol with the horizontal
+lines at the right side of the header is a browser settings button that shows
+up when the screen is tablet-size. There is a Welcome statement, instructions
+for logging in, configuring the site, viewing a list of available add-ons, and
+viewing documentation. The amusing footer is a signature of a software system
+called Pyramid that Kotti is build around.
+
+All of this will change when new content is added.

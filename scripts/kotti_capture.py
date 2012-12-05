@@ -17,12 +17,6 @@ chrome_driver_path = "{0}/chromedriver".format(os.getcwd())
 
 browser = webdriver.Chrome(chrome_driver_path)
 
-def not_logged_in(browser):
-
-    browser.get('http://127.0.0.1:5000')
-
-    browser.save_screenshot('../docs/images/not_logged_in.png')
-
 def log_in(browser):
 
     browser.get('http://127.0.0.1:5000/login')
@@ -38,9 +32,22 @@ def log_in(browser):
 
     return browser
 
+def log_out(browser):
+    elem = browser.find_element_by_link_text('Administrator')
+    elem.click()
+
+    elem = browser.find_element_by_link_text('Logout')
+    elem.click()
+
 def logged_in(browser):
 
     browser.save_screenshot('../docs/images/logged_in.png')
+
+def not_logged_in(browser):
+
+    browser.get('http://127.0.0.1:5000')
+
+    browser.save_screenshot('../docs/images/not_logged_in.png')
 
 def main_menu(browser):
 
@@ -103,6 +110,9 @@ def capture_menu(browser, image_name, link_text,
 
     im.save(image_path)
 
+###################
+# Specific Images
+
 def actions_menu(browser):
     capture_menu(browser, "actions_menu", "Actions", 4, 3,
                  submenu_link_text='Set default view')
@@ -110,12 +120,25 @@ def actions_menu(browser):
 def add_menu(browser):
     capture_menu(browser, "add_menu", "Add", 4, 3)
 
+def admin_menu(browser):
+    capture_menu(browser, "admin_menu", "Administrator", 4, 3)
+
+################
+# Main routine
+
+# These two steps will log in, then capture logged_in image.
 browser = log_in(browser)
+logged_in(browser)
 
 for doc_file in doc_files:
     for line in open(doc_file):
         if line.startswith('.. Image::'):
             image_name = line[10:].strip()
-            globals()[image_name[len('../images/'):-4]](browser)
+            if image_name not in ['logged_in', 'not_logged_in']:
+                globals()[image_name[len('../images/'):-4]](browser)
+
+# These steps will log out, then capture not_logged_in image.
+log_out(browser)
+not_logged_in(browser)
 
 browser.quit()
