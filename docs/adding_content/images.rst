@@ -2,21 +2,20 @@
 Images
 ======
 
-There are two ways to add images to a Kotti website. One way, already
-described, is to add an image to the body of a Document. Another way is to add
-an Image directly from the Add menu. Either way, the image is added wherever
-you are on the website. If you are in
-www.example.com/recipes/desserts/brownies/granny-carols-brownies, and you add
-an Image for a photograph, that would be equivalent to adding it to the body of
-the "Granny Carol's Brownies" document, as far as where the image lives on the
-website. The image would not be visible this way, except in the Navigate
-display of the website. For this reason, most often you will want to add images
-to the body of documents where they are needed.
+There are two ways to add images to a Kotti website. One way is to add an image
+to the body of a Document. Another way is to add an Image directly from the Add
+menu. Either way, the image is added wherever you are on the website. If you
+are in www.example.com/recipes/desserts/brownies/granny-carols-brownies, and
+you add an Image for a photograph, that would be equivalent to adding it to the
+body of the "Granny Carol's Brownies" document.  The image would not be visible
+this way, except in the Navigate display of the website. For this reason, most
+often you will want to add images to the body of documents where they are
+needed.
 
-However, this flexibility for images directly allows creativity. You could add
-a document called "Dessert Photos" and add images to it, making a simple photo
-album by setting the default view of the document to be "Folder View". The
-default view setting is in the Actions menu.
+However, this flexibility for adding images directly, as discrete items, allows
+creativity. You could add a document called "Dessert Photos" and add images to
+it, making a simple photo album by setting the default view of the document to
+be "Folder View". The default view setting is in the Actions menu.
 
 There is more to the Image content type. Images can be made from photographs,
 from scanned documents, from frame grabs of video, from screen captures, from
@@ -27,16 +26,16 @@ to the real whoppers, the ones coming off modern digital cameras, even
 point-and-shoot cameras. These can be many megabytes in size, and in dimension,
 thousands of pixels wide and tall.
 
-Kotti helps make sense of all of this. Websites don't need whopper-size images
-for normal display, although large images can certainly be stored on a website.
-A typical website is 1000 pixels wide or so, giving you a good idea of the
+Kotti helps make sense of all of this. Websites don't need huge-size images for
+normal display, although large images can certainly be stored on a website.  A
+typical website is 1000 pixels wide or so, giving you a good idea of the
 largest size you will need.
 
-The most common routine goes something like the following. You take some
-photographs and download them from your camera to your computer. You look at
-them, delete the bad ones, keep the good, make adjustments to improve the
-contrast, brightness, etc. Some photographs you select for use on your website.
-At this point, you should follow these guidelines:
+The most common routine goes something like this. You take some photographs and
+download them from your camera to your computer. You look at them, delete the
+bad ones, keep the good, make adjustments to improve the contrast, brightness,
+etc. Some photographs you select for use on your website.  At this point, you
+should follow these guidelines:
 
 - Don't upload them to the website as the original huge images.
 - Resize them first. Find the "export" or "save as" or "share" part of your
@@ -46,11 +45,9 @@ At this point, you should follow these guidelines:
 
 Upon uploading to a Kotti website, there is behind-the-scenes work for
 preparing copies of the original image at several sizes that fit the design of
-the website. Kotti uses a modern approach for layout, and it knows the default
-widths of the entire site, and of its parts. You don't have to make different
-size versions of the images; Kotti handles it. In the old days of the web, and
-in unsophisticated systems, you would have to manually do this work.
- 
+the website.  In the old days of the web, and in unsophisticated systems, you
+would have to manually do this work.
+
 An image is given a title and description when you add it. Just as web
 addresses (URLs) are made for documents, the image will have its own URL.
 Consider a photograph you have on your computer named IMG_5381.JPG. That is the
@@ -86,8 +83,10 @@ want to see the image all by itself, add /image on the end of the URL::
 
 Visiting this URL would show the full-size image that you uploaded.
 
-The behind-the-scenes preparation work described above, that Kotti does to
-prepare images automatically at different sizes, results in the following
+Kotti uses a modern approach for layout, and it knows the default widths of the
+entire site, and of its parts. The behind-the-scenes preparation work described
+above, that Kotti does to prepare images automatically at different sizes,
+takes this layout knowledge into account. This results in the following
 additional available image URLs, along with their widths:
 
 =========================================================== ===============
@@ -107,18 +106,18 @@ additional available image URLs, along with their widths:
    www.example.com/photos/sparrow-at-feeder/image/span12      1160 pixels
 =========================================================== ===============
 
-Use these sizes a general guideline. You know that span12 covers the entire
-width of the website, span6 half of it. span1, at only 60 pixels wide, is
-small thumbnail size.
+Use these sizes a general guideline for working with the Kotti layout system.
+You know that span12 covers the entire width of the website, span6 half of it.
+span1, at only 60 pixels wide, is small thumbnail size.
 
-A Kotti website is divided into 12 columns for its structural design, for its
-website design layout. The default Kotti website uses a full-width design, so
-you don't see any indication of the columns. If the design of the website is
-changed, however, as when a navigation menu is added on the left side, the
+The structural layout for a Kotti website is divided into 12 columns.  The
+default Kotti website uses a full-width design, so you see no indication of the
+columns. If the design of the website is changed, however, as when a navigation
+menu is added on the left side, the underlying column structure manifests. The
 navigation menu might span 3 columns, leaving 9 columns for the right-hand
-side, where content items show. The image scale that fits such a navigation
+side, where content items show.  The image scale that fits such a navigation
 menu area on the left, 3 columns wide, is span3. The one that fits the right
-side in such a layout is span9. This scheme makes working with website layout
+side in such a layout is span9.  This scheme makes working with website layout
 simpler than thinking in terms of absolute pixel dimensions.
 
 The word-processor style user interface for composing the body of a document
@@ -129,11 +128,12 @@ an image scale that works for a given need.
 Images do not have to fit flush to column widths in a design layout. In the
 example above, in the area on the right that is 9 columns wide, you many want
 to use a medium-size image, centered at the top. The span5 image scale would
-work nicely for that. You might want to use a span2 thumbnail in a paragraph.
+work nicely for that. Or you might want to use a span2 thumbnail in a
+paragraph.
 
-.. Note:: Learning about Kotti's treatment of images takes some effort, but it
-          helps you appreciate how Kotti is able to scale down from a full
-          computer display to show the website on a tablet, or even a phone. It
-          changes the size definitions of the spans on the fly, so that the
-          site stays proportional, within reason, at different overall sizes.
-          The span system for design layout avoids hard-coding to set sizes.
+.. Note:: Learning about Kotti's treatment of images helps you appreciate how
+          Kotti is able to scale down from a full computer display to show the
+          website on a tablet, or on a phone. It changes the size definitions
+          of the spans dynamically, so that the site stays proportional, within
+          reason, at different overall sizes.  The span system for design
+          layout avoids hard-coding to set sizes.
