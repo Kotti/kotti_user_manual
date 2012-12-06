@@ -6,9 +6,9 @@ The Contents view shows contained items with data for each item: title, type,
 state (e.g. public or private), visibility (shown or hidden in navigation
 menu), and creation and modification dates. Each item has a checkbox, so you
 can select one or multiple items for doing an action via one of the buttons at
-the bottom of the view::
+the bottom of the view:
 
-  Copy | Cut | Rename | Delete | Change State | Move Up | Move Down | Show | Hide
+.. Image:: ../images/contents_action_buttons.png
 
 Copy and Cut
   Copy and Cut start a copy/paste or a cut/paste operation. After copying or

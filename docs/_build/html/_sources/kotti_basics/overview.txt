@@ -55,6 +55,6 @@ lines at the right side of the header is a browser settings button that shows
 up when the screen is tablet-size. There is a Welcome statement, instructions
 for logging in, configuring the site, viewing a list of available add-ons, and
 viewing documentation. The amusing footer is a signature of a software system
-called Pyramid that Kotti is build around.
+called Pyramid that Kotti uses as a foundation.
 
-All of this will change when new content is added.
+All of this will change when initial content is added.

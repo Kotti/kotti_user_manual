@@ -20,10 +20,14 @@ tag entry field uses the tab key to signify that a tag has been typed. When you
 add a tag and hit the tab key, the cursor moves to become ready for entry of
 the next tag.
 
+The tags entry field knows about existing tags, and shows them as soon as you
+have typed enought letters to match one. You can type the existing tag, or you
+can click matched tag when it appears.
+
 Tags are case-sensitive. Use this to advantage, by considering whether a formal
 name works well for a tag, versus an informal word or phrase. Consider a
 service business that has a Kotti site for managing information about multiple
 clients.  Formal names of the client businesses would be appropriate tags:
 Jones Company, Edwards & Eagleford Law, Acme Plumbing, etc. But in the same CMS
-there could also be tags for general categories, such as law and plumbing. Use
-both.
+there could also be tags for general categories, such as law and plumbing. Often
+both formally and informally named tags are useful.

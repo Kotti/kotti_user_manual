@@ -9,8 +9,8 @@ For an Image, you see the title, description, tags, then a button to change the
 existing image -- to upload a new version of the image or an altogether new
 image.  The edit view for a File is exactly like that for an Image: there is a
 button to upload a new version of the file or an altogether new file. The edit
-view for custom content types is what you expect, following this
-straightforward pattern.
+view for custom content types is what you expect, following this general
+pattern.
 
 After an item of content has been added, you may choose View, Contents, or
 Edit::

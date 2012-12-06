@@ -4,7 +4,7 @@ Custom Content
 
 Kotti comes with built-in Document, Image, and File content types. These are
 general purpose content types. Keeping Kotti simple, with a focus on solid
-programming for these content types is an important part of the vision for the
+programming for these content types, is an important part of the vision for the
 software. 
 
 Add-ons are smaller software components that augment the base Kotti system. Add
@@ -20,9 +20,9 @@ work together.
 
 Kotti maintains a system for add-ons called the Kollective, a listing and
 collaborative work area where software developers produce and maintain add-ons.
-Maintaining software can be a chore. The Kollective uses automation to run
-tests on add-ons to assure compatibility with Kotti as fixes and advancements
-are made.
+Maintaining software can be a chore. The Kollective uses automation to help
+with this.  Tests are run on add-ons to assure compatibility with Kotti as
+fixes and advancements are made.
 
 Browse the Kollective for available add-ons, and ask your website administrator
 to install the ones you need. It is good to settle on add-ons that are

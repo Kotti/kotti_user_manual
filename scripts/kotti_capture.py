@@ -76,12 +76,10 @@ def main_menu(browser):
 
     logged_in(browser)
 
-    im = Image.open("../docs/images/logged_in.png")
-    width, height = im.size
-    box = (0, int(TOOLBAR_HEIGHT),
-           int(width), int(TOOLBAR_HEIGHT + MENU_HEIGHT))
-    im = im.crop(box)
-    im.save("../docs/images/main_menu.png")
+    crop_full_width_and_save("../docs/images/logged_in.png",
+                             int(TOOLBAR_HEIGHT),
+                             int(TOOLBAR_HEIGHT + MENU_HEIGHT),
+                             "../docs/images/main_menu.png")
 
     RPT('main_menu captured')
 
@@ -230,7 +228,16 @@ def contents_action_buttons(browser):
         elem = browser.find_element_by_link_text('Contents')
         elem.click()
 
-        browser.save_screenshot("../docs/images/contents_action_buttons.png")
+        elem_copy = browser.find_element_by_name('copy')
+        elem_hide = browser.find_element_by_name('hide')
+
+        target_img = "../docs/images/contents_action_buttons.png"
+        browser.save_screenshot(target_img)
+
+        crop_bbox_of_elems_and_save(target_img,
+                                    target_img,
+                                    [elem_copy, elem_hide],
+                                    (10, 10, 10, 10))
 
         RPT('contents_action_buttons captured')
     else:
@@ -270,6 +277,48 @@ def add_content(browser):
             add_image(browser, fruit, '', os.path.abspath(fruit_path))
         else:
             RPT('PROBLEM with contents_action_buttons capture')
+
+def crop_full_width_and_save(source_img, top, bottom, target_img):
+    im = Image.open(source_img)
+    width, height = im.size
+    if not top:
+        top = 0
+    if not bottom:
+        bottom = height
+    im = im.crop((0, top, width, bottom))
+    im.save(target_img)
+
+def crop_bbox_of_elems_and_save(source_img, target_img, elems, margins):
+
+    xmin = min([elem.location['x'] for elem in elems])
+    xmax = max([elem.location['x'] + elem.size['width'] for elem in elems])
+
+    ymin = min([elem.location['y'] for elem in elems])
+    ymax = max([elem.location['y'] + elem.size['height'] for elem in elems])
+
+    left_margin, right_margin, top_margin, bottom_margin = margins
+
+    im = Image.open(source_img)
+
+    im_width, im_height = im.size
+
+    left = xmin - left_margin
+    right = xmax + right_margin
+    top = ymin - top_margin
+    bottom = ymax + bottom_margin
+
+    if left < 0:
+        left = xmin
+    if right > im_width:
+        right = im_width
+    if top < 0:
+        top = ymin
+    if bottom > im_height:
+        bottom = im_height
+
+    area = im.crop((left, top, right, bottom))
+
+    area.save(target_img)
 
 ################
 # Main routine
