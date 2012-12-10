@@ -2,11 +2,12 @@
 Documents
 =========
 
-Adding content to a new Kotti website usually involves adding top-level documents for
-main sections of the website, followed by adding documents within these sections. Files
-and images are added in course, where they are needed within the sections. Before you
-know it, a nested structure of documents materializes. Kotti makes this a very natural
-process, principally through the design of the Document content type.
+Adding content to a new Kotti website usually involves adding top-level
+documents for main sections of the website, followed by adding documents within
+these sections. Files and images are added in course, where they are needed
+within the sections. Before you know it, a nested structure of documents
+materializes. Kotti makes this a very natural process, principally through the
+design of the Document content type.
 
 .. Image:: ../images/add_menu.png
 
@@ -16,6 +17,10 @@ for keyboard entry. The body has a special widget, something like that seen in
 word processing software, for formatting text, headings, and paragraphs. Each of
 these Document properties has a unique nature.
 
+We already have a top-level document titled "About". We'll change that one
+later to show information about the fruit stand. Now let's add a new top-level
+document called "Fruits."
+
 Title
 -----
 
@@ -23,7 +28,11 @@ The title of a document is, of course, very important. Kotti is smart about how
 titles are transformed to work as key parts of the "web address" of each
 document. The counterpart to the title, the part used in the web address, is
 called the name. You do not enter the name directly. Kotti creates it from the
-title.
+title. For our "Fruits" document, the title will be "Fruits" and the name will
+be set to "fruits" by Kotti automatically (You won't see the name when you
+enter the title).
+
+.. Image:: ../images/adding_fruits_document_title.png
 
 You see web addresses everywhere as you use the Internet.  www.google.com is a
 web address, and so is www.bbc.com. And so is www.bbc.com/news. And so is
@@ -64,6 +73,10 @@ Make good descriptions. Complete sentences with proper punctuation are great.
 Use words that fit the item, thinking of keywords that would match search text
 strings you imagine people would use. Keep it fairly short.
 
+We'll follow these rules for our "Fruits" document description:
+
+.. Image:: ../images/adding_fruits_document_description.png
+
 The description is optional, but it is a good habit to write one, because it
 provides more searchable text.
 
@@ -87,6 +100,11 @@ Likewise, use the general search to find content associated with multple tags
 by using a search string such as "brownies cakes" to find all content items
 that have been tagged with either the brownies or cakes tags.
 
+For our "Fruits" document, which will contain a images of fruits for sale,
+we can already add some basic tags:
+
+.. Image:: ../images/adding_fruits_document_tags.png
+
 Body
 ----
 
@@ -105,16 +123,37 @@ image. The text will wrap around the image by default, but you have several
 image-to-text formatting options. This also works like a word processing
 software, for embedding images in a document.
 
+For our "Fruits" document, which will mainly be a list of fruit images, we only
+need overview narrative:
+
+.. Image:: ../images/adding_fruits_document_body.png
+
+Saving
+------
+
+Each Add and Edit form in Kotti has a button that you click to save. When you
+do, you will see the view change to that of the content type created. Having
+entered the title, description, and body for our "Fruits" document, we save:
+
+.. Image:: ../images/adding_fruits_document_save.png
+
+and we then see the view for the saved "Fruits" document:
+
+.. Image:: ../images/fruits_document_saved.png
+
+Navigation in Toolbar
+---------------------
+
 Once you have added several documents, perhaps following an outline to build a
 nested structure of documents, Kotti will handle linking the documents together
 in its menu and breadcrumbs system. You see the main sections displayed across
 the top, in the toolbar. You see the path to the current document in the
 breadcrumbs display above the title.
 
-This automatic linking is great, but you often want to make links to specific
-documents. This is easy. Select the word or phrase that you would like to make
-into a link, then click the button to add a link, then browse the website to
-find the target document for the link. Kotti will immediately format the link.
-You can use the same procedure to add a link to an external web page. Instead
-of browsing for a document on the Kotti website, type or paste in the URL of
-the external web page.
+The toolbar, with navigation and search box:
+
+.. Image:: ../images/fruits_document_toolbar.png
+
+The breadcrumbs:
+
+.. Image:: ../images/fruits_document_breadcrumbs.png

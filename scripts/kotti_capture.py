@@ -21,7 +21,8 @@ def RPT(message):
         else:
             print message
 
-fruits = [u'Apple', u'Avocado', u'Banana', u'Cantaloupe', u'Cherry', u'Grape',
+fruits = [u'Apple', u'Avocado', u'Banana']
+allfruits = [u'Apple', u'Avocado', u'Banana', u'Cantaloupe', u'Cherry', u'Grape',
           u'Kiwi', u'Lemon', u'Nectarine', u'Orange', u'Peach', u'Pineapple',
           u'Plum', u'Strawberry']
 
@@ -70,18 +71,16 @@ def not_logged_in(browser):
 
     browser.save_screenshot('../docs/images/not_logged_in.png')
 
+    elem_footer = browser.find_element_by_tag_name('footer')
+    #elem_aliens = elem_footer.find_element_by_tag_name('p')
+
+    crop_full_width_and_save(
+            "../docs/images/not_logged_in.png",
+            0,
+            elem_footer.location['y'] + elem_footer.size['height'] + 30,
+            "../docs/images/not_logged_in.png")
+
     RPT('not_logged_in captured')
-
-def main_menu(browser):
-
-    logged_in(browser)
-
-    crop_full_width_and_save("../docs/images/logged_in.png",
-                             int(TOOLBAR_HEIGHT),
-                             int(TOOLBAR_HEIGHT + MENU_HEIGHT),
-                             "../docs/images/main_menu.png")
-
-    RPT('main_menu captured')
 
 def capture_menu(browser, image_name, link_text,
                  margin_division_factor, menu_height_factor,
@@ -149,17 +148,18 @@ def add_document(browser, title, description, body):
     elem_title.send_keys(title)
 
     if description:
-        elem_description = browser.find_element_by_name('description')
+        elem_description = browser.find_element_by_id('deformField2')
         elem_description.send_keys(description)
 
     if body:
-        elem_body = browser.find_element_by_id('tinymce')
-
-        elem_p = elem_body.find_element_by_tag_name('p')
-        elem_p.send_keys(body)
+        elem_iframe = browser.switch_to_frame('deformField4_ifr')
+        editor = browser.switch_to_active_element()
+        editor.click()
+        editor.send_keys(body)
+        browser.switch_to_default_content()
 
     wait = WebDriverWait(browser, 10)
-    elem_save = browser.find_element_by_name('save')
+    elem_save = browser.find_element_by_id('deformsave')
     elem_save.click()
 
     def save_was_successful(browser, wait):
@@ -209,14 +209,41 @@ def add_image(browser, title, description, image_abspath):
 ###################
 # Specific Images
 
-# These match functions which produce the images.
+# These functions produce the screen captures.
+
+def toolbar_anonymous(browser):
+    elem_brand = browser.find_element_by_class_name('brand')
+    elem_search = browser.find_element_by_id('form-search')
+    elem_navbar = browser.find_element_by_class_name('navbar-inner')
+    elem_nav = elem_navbar.find_element_by_class_name('nav')
+    browser.save_screenshot('../docs/images/anonymous.png')
+    crop_bbox_of_elems_and_save('../docs/images/anonymous.png',
+                                '../docs/images/toolbar_anonymous.png',
+                                [elem_brand, elem_search, elem_nav],
+                                (10, 10, 10, 10))
+    RPT('toolbar_anonymous captured')
+
+def editor_bar(browser):
+    if click_main_nav_item(browser, 'Fruits'):
+        browser.save_screenshot('../docs/images/fruits_view.png')
+        elem_state_span = browser.find_element_by_class_name('state-private')
+        elem_administrator = \
+                browser.find_element_by_link_text('Administrator')
+        crop_bbox_of_elems_and_save('../docs/images/fruits_view.png',
+                                    '../docs/images/editor_bar.png',
+                                    [elem_state_span, elem_administrator],
+                                    (10, 10, 10, 10))
+        RPT('editor_bar captured')
+
+def state_menu(browser):
+    capture_menu(browser, "state_menu", "Private", 4, 3)
+
+def add_menu(browser):
+    capture_menu(browser, "add_menu", "Add", 4, 3)
 
 def actions_menu(browser):
     capture_menu(browser, "actions_menu", "Actions", 4, 3,
                  submenu_link_text='Set default view')
-
-def add_menu(browser):
-    capture_menu(browser, "add_menu", "Add", 4, 3)
 
 def admin_menu(browser):
     capture_menu(browser, "admin_menu", "Administrator", 4, 3)
@@ -243,7 +270,17 @@ def contents_action_buttons(browser):
     else:
         RPT('PROBLEM with contents_action_buttons capture')
 
+def delete_about_document(browser):
 
+    if click_main_nav_item(browser, 'About'):
+        elem_actions = browser.find_element_by_link_text('Actions')
+        elem_actions.click()
+
+        elem_delete = browser.find_element_by_link_text('Delete')
+        elem_delete.click()
+
+        elem_delete = browser.find_element_by_name('delete')
+        elem_delete.click()
 
 #####################
 # Utility Functions
@@ -268,15 +305,13 @@ def click_main_nav_item(browser, text):
 
 def add_content(browser):
 
-    add_document(browser, 'Fruits', '', '')
-
     for fruit in fruits:
         if click_main_nav_item(browser, 'Fruits'):
             image_name = "{0}_1200.jpg".format(fruit)
             fruit_path = os.getcwd() + "/fruit_images/{0}".format(image_name)
             add_image(browser, fruit, '', os.path.abspath(fruit_path))
         else:
-            RPT('PROBLEM with contents_action_buttons capture')
+            RPT('PROBLEM with adding content')
 
 def crop_full_width_and_save(source_img, top, bottom, target_img):
     im = Image.open(source_img)
@@ -341,23 +376,46 @@ browser.maximize_window()
 # before making screen captures that expect the content to be there. This is
 # done by checking global flags.
 
-# This will log in, then capture general logged_in image.
+# This will capture general logged_in image.
 logged_in(browser)
+
+delete_about_document(browser)
+
+add_document(browser, "About",
+             "This website is for our fruit stand.",
+             "We have many fruits available. Choose the fruit you want.")
+
+browser.find_element_by_class_name('brand').click()
+
+add_document(browser, 'Fruits', '', '')
 
 # Now that we are logged in,
 add_content(browser)
 
+# And, capture now that we have the editor bar.
+editor_bar(browser)
+
 # Now service requests for screen captures, coming in the form of image entries
-# in the Sphinx docs.
+# in the Sphinx docs. Skip the ones that are explicitly called here.
 for doc_file in doc_files:
     for line in open(doc_file):
         if line.startswith('.. Image::'):
             image_name = line[10:].strip()
-            if image_name not in ['logged_in', 'not_logged_in']:
-                globals()[image_name[len('../images/'):-4]](browser)
+            if image_name not in ['logged_in', 'toolbar_anonymous',
+                                  'editor_bar', 'not_logged_in']:
+                func_name = image_name[len('../images/'):-4]
+                if func_name in globals():
+                    globals()[func_name](browser)
+                else:
+                    print 'Function', func_name, 'NOT FOUND.'
 
-# These steps will log out, then capture not_logged_in image.
 log_out(browser)
+
+# Capture after we have logged out.
 not_logged_in(browser)
+
+# Capture a plain toolbar.
+toolbar_anonymous(browser)
+
 
 browser.quit()

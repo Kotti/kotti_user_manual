@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Using Kotti 0.1 documentation" href="../index.html" />
     <link rel="next" title="Images" href="images.html" />
-    <link rel="prev" title="Users and Roles" href="../kotti_basics/users_and_roles.html" /> 
+    <link rel="prev" title="Users and Roles" href="../introduction/users_and_roles.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,7 +40,7 @@
           <a href="images.html" title="Images"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../kotti_basics/users_and_roles.html" title="Users and Roles"
+          <a href="../introduction/users_and_roles.html" title="Users and Roles"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Using Kotti 0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -53,24 +53,31 @@
             
   <div class="section" id="documents">
 <h1>Documents<a class="headerlink" href="#documents" title="Permalink to this headline">¶</a></h1>
-<p>Adding content to a new Kotti website usually involves adding top-level documents for
-main sections of the website, followed by adding documents within these sections. Files
-and images are added in course, where they are needed within the sections. Before you
-know it, a nested structure of documents materializes. Kotti makes this a very natural
-process, principally through the design of the Document content type.</p>
+<p>Adding content to a new Kotti website usually involves adding top-level
+documents for main sections of the website, followed by adding documents within
+these sections. Files and images are added in course, where they are needed
+within the sections. Before you know it, a nested structure of documents
+materializes. Kotti makes this a very natural process, principally through the
+design of the Document content type.</p>
 <img alt="../_images/add_menu.png" src="../_images/add_menu.png" />
 <p>The web form for adding a Document has the title at the top, then the
 description, then the body. The title and description have simple text fields
 for keyboard entry. The body has a special widget, something like that seen in
 word processing software, for formatting text, headings, and paragraphs. Each of
 these Document properties has a unique nature.</p>
+<p>We already have a top-level document titled &#8220;About&#8221;. We&#8217;ll change that one
+later to show information about the fruit stand. Now let&#8217;s add a new top-level
+document called &#8220;Fruits.&#8221;</p>
 <div class="section" id="title">
 <h2>Title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
 <p>The title of a document is, of course, very important. Kotti is smart about how
 titles are transformed to work as key parts of the &#8220;web address&#8221; of each
 document. The counterpart to the title, the part used in the web address, is
 called the name. You do not enter the name directly. Kotti creates it from the
-title.</p>
+title. For our &#8220;Fruits&#8221; document, the title will be &#8220;Fruits&#8221; and the name will
+be set to &#8220;fruits&#8221; by Kotti automatically (You won&#8217;t see the name when you
+enter the title).</p>
+<img alt="adding_content/../images/adding_fruits_document_title.png" src="adding_content/../images/adding_fruits_document_title.png" />
 <p>You see web addresses everywhere as you use the Internet.  www.google.com is a
 web address, and so is www.bbc.com. And so is www.bbc.com/news. And so is
 www.bbc.com/news/asia. These web addresses are called URLs, for Universal
@@ -118,6 +125,8 @@ in the body.</p>
 <p>Make good descriptions. Complete sentences with proper punctuation are great.
 Use words that fit the item, thinking of keywords that would match search text
 strings you imagine people would use. Keep it fairly short.</p>
+<p>We&#8217;ll follow these rules for our &#8220;Fruits&#8221; document description:</p>
+<img alt="adding_content/../images/adding_fruits_document_description.png" src="adding_content/../images/adding_fruits_document_description.png" />
 <p>The description is optional, but it is a good habit to write one, because it
 provides more searchable text.</p>
 </div>
@@ -138,6 +147,9 @@ it to seach for all content that has been tagged for the brownies tag.
 Likewise, use the general search to find content associated with multple tags
 by using a search string such as &#8220;brownies cakes&#8221; to find all content items
 that have been tagged with either the brownies or cakes tags.</p>
+<p>For our &#8220;Fruits&#8221; document, which will contain a images of fruits for sale,
+we can already add some basic tags:</p>
+<img alt="adding_content/../images/adding_fruits_document_tags.png" src="adding_content/../images/adding_fruits_document_tags.png" />
 </div>
 <div class="section" id="body">
 <h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
@@ -154,18 +166,30 @@ character, on the first line of the paragraph, then click the button to add the
 image. The text will wrap around the image by default, but you have several
 image-to-text formatting options. This also works like a word processing
 software, for embedding images in a document.</p>
+<p>For our &#8220;Fruits&#8221; document, which will mainly be a list of fruit images, we only
+need overview narrative:</p>
+<img alt="adding_content/../images/adding_fruits_document_body.png" src="adding_content/../images/adding_fruits_document_body.png" />
+</div>
+<div class="section" id="saving">
+<h2>Saving<a class="headerlink" href="#saving" title="Permalink to this headline">¶</a></h2>
+<p>Each Add and Edit form in Kotti has a button that you click to save. When you
+do, you will see the view change to that of the content type created. Having
+entered the title, description, and body for our &#8220;Fruits&#8221; document, we save:</p>
+<img alt="adding_content/../images/adding_fruits_document_save.png" src="adding_content/../images/adding_fruits_document_save.png" />
+<p>and we then see the view for the saved &#8220;Fruits&#8221; document:</p>
+<img alt="adding_content/../images/fruits_document_saved.png" src="adding_content/../images/fruits_document_saved.png" />
+</div>
+<div class="section" id="navigation-in-toolbar">
+<h2>Navigation in Toolbar<a class="headerlink" href="#navigation-in-toolbar" title="Permalink to this headline">¶</a></h2>
 <p>Once you have added several documents, perhaps following an outline to build a
 nested structure of documents, Kotti will handle linking the documents together
 in its menu and breadcrumbs system. You see the main sections displayed across
 the top, in the toolbar. You see the path to the current document in the
 breadcrumbs display above the title.</p>
-<p>This automatic linking is great, but you often want to make links to specific
-documents. This is easy. Select the word or phrase that you would like to make
-into a link, then click the button to add a link, then browse the website to
-find the target document for the link. Kotti will immediately format the link.
-You can use the same procedure to add a link to an external web page. Instead
-of browsing for a document on the Kotti website, type or paste in the URL of
-the external web page.</p>
+<p>The toolbar, with navigation and search box:</p>
+<img alt="adding_content/../images/fruits_document_toolbar.png" src="adding_content/../images/fruits_document_toolbar.png" />
+<p>The breadcrumbs:</p>
+<img alt="adding_content/../images/fruits_document_breadcrumbs.png" src="adding_content/../images/fruits_document_breadcrumbs.png" />
 </div>
 </div>
 
@@ -182,12 +206,14 @@ the external web page.</p>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#tags">Tags</a></li>
 <li><a class="reference internal" href="#body">Body</a></li>
+<li><a class="reference internal" href="#saving">Saving</a></li>
+<li><a class="reference internal" href="#navigation-in-toolbar">Navigation in Toolbar</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../kotti_basics/users_and_roles.html"
+  <p class="topless"><a href="../introduction/users_and_roles.html"
                         title="previous chapter">Users and Roles</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="images.html"
@@ -224,7 +250,7 @@ the external web page.</p>
           <a href="images.html" title="Images"
              >next</a> |</li>
         <li class="right" >
-          <a href="../kotti_basics/users_and_roles.html" title="Users and Roles"
+          <a href="../introduction/users_and_roles.html" title="Users and Roles"
              >previous</a> |</li>
         <li><a href="../index.html">Using Kotti 0.1 documentation</a> &raquo;</li> 
       </ul>

@@ -19,7 +19,8 @@ user, because they have given their correct username and password.
 In its simplest form, Kotti allows a special user, called the Admin user, to
 log in and add and edit content. If the Kotti website is so simple that only
 one person will be adding content, that user will be the Admin user. The Admin
-user has full rights to do anything to the website.
+user has full rights to do anything to the website. For our fruit stand
+website, we will only need the Admin user account.
 
 .. Note:: You need to be logged in to see Add, Edit, and other forms, and you
           need rights as either the Admin user or a user with a role given Edit
@@ -29,7 +30,7 @@ user has full rights to do anything to the website.
           at the far right, where there is a pull-down menu for setting your
           personal site preferences.
 
-.. Image:: ../images/main_menu.png
+.. Image:: ../images/editor_bar.png
 
 For a larger Kotti website, where several people add content, the Admin user
 may create accounts for other people. One common approach is to divide the

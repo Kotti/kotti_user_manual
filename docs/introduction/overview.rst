@@ -5,33 +5,31 @@ Overview
 A website is a website is a website. Not.
 
 For the modern day World Wide Web, websites are built using several main
-development approaches, including::
+development approaches, including:
 
-    - Client-side focus (web browser on your computer), using JavaScript, with
-      the server software kept as a simple storage system.
-    - Server-side focus, using languages like Java, Python, and others, with a
-      robust database storage system.
-    - Combinations that blur these two approaches.
+* Web browser focus, with the server kept as a simple storage system.
+* Server focus, with a robust database storage system.
+* Combinations that blur these two approaches.
 
 Kotti uses the second approach mainly, but has the flavor of a combined
-approach, with JavaScript used for parts of the user interface, and with Python
-forming the heart of the system on the server, backed by a powerful database
-engine.
+approach, with the latest browser programming techniques used for parts of the
+user interface, and with the programming language Python forming the heart of
+the system on the server, backed by a powerful database engine.
 
 As a user, you don't have to know about the languages used, nor the focus on
-browser- or server-side programming. You just use the website. However,
+browser or server programming -- You just use the website. However,
 understanding the nature of the software will help you to appreciate it, to
 build confidence in it.
 
 The choice of approach made by Kotti, and the software components used, reflect
 several goals desired by the seasoned content management system professionals
-and software developers who make Kotti::
+and software developers who make Kotti:
 
-    - Keep the core simple, using a natural design.
-    - Use and re-use best-of-breed software components.
-    - Write code that uses best practices for style and form.
-    - Work collaboratively, using modern development tools.
-    - Test the software continuously.
+* Keep the core simple, using a natural design.
+* Use and re-use best-of-breed software components.
+* Write code that uses best practices for style and form.
+* Work collaboratively, using modern development tools.
+* Test the software continuously.
 
 Kotti has marched through numerous revisions to become stable, and a group of
 dedicated software developers has assembled. The future looks bright for the
@@ -50,11 +48,18 @@ A fresh default Kotti website looks simple enough:
 
 .. Image:: ../images/not_logged_in.png
 
-There is a simple header area with a Search box. The symbol with the horizontal
-lines at the right side of the header is a browser settings button that shows
-up when the screen is tablet-size. There is a Welcome statement, instructions
-for logging in, configuring the site, viewing a list of available add-ons, and
+There is a header area with a toolbar, which has the site "brand" on the left
+and a Search box on the right.  There is a Welcome statement, instructions for
+logging in, configuring the site, viewing a list of available add-ons, and
 viewing documentation. The amusing footer is a signature of a software system
 called Pyramid that Kotti uses as a foundation.
 
-All of this will change when initial content is added.
+All of this will change when the website is configured and initial content is
+added.
+
+For this user manual we will add content for a fruit stand. There is an "About"
+page created by default for a new Kotti site. We will modify this for
+information about the fruit stand offerings and schedule. We will add a
+Document called "Fruits" and to it we will add images of the fruits for sale.
+We will tag the fruit images for fruit category. This will be enough to
+demonstrate Kotti's main features.

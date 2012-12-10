@@ -29,7 +29,7 @@ user has full rights to do anything to the website.
           at the far right, where there is a pull-down menu for setting your
           personal site preferences.
 
-.. Image:: ../images/main_menu.png
+.. Image:: ../images/editor_bar.png
 
 For a larger Kotti website, where several people add content, the Admin user
 may create accounts for other people. One common approach is to divide the

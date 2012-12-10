@@ -18,8 +18,8 @@ Kotti Basics
 .. toctree::
     :maxdepth: 1
 
-    kotti_basics/overview
-    kotti_basics/users_and_roles
+    introduction/overview
+    introduction/users_and_roles
 
 Adding Content
 --------------
