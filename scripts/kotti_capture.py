@@ -2,6 +2,7 @@
 import os
 import time
 import contextlib
+import re
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -139,6 +140,8 @@ def capture_menu(browser, image_name, link_text,
     RPT("{0} captured".format(image_path.split('/')[-1]))
 
 def add_document(browser, title, description, body):
+    wait = WebDriverWait(browser, 10)
+
     elem = browser.find_element_by_link_text('Add')
     elem.click()
 
@@ -154,12 +157,13 @@ def add_document(browser, title, description, body):
 
     if body:
         elem_iframe = browser.switch_to_frame('deformField4_ifr')
-        editor = browser.switch_to_active_element()
-        editor.click()
-        editor.send_keys(body)
-        browser.switch_to_default_content()
+        # Firefox bug:
+        # http://code.google.com/p/selenium/issues/detail?id=2355
+        elem_body = wait.until(lambda br: br.find_element_by_id('tinymce'))
+        elem_body.send_keys(body)
 
-    wait = WebDriverWait(browser, 10)
+    browser.switch_to_default_content()
+
     elem_save = browser.find_element_by_id('deformsave')
     elem_save.click()
 
@@ -273,20 +277,54 @@ def contents_action_buttons(browser):
 
 def delete_about_document(browser):
 
+    wait = WebDriverWait(browser, 10)
+
     if click_main_nav_item(browser, 'About'):
-        elem_actions = browser.find_element_by_link_text('Actions')
+        elem_actions = \
+                wait.until(lambda br: br.find_element_by_link_text('Actions'))
         elem_actions.click()
 
-        elem_delete = browser.find_element_by_link_text('Delete')
+        elem_delete = \
+                wait.until(lambda br: br.find_element_by_link_text('Delete'))
         elem_delete.click()
 
-        elem_delete = browser.find_element_by_name('delete')
+        elem_delete = \
+                wait.until(lambda br: br.find_element_by_name('delete'))
         elem_delete.click()
 
+# Hangs in Chrome without bug fix. With Firefox, can't even get this far,
+# because of bug with adding text to tinymce body.
 def edit_about_document(browser):
 
     if click_main_nav_item(browser, 'About'):
         browser.get(BASE_URL + "/about/@@edit")
+
+        # Bug fix (See below where hang occurs if this script is not run):
+        # http://stackoverflow.com/questions/11846339/chrome-webdriver-hungs-when-currently-selected-frame-closed
+        # (See link to bug there).
+        browser.execute_script("""(function() {
+var domVar;
+if (window.tinymce && window.tinymce.DOM) {
+    domVar = window.tinymce.DOM 
+}
+else if (window.tinyMCE && window.tinyMCE.DOM) {
+    domVar = window.tinyMCE.DOM 
+}
+else {
+    return;
+}
+var tempVar = domVar.setAttrib;console.log(123)
+domVar.setAttrib = function(id, attr, val) {
+    if (attr == 'src' && typeof(val)== 'string' &&(val + "").trim().match(/javascript\s*:\s*("\s*"|'\s*')/)) {
+        console.log("Cool");
+        return;
+    }
+    else {
+        tempVar.apply(this, arguments);
+    }
+}
+
+}());""")
 
         elem_deformField4 = browser.find_element_by_id('deformField4_tbl')
         elem_deformField4.click()
@@ -336,7 +374,11 @@ def edit_about_document(browser):
         # The frame could not be found by the id mce_13_ifr, but switching by
         # number works. Below, where it hangs, switching back to 0 doesn't
         # work.
-        browser.switch_to_frame(1)
+        #browser.switch_to_frame(1)
+        tinymce_popup_frame = \
+                browser.find_element_by_css_selector('iframe[id^="mce"]')
+
+        browser.switch_to_frame(tinymce_popup_frame)
 
         elem_href = browser.switch_to_active_element()
 
@@ -345,18 +387,16 @@ def edit_about_document(browser):
         shift_key_up.perform()
 
         href_add = ActionChains(browser).send_keys_to_element(
-                elem_href, 'http://www.geojeff.org')
+                elem_href, '127.0.0.1:5000/fruits')
         href_add.perform()
 
         insert = browser.find_element_by_name("insert")
         insert.click()
 
-        # The dialog comes down, but it hangs here, with the new link looking
-        # swell in the editor.
+        # Without the bug fix script above, the dialog comes down, but it hangs
+        # here, with the new link looking swell in the editor.
 
-        #browser.switch_to_frame(0)
-        #browser.switch_to_window(parent_handle)
-        #browser.switch_to_default_view()
+        browser.switch_to_default_content()
 
         browser.find_element_by_id("deformsave").click()
 
@@ -365,21 +405,13 @@ def edit_about_document(browser):
 # Utility Functions
 
 def click_main_nav_item(browser, text):
-    # First put the context on the root.
-    elem_brand = browser.find_element_by_class_name('brand')
-    elem_brand_link = elem_brand.find_element_by_tag_name('a')
-    elem_brand_link.click()
-
-    # Now find the top-level nav item and click it, if found.
-    elem_navbar = browser.find_element_by_class_name('navbar-inner')
-    elem_nav = elem_navbar.find_element_by_class_name('nav')
-    for li in elem_nav.find_elements_by_tag_name('li'):
-        for a in li.find_elements_by_tag_name('a'):
-            if text in a.text:
-               a.click()
-               RPT(text + ' clicked')
-               return True
-
+    wait = WebDriverWait(browser, 10)
+    browser.switch_to_default_content()
+    elem_main_nav = wait.until(lambda br: br.find_element_by_link_text(text))
+    if elem_main_nav:
+        elem_main_nav.click()
+        RPT(text + ' clicked')
+        return True
     return False
 
 def add_content(browser):
