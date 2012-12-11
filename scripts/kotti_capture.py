@@ -41,10 +41,16 @@ def log_in(browser):
     elem = browser.find_element_by_name("password")
     elem.send_keys("qwerty")
 
+    browser.save_screenshot('../docs/images/logging_in.png')
+    RPT('logging_in captured')
+
     elem = browser.find_element_by_name("submit")
     elem.click()
 
     _logged_in = True
+
+    browser.save_screenshot('../docs/images/logged_in.png')
+    RPT('logged_in captured')
 
     RPT('logged in')
 
@@ -60,12 +66,6 @@ def log_out(browser):
     _logged_in = False
 
     RPT('logged out')
-
-def logged_in(browser):
-
-    browser.save_screenshot('../docs/images/logged_in.png')
-
-    RPT('logged_in captured')
 
 def not_logged_in(browser):
 
@@ -280,13 +280,22 @@ def delete_about_document(browser):
     wait = WebDriverWait(browser, 10)
 
     if click_main_nav_item(browser, 'About'):
+        browser.save_screenshot('../docs/images/default_about.png')
+        RPT('default_about captured')
+
         elem_actions = \
                 wait.until(lambda br: br.find_element_by_link_text('Actions'))
         elem_actions.click()
 
+        browser.save_screenshot('../docs/images/default_about_actions_menu.png')
+        RPT('default_about_actions_menu captured')
+
         elem_delete = \
                 wait.until(lambda br: br.find_element_by_link_text('Delete'))
         elem_delete.click()
+
+        browser.save_screenshot('../docs/images/default_about_delete_confirmation.png')
+        RPT('default_about_delete_confirmation captured')
 
         elem_delete = \
                 wait.until(lambda br: br.find_element_by_name('delete'))
@@ -295,6 +304,9 @@ def delete_about_document(browser):
 # Hangs in Chrome without bug fix. With Firefox, can't even get this far,
 # because of bug with adding text to tinymce body.
 def edit_about_document(browser):
+
+    # The goal of this edit is to make the phrase "the fruits" in the existing
+    # body text into a link to the "Fruits" document.
 
     if click_main_nav_item(browser, 'About'):
         browser.get(BASE_URL + "/about/@@edit")
@@ -405,7 +417,9 @@ def click_main_nav_item(browser, text):
         return True
     return False
 
-def add_content(browser):
+def add_fruits_content(browser):
+
+    add_document(browser, 'Fruits', '', '')
 
     for fruit in fruits:
         if click_main_nav_item(browser, 'Fruits'):
@@ -468,6 +482,8 @@ doc_files = ['../docs/introduction/overview.rst',
 
 chrome_driver_path = "{0}/chromedriver".format(os.getcwd())
 
+# This will capture: logging_in
+#                    logged_in
 browser = log_in(webdriver.Chrome(chrome_driver_path))
 #browser = log_in(webdriver.Firefox())
 
@@ -475,13 +491,10 @@ browser = log_in(webdriver.Chrome(chrome_driver_path))
 browser.maximize_window()
 
 # We have to pay attention to the order of ops somewhat, being careful about
-# the logging in / logging out main checks, but also about adding content
-# before making screen captures that expect the content to be there. This is
-# done by checking global flags.
+# adding content before making screen captures that expect certain content to
+# be there.
 
-# This will capture general logged_in image.
-logged_in(browser)
-
+# This will capture: logging_in
 delete_about_document(browser)
 
 add_document(browser, "About",
@@ -490,12 +503,10 @@ add_document(browser, "About",
 
 browser.find_element_by_class_name('brand').click()
 
-add_document(browser, 'Fruits', '', '')
-
 # Now that we are logged in,
-add_content(browser)
+add_fruits_content(browser)
 
-# And, capture now that we have the editor bar.
+# Capture editor_bar:
 editor_bar(browser)
 
 edit_about_document(browser)

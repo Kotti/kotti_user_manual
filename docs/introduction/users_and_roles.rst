@@ -22,6 +22,12 @@ one person will be adding content, that user will be the Admin user. The Admin
 user has full rights to do anything to the website. For our fruit stand
 website, we will only need the Admin user account.
 
+Let's log in by clicking the Log In button on the default Kotti website's front
+page. That takes us to a page with the web address "/login" (which would be on
+the end of the base web address, e.g., "http://www.example.com/login").
+
+.. Image:: ../images/logging_in.png
+
 .. Note:: You need to be logged in to see Add, Edit, and other forms, and you
           need rights as either the Admin user or a user with a role given Edit
           rights. After logging in, you will see a menu bar at the bottom of

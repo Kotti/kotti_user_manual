@@ -57,9 +57,34 @@ called Pyramid that Kotti uses as a foundation.
 All of this will change when the website is configured and initial content is
 added.
 
-For this user manual we will add content for a fruit stand. There is an "About"
-page created by default for a new Kotti site. We will modify this for
-information about the fruit stand offerings and schedule. We will add a
-Document called "Fruits" and to it we will add images of the fruits for sale.
-We will tag the fruit images for fruit category. This will be enough to
-demonstrate Kotti's main features.
+Getting Started With a New Site
+-------------------------------
+
+In addition to the front page with general information, Kotti creates an
+initial website with a single document called "About" that has a photograph of
+some airplanes and placeholder text. Both of these need to be changed for a new
+website.
+
+For the website associated with this user manual we will add content for a
+fruit stand.  We will replace the "About" page with information about the fruit
+stand offerings and schedule, and we will put introductory information on the
+front page. We will add a Document called "Fruits," and to it we will add
+images of the fruits for sale.  We will tag the fruit images for fruit
+categories to which they belong.  This will be enough to demonstrate Kotti's
+main features.
+
+For the first actual task, let's delete the default "About" page. We are logged
+in, so we can see it. Notice that it is in the Private state (left side of
+screen), so it was not visible before we logged in.
+
+.. Image:: ../images/default_about.png
+
+Now that we have it in view, we have certain actions available via the
+"Actions" pull-down menu, one of which is "Delete":
+
+.. Image:: ../images/default_about_actions_menu.png
+
+When we click the "Actions" menu, and the "Delete" choice, we get a
+confirmation page:
+
+.. Image:: ../images/default_about_delete_confirmation.png
