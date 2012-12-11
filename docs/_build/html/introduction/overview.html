@@ -25,7 +25,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Using Kotti 0.1 documentation" href="../index.html" /> 
+    <link rel="top" title="Using Kotti 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Users and Roles" href="users_and_roles.html" />
+    <link rel="prev" title="Using Kotti" href="../index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,6 +36,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="users_and_roles.html" title="Users and Roles"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Using Kotti"
+             accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Using Kotti 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -49,18 +57,16 @@
 <p>For the modern day World Wide Web, websites are built using several main
 development approaches, including:</p>
 <ul class="simple">
-<li>Client-side focus (web browser on your computer), using JavaScript, with
-the server software kept as a simple storage system.</li>
-<li>Server-side focus, using languages like Java, Python, and others, with a
-robust database storage system.</li>
+<li>Web browser focus, with the server kept as a simple storage system.</li>
+<li>Server focus, with a robust database storage system.</li>
 <li>Combinations that blur these two approaches.</li>
 </ul>
 <p>Kotti uses the second approach mainly, but has the flavor of a combined
-approach, with JavaScript used for parts of the user interface, and with Python
-forming the heart of the system on the server, backed by a powerful database
-engine.</p>
+approach, with the latest browser programming techniques used for parts of the
+user interface, and with the programming language Python forming the heart of
+the system on the server, backed by a powerful database engine.</p>
 <p>As a user, you don&#8217;t have to know about the languages used, nor the focus on
-browser- or server-side programming. You just use the website. However,
+browser or server programming &#8211; You just use the website. However,
 understanding the nature of the software will help you to appreciate it, to
 build confidence in it.</p>
 <p>The choice of approach made by Kotti, and the software components used, reflect
@@ -93,12 +99,30 @@ viewing documentation. The amusing footer is a signature of a software system
 called Pyramid that Kotti uses as a foundation.</p>
 <p>All of this will change when the website is configured and initial content is
 added.</p>
-<p>For this user manual we will add content for a fruit stand. There is an &#8220;About&#8221;
-page created by default for a new Kotti site. We will modify this for
-information about the fruit stand offerings and schedule. We will add a
-Document called &#8220;Fruits&#8221; and to it we will add images of the fruits for sale.
-We will tag the fruit images for fruit category. This will be enough to
-demonstrate Kotti&#8217;s main features.</p>
+<div class="section" id="getting-started-with-a-new-site">
+<h2>Getting Started With a New Site<a class="headerlink" href="#getting-started-with-a-new-site" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the front page with general information, Kotti creates an
+initial website with a single document called &#8220;About&#8221; that has a photograph of
+some airplanes and placeholder text. Both of these need to be changed for a new
+website.</p>
+<p>For the website associated with this user manual we will add content for a
+fruit stand.  We will replace the &#8220;About&#8221; page with information about the fruit
+stand offerings and schedule, and we will put introductory information on the
+front page. We will add a Document called &#8220;Fruits,&#8221; and to it we will add
+images of the fruits for sale.  We will tag the fruit images for fruit
+categories to which they belong.  This will be enough to demonstrate Kotti&#8217;s
+main features.</p>
+<p>For the first actual task, let&#8217;s delete the default &#8220;About&#8221; page. We are logged
+in, so we can see it. Notice that it is in the Private state (left side of
+screen), so it was not visible before we logged in.</p>
+<img alt="../_images/default_about.png" src="../_images/default_about.png" />
+<p>Now that we have it in view, we have certain actions available via the
+&#8220;Actions&#8221; pull-down menu, one of which is &#8220;Delete&#8221;:</p>
+<img alt="../_images/default_about_actions_menu.png" src="../_images/default_about_actions_menu.png" />
+<p>When we click the &#8220;Actions&#8221; menu, and the &#8220;Delete&#8221; choice, we get a
+confirmation page:</p>
+<img alt="../_images/default_about_delete_confirmation.png" src="../_images/default_about_delete_confirmation.png" />
+</div>
 </div>
 
 
@@ -107,6 +131,20 @@ demonstrate Kotti&#8217;s main features.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Overview</a><ul>
+<li><a class="reference internal" href="#getting-started-with-a-new-site">Getting Started With a New Site</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Using Kotti</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="users_and_roles.html"
+                        title="next chapter">Users and Roles</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/introduction/overview.txt"
@@ -135,6 +173,12 @@ demonstrate Kotti&#8217;s main features.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="users_and_roles.html" title="Users and Roles"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Using Kotti"
+             >previous</a> |</li>
         <li><a href="../index.html">Using Kotti 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>

@@ -280,26 +280,30 @@ def delete_about_document(browser):
     wait = WebDriverWait(browser, 10)
 
     if click_main_nav_item(browser, 'About'):
-        browser.save_screenshot('../docs/images/default_about.png')
-        RPT('default_about captured')
+        save_screenshot_full(browser, 'default_about.png')
 
         elem_actions = \
                 wait.until(lambda br: br.find_element_by_link_text('Actions'))
         elem_actions.click()
 
-        browser.save_screenshot('../docs/images/default_about_actions_menu.png')
-        RPT('default_about_actions_menu captured')
+        save_screenshot_full(browser, 'default_about_actions_menu.png')
 
         elem_delete = \
                 wait.until(lambda br: br.find_element_by_link_text('Delete'))
         elem_delete.click()
 
-        browser.save_screenshot('../docs/images/default_about_delete_confirmation.png')
-        RPT('default_about_delete_confirmation captured')
-
         elem_delete = \
                 wait.until(lambda br: br.find_element_by_name('delete'))
+
+        # There is no footer on the confirmation page.
+        save_screenshot_full(browser,
+                             'default_about_delete_confirmation.png',
+                             elem_top=None,
+                             elem_bottom=elem_delete)
+
         elem_delete.click()
+
+        save_screenshot_full(browser, 'default_about_delete_flash_message.png')
 
 # Hangs in Chrome without bug fix. With Firefox, can't even get this far,
 # because of bug with adding text to tinymce body.
@@ -428,6 +432,28 @@ def add_fruits_content(browser):
             add_image(browser, fruit, '', os.path.abspath(fruit_path))
         else:
             RPT('PROBLEM with adding content')
+
+def save_screenshot_full(browser, image_name, elem_top=None, elem_bottom=None):
+
+    if not elem_top:
+        top = 0
+    else:
+        top = elem_top.location['y'] - 30
+
+    if not elem_bottom:
+        bottom = 0
+    else:
+        bottom = elem_bottom.location['y'] + elem_bottom.size['height'] + 30
+
+    wait = WebDriverWait(browser, 10)
+
+    image_path = "../docs/images/{0}".format(image_name)
+
+    browser.save_screenshot(image_path)
+
+    crop_full_width_and_save(image_path, top, bottom, image_path)
+
+    RPT("{0} captured".format(image_name))
 
 def crop_full_width_and_save(source_img, top, bottom, target_img):
     im = Image.open(source_img)
