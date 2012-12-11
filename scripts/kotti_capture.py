@@ -354,11 +354,6 @@ domVar.setAttrib = function(id, attr, val) {
 
         wait = WebDriverWait(browser, 10)
     
-        parent_handle = browser.current_window_handle
-
-        # The parent_handle is the only handle that ever appears, which is part
-        # of the problem perhaps.
-
         browser.find_element_by_css_selector("span.mceIcon.mce_link").click()
 
         def link_dialog_appeared(browser, wait):
@@ -371,10 +366,6 @@ domVar.setAttrib = function(id, attr, val) {
 
         wait.until(lambda browser: link_dialog_appeared(browser, wait))
 
-        # The frame could not be found by the id mce_13_ifr, but switching by
-        # number works. Below, where it hangs, switching back to 0 doesn't
-        # work.
-        #browser.switch_to_frame(1)
         tinymce_popup_frame = \
                 browser.find_element_by_css_selector('iframe[id^="mce"]')
 
@@ -502,7 +493,7 @@ browser.find_element_by_class_name('brand').click()
 add_document(browser, 'Fruits', '', '')
 
 # Now that we are logged in,
-#add_content(browser)
+add_content(browser)
 
 # And, capture now that we have the editor bar.
 editor_bar(browser)
