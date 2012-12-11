@@ -28,6 +28,7 @@ allfruits = [u'Apple', u'Avocado', u'Banana', u'Cantaloupe', u'Cherry', u'Grape'
 
 TOOLBAR_HEIGHT = 40
 MENU_HEIGHT = 40
+BASE_URL = 'http://127.0.0.1:5000'
 
 def log_in(browser):
 
@@ -282,6 +283,84 @@ def delete_about_document(browser):
         elem_delete = browser.find_element_by_name('delete')
         elem_delete.click()
 
+def edit_about_document(browser):
+
+    if click_main_nav_item(browser, 'About'):
+        browser.get(BASE_URL + "/about/@@edit")
+
+        elem_deformField4 = browser.find_element_by_id('deformField4_tbl')
+        elem_deformField4.click()
+
+        elem_iframe = browser.switch_to_frame('deformField4_ifr')
+        editor = browser.switch_to_active_element()
+        editor.click()
+
+        move_right_keys = [Keys.ARROW_LEFT for i in xrange(10)]
+        move = ActionChains(browser).send_keys_to_element(
+                editor, ''.join(move_right_keys))
+        move.perform()
+
+        shift_key_down = ActionChains(browser).key_down(Keys.SHIFT)
+        shift_key_down.perform()
+
+        selection = ActionChains(browser).send_keys_to_element(
+                editor, ''.join(move_right_keys))
+        selection.perform()
+
+        # This SHIFT key_up doesn't take effect somehow, and another one
+        # is needed later.
+        shift_key_up = ActionChains(browser).key_up(Keys.SHIFT)
+        shift_key_up.perform()
+
+        browser.switch_to_default_content()
+
+        wait = WebDriverWait(browser, 10)
+    
+        parent_handle = browser.current_window_handle
+
+        # The parent_handle is the only handle that ever appears, which is part
+        # of the problem perhaps.
+
+        browser.find_element_by_css_selector("span.mceIcon.mce_link").click()
+
+        def link_dialog_appeared(browser, wait):
+            elem = wait.until(
+                    lambda br: br.find_element_by_class_name('clearlooks2'))
+            if elem:
+                #elem.click()
+                return True
+            return False
+
+        wait.until(lambda browser: link_dialog_appeared(browser, wait))
+
+        # The frame could not be found by the id mce_13_ifr, but switching by
+        # number works. Below, where it hangs, switching back to 0 doesn't
+        # work.
+        browser.switch_to_frame(1)
+
+        elem_href = browser.switch_to_active_element()
+
+        # For unknown reason, have to release SHIFT again.
+        shift_key_up = ActionChains(browser).key_up(Keys.SHIFT)
+        shift_key_up.perform()
+
+        href_add = ActionChains(browser).send_keys_to_element(
+                elem_href, 'http://www.geojeff.org')
+        href_add.perform()
+
+        insert = browser.find_element_by_name("insert")
+        insert.click()
+
+        # The dialog comes down, but it hangs here, with the new link looking
+        # swell in the editor.
+
+        #browser.switch_to_frame(0)
+        #browser.switch_to_window(parent_handle)
+        #browser.switch_to_default_view()
+
+        browser.find_element_by_id("deformsave").click()
+
+
 #####################
 # Utility Functions
 
@@ -358,8 +437,8 @@ def crop_bbox_of_elems_and_save(source_img, target_img, elems, margins):
 ################
 # Main routine
 
-doc_files = ['../docs/kotti_basics/overview.rst',
-             '../docs/kotti_basics/users_and_roles.rst',
+doc_files = ['../docs/introduction/overview.rst',
+             '../docs/introduction/users_and_roles.rst',
              '../docs/adding_content/documents.rst',
              '../docs/editing_content/contents_view.rst',
              '../docs/editing_content/view_selection.rst']
@@ -367,6 +446,7 @@ doc_files = ['../docs/kotti_basics/overview.rst',
 chrome_driver_path = "{0}/chromedriver".format(os.getcwd())
 
 browser = log_in(webdriver.Chrome(chrome_driver_path))
+#browser = log_in(webdriver.Firefox())
 
 # Set the browser to full size to avoid wrapping issues.
 browser.maximize_window()
@@ -390,24 +470,27 @@ browser.find_element_by_class_name('brand').click()
 add_document(browser, 'Fruits', '', '')
 
 # Now that we are logged in,
-add_content(browser)
+#add_content(browser)
 
 # And, capture now that we have the editor bar.
 editor_bar(browser)
 
-# Now service requests for screen captures, coming in the form of image entries
-# in the Sphinx docs. Skip the ones that are explicitly called here.
-for doc_file in doc_files:
-    for line in open(doc_file):
-        if line.startswith('.. Image::'):
-            image_name = line[10:].strip()
-            if image_name not in ['logged_in', 'toolbar_anonymous',
-                                  'editor_bar', 'not_logged_in']:
-                func_name = image_name[len('../images/'):-4]
-                if func_name in globals():
-                    globals()[func_name](browser)
-                else:
-                    print 'Function', func_name, 'NOT FOUND.'
+edit_about_document(browser)
+
+# Scan docs for needed screen captures, coming in the form of image entries in
+# the Sphinx docs. The image names should match names of functions explicitly
+# called here.
+#for doc_file in doc_files:
+#    for line in open(doc_file):
+#        if line.startswith('.. Image::'):
+#            image_name = line[10:].strip()
+#            if image_name not in ['logged_in', 'toolbar_anonymous',
+#                                  'editor_bar', 'not_logged_in']:
+#                func_name = image_name[len('../images/'):-4]
+#                if func_name in globals():
+#                    globals()[func_name](browser)
+#                else:
+#                    print 'Function', func_name, 'NOT FOUND.'
 
 log_out(browser)
 
