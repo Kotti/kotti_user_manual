@@ -73,9 +73,10 @@ images of the fruits for sale.  We will tag the fruit images for fruit
 categories to which they belong.  This will be enough to demonstrate Kotti's
 main features.
 
-For the first actual task, let's delete the default "About" page. We are logged
-in, so we can see it. Notice that it is in the Private state (left side of
-screen), so it was not visible before we logged in.
+For the first task, let's delete the default "About" page. We are logged in, so
+we can see it -- Notice that it is in the Private state (left side of screen,
+see "Private" in what is called the editor bar, the row of menu choices
+underneath the black toolbar).
 
 .. Image:: ../images/default_about.png
 

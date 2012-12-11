@@ -57,6 +57,7 @@ def log_in(browser):
     return browser
 
 def log_out(browser):
+
     elem = browser.find_element_by_link_text('Administrator')
     elem.click()
 
@@ -87,11 +88,14 @@ def not_logged_in(browser):
 def capture_menu(browser, image_name, link_text,
                  margin_division_factor, menu_height_factor,
                  submenu_link_text=None):
+
     elem = browser.find_element_by_link_text(link_text)
     elem.click()
 
     left, top = (elem.location['x'], elem.location['y'])
+
     menu_width, menu_height = (elem.size['width'], elem.size['height'])
+
     left -= menu_width / margin_division_factor
     top -= menu_height / margin_division_factor
 
@@ -120,6 +124,7 @@ def capture_menu(browser, image_name, link_text,
                          menu_height_factor * submenu_height)
 
     else:
+
         image_path = "../docs/images/{0}.png".format(image_name)
         browser.save_screenshot(image_path)
 
@@ -140,6 +145,7 @@ def capture_menu(browser, image_name, link_text,
     RPT("{0} captured".format(image_path.split('/')[-1]))
 
 def add_document(browser, title, description, body):
+
     wait = WebDriverWait(browser, 10)
 
     elem = browser.find_element_by_link_text('Add')
@@ -217,27 +223,37 @@ def add_image(browser, title, description, image_abspath):
 # These functions produce the screen captures.
 
 def toolbar_anonymous(browser):
+
     elem_brand = browser.find_element_by_class_name('brand')
     elem_search = browser.find_element_by_id('form-search')
     elem_navbar = browser.find_element_by_class_name('navbar-inner')
     elem_nav = elem_navbar.find_element_by_class_name('nav')
+
     browser.save_screenshot('../docs/images/anonymous.png')
+
     crop_bbox_of_elems_and_save('../docs/images/anonymous.png',
                                 '../docs/images/toolbar_anonymous.png',
                                 [elem_brand, elem_search, elem_nav],
                                 (10, 10, 10, 10))
+
     RPT('toolbar_anonymous captured')
 
 def editor_bar(browser):
+
     if click_main_nav_item(browser, 'Fruits'):
+
         browser.save_screenshot('../docs/images/fruits_view.png')
+
         elem_state_span = browser.find_element_by_class_name('state-private')
+
         elem_administrator = \
                 browser.find_element_by_link_text('Administrator')
+
         crop_bbox_of_elems_and_save('../docs/images/fruits_view.png',
                                     '../docs/images/editor_bar.png',
                                     [elem_state_span, elem_administrator],
                                     (10, 10, 10, 10))
+
         RPT('editor_bar captured')
 
 def state_menu(browser):
@@ -412,13 +428,18 @@ domVar.setAttrib = function(id, attr, val) {
 # Utility Functions
 
 def click_main_nav_item(browser, text):
+
     wait = WebDriverWait(browser, 10)
+
     browser.switch_to_default_content()
+
     elem_main_nav = wait.until(lambda br: br.find_element_by_link_text(text))
+
     if elem_main_nav:
         elem_main_nav.click()
         RPT(text + ' clicked')
         return True
+
     return False
 
 def add_fruits_content(browser):
@@ -438,12 +459,12 @@ def save_screenshot_full(browser, image_name, elem_top=None, elem_bottom=None):
     if not elem_top:
         top = 0
     else:
-        top = elem_top.location['y'] - 30
+        top = elem_top.location['y'] - 15
 
     if not elem_bottom:
         bottom = 0
     else:
-        bottom = elem_bottom.location['y'] + elem_bottom.size['height'] + 30
+        bottom = elem_bottom.location['y'] + elem_bottom.size['height'] + 15
 
     wait = WebDriverWait(browser, 10)
 
@@ -456,12 +477,20 @@ def save_screenshot_full(browser, image_name, elem_top=None, elem_bottom=None):
     RPT("{0} captured".format(image_name))
 
 def crop_full_width_and_save(source_img, top, bottom, target_img):
+
     im = Image.open(source_img)
     width, height = im.size
+
     if not top:
         top = 0
     if not bottom:
         bottom = height
+
+    if top < 0:
+        top = 0
+    if bottom > height:
+        bottom = height
+
     im = im.crop((0, top, width, bottom))
     im.save(target_img)
 
@@ -559,6 +588,5 @@ not_logged_in(browser)
 
 # Capture a plain toolbar.
 toolbar_anonymous(browser)
-
 
 browser.quit()
