@@ -44,15 +44,17 @@ in the context of the web. Documents contain text and may include images,
 files, and links to other documents.  Kotti's design makes linking documents to
 one another easy.
 
-A fresh default Kotti website looks simple enough:
+For the website associated with this user manual we will add content for a
+fruit stand. Our fresh default Kotti website looks simple enough:
 
 .. Image:: ../images/not_logged_in.png
 
-There is a header area with a toolbar, which has the site "brand" on the left
-and a Search box on the right.  There is a Welcome statement, instructions for
-logging in, configuring the site, viewing a list of available add-ons, and
-viewing documentation. The amusing footer is a signature of a software system
-called Pyramid that Kotti uses as a foundation.
+You see where the site has already been given a proper "Fruit Stand" title, in
+the header area at the left of the toolbar, which has a Search box on the
+right.  There is a Welcome statement, instructions for logging in, configuring
+the site, viewing a list of available add-ons, and viewing documentation. The
+amusing footer is a signature of a software system called Pyramid that Kotti
+uses as a foundation.
 
-All of this will change when the website is configured and initial content is
-added.
+We have the site title already, but the rest will change when we add content
+for the fruit stand.

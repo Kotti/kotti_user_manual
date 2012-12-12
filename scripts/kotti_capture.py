@@ -652,18 +652,37 @@ delete_about_document(browser)
 # This will capture: add_about_actions_menu
 #                    add_about_save
 #                    add_about_save_flash_message
+about_body = """We have many fruits available. Choose the fruit you want.
+Our normal schedule:
+
+Monday - Friday, 8 AM - 6 PM
+Saturday, 7 AM - 2 PM
+               
+Address:
+
+Fruit Stand on Main
+123 Main Street
+Somewhere, SW 01010
+
+Email: fruits@example.com
+
+Phone: +1-509-555-0100"""
 add_about_document(browser, "About",
-                   "This website is for a fruit stand.",
-                   "We have many fruits available. Choose the fruit you want.")
+                   "This website is for Fruit Stand on Main, founded 1985.",
+                   about_body)
 
 browser.find_element_by_class_name('brand').click()
 
-front_page_body = ("We are located at the corner of Main and 5th Street. Our "
-                   "garden is on the lot next door. Drop by anytime!")
+front_page_body = """We are located downtown at a convenient location on the
+corner of Main and 5th Street.
+                    
+Our garden is next door. Come by anytime to see what new
+fresh veggies are available.
 
+Our Motto: We want to be your main squeeze! :)"""
 edit_front_page(browser,
                 "Fruit Stand",
-                "This fruit stand is brand new, but growing.",
+                "Our fruit stand is tried and new, and still growing.",
                 front_page_body)
 
 # Now that we are logged in,

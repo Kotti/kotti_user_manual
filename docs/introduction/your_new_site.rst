@@ -11,13 +11,11 @@ organization where you work on just one part of a large site, but as we go
 through this user manual, we'll work as if you are starting with your own new
 website.
 
-For the website associated with this user manual we will add content for a
-fruit stand.  We will replace the default "About" page with information about
-the fruit stand offerings and schedule, and we will put introductory
-information on the front page. We will add a Document called "Fruits" and to
-it we will add images of the fruits for sale.  We will tag the fruit images for
-fruit categories to which they belong.  This will be enough to demonstrate
-Kotti's main features.
+We will replace the default "About" page with information about the fruit stand
+offerings and schedule, and we will put introductory information on the front
+page. We will add a Document called "Fruits" and to it we will add images of
+the fruits for sale.  We will tag the fruit images for fruit categories to
+which they belong.  This will be enough to demonstrate Kotti's main features.
 
 For the first task, let's delete the default "About" page. We are logged in, so
 we can see it. Notice that it is in the Private state (left side of screen,
