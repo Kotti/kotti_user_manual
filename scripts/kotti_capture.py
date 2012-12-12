@@ -41,16 +41,16 @@ def log_in(browser):
     elem = browser.find_element_by_name("password")
     elem.send_keys("qwerty")
 
-    browser.save_screenshot('../docs/images/logging_in.png')
-    RPT('logging_in captured')
+    elem_footer = browser.find_element_by_tag_name('footer')
+    save_screenshot_full(browser, 'logging_in.png', elem_top=None, elem_bottom=elem_footer)
 
     elem = browser.find_element_by_name("submit")
     elem.click()
 
     _logged_in = True
 
-    browser.save_screenshot('../docs/images/logged_in.png')
-    RPT('logged_in captured')
+    elem_footer = browser.find_element_by_tag_name('footer')
+    save_screenshot_full(browser, 'logged_in.png', elem_top=None, elem_bottom=elem_footer)
 
     RPT('logged in')
 
@@ -72,18 +72,9 @@ def not_logged_in(browser):
 
     browser.get('http://127.0.0.1:5000')
 
-    browser.save_screenshot('../docs/images/not_logged_in.png')
-
     elem_footer = browser.find_element_by_tag_name('footer')
-    #elem_aliens = elem_footer.find_element_by_tag_name('p')
-
-    crop_full_width_and_save(
-            "../docs/images/not_logged_in.png",
-            0,
-            elem_footer.location['y'] + elem_footer.size['height'] + 30,
-            "../docs/images/not_logged_in.png")
-
-    RPT('not_logged_in captured')
+    save_screenshot_full(browser, 'not_logged_in.png',
+                         elem_top=None, elem_bottom=elem_footer)
 
 def capture_menu(browser, image_name, link_text,
                  margin_division_factor, menu_height_factor,
@@ -143,6 +134,56 @@ def capture_menu(browser, image_name, link_text,
     im.save(image_path)
 
     RPT("{0} captured".format(image_path.split('/')[-1]))
+
+def add_about_document(browser, title, description, body):
+
+    wait = WebDriverWait(browser, 10)
+
+    elem = browser.find_element_by_link_text('Add')
+    elem.click()
+
+    elem_footer = browser.find_element_by_tag_name('footer')
+    save_screenshot_full(browser, 'add_about_actions_menu.png',
+                         elem_top=None, elem_bottom=elem_footer)
+
+    elem = browser.find_element_by_link_text("Document")
+    elem.click()
+
+    elem_title = browser.find_element_by_name('title')
+    elem_title.send_keys(title)
+
+    if description:
+        elem_description = browser.find_element_by_id('deformField2')
+        elem_description.send_keys(description)
+
+    if body:
+        elem_iframe = browser.switch_to_frame('deformField4_ifr')
+        # Firefox bug:
+        # http://code.google.com/p/selenium/issues/detail?id=2355
+        elem_body = wait.until(lambda br: br.find_element_by_id('tinymce'))
+        elem_body.send_keys(body)
+
+    browser.switch_to_default_content()
+
+    elem_save = browser.find_element_by_id('deformsave')
+    save_screenshot_full(browser, 'add_about_save.png',
+                         elem_top=None, elem_bottom=elem_save)
+    elem_save.click()
+
+    def save_was_successful(browser, wait):
+        elem = wait.until(lambda br: br.find_element_by_id('messages'))
+        for child in elem.find_elements_by_xpath('./*'):
+            if 'Success' in child.text:
+                return True
+        return False
+
+    wait.until(lambda browser: save_was_successful(browser, wait))
+
+    elem_footer = wait.until(lambda br: br.find_element_by_tag_name('footer'))
+    save_screenshot_full(browser, 'add_about_save_flash_message.png',
+                         elem_top=None, elem_bottom=elem_footer)
+
+    RPT('document {0} added'.format(title))
 
 def add_document(browser, title, description, body):
 
@@ -296,13 +337,17 @@ def delete_about_document(browser):
     wait = WebDriverWait(browser, 10)
 
     if click_main_nav_item(browser, 'About'):
-        save_screenshot_full(browser, 'default_about.png')
+
+        elem_footer = browser.find_element_by_tag_name('footer')
+        save_screenshot_full(browser, 'default_about.png',
+                             elem_top=None, elem_bottom=elem_footer)
 
         elem_actions = \
                 wait.until(lambda br: br.find_element_by_link_text('Actions'))
         elem_actions.click()
 
-        save_screenshot_full(browser, 'default_about_actions_menu.png')
+        save_screenshot_full(browser, 'default_about_actions_menu.png',
+                             elem_top=None, elem_bottom=elem_footer)
 
         elem_delete = \
                 wait.until(lambda br: br.find_element_by_link_text('Delete'))
@@ -319,7 +364,9 @@ def delete_about_document(browser):
 
         elem_delete.click()
 
-        save_screenshot_full(browser, 'default_about_delete_flash_message.png')
+        elem_footer = browser.find_element_by_tag_name('footer')
+        save_screenshot_full(browser, 'default_about_delete_flash_message.png',
+                             elem_top=None, elem_bottom=elem_footer)
 
 # Hangs in Chrome without bug fix. With Firefox, can't even get this far,
 # because of bug with adding text to tinymce body.
@@ -423,6 +470,52 @@ domVar.setAttrib = function(id, attr, val) {
 
         browser.find_element_by_id("deformsave").click()
 
+def edit_front_page(browser, title, description, body):
+
+    wait = WebDriverWait(browser, 10)
+
+    elem = browser.find_element_by_link_text('Edit')
+    elem.click()
+
+    elem_title = browser.find_element_by_name('title')
+    elem_title.clear()
+    elem_title.send_keys(title)
+
+    if description:
+        elem_description = browser.find_element_by_id('deformField2')
+        elem_description.clear()
+        elem_description.send_keys(description)
+
+    if body:
+        elem_iframe = browser.switch_to_frame('deformField4_ifr')
+        # Firefox bug:
+        # http://code.google.com/p/selenium/issues/detail?id=2355
+        elem_body = wait.until(lambda br: br.find_element_by_id('tinymce'))
+        elem_body.clear()
+        elem_body.send_keys(body)
+
+    browser.switch_to_default_content()
+
+    elem_save = browser.find_element_by_id('deformsave')
+    save_screenshot_full(browser, 'edit_front_page_save.png',
+                         elem_top=None, elem_bottom=elem_save)
+    elem_save.click()
+
+    def save_was_successful(browser, wait):
+        elem = wait.until(lambda br: br.find_element_by_id('messages'))
+        for child in elem.find_elements_by_xpath('./*'):
+            if 'Your changes have been saved' in child.text:
+                return True
+        return False
+
+    wait.until(lambda browser: save_was_successful(browser, wait))
+
+    elem_footer = wait.until(lambda br: br.find_element_by_tag_name('footer'))
+    save_screenshot_full(browser, 'edit_front_page_save_flash_message.png',
+                         elem_top=None, elem_bottom=elem_footer)
+
+    RPT('document {0} edited'.format(title))
+
 
 #####################
 # Utility Functions
@@ -459,12 +552,13 @@ def save_screenshot_full(browser, image_name, elem_top=None, elem_bottom=None):
     if not elem_top:
         top = 0
     else:
-        top = elem_top.location['y'] - 15
+        top = int(elem_top.location['y'] - 15)
 
     if not elem_bottom:
         bottom = 0
     else:
-        bottom = elem_bottom.location['y'] + elem_bottom.size['height'] + 15
+        bottom = int(elem_bottom.location['y'] + 
+                     elem_bottom.size['height'] + 15)
 
     wait = WebDriverWait(browser, 10)
 
@@ -549,14 +643,28 @@ browser.maximize_window()
 # adding content before making screen captures that expect certain content to
 # be there.
 
-# This will capture: logging_in
+# This will capture: default_about
+#                    default_about_actions_menu
+#                    default_about_delete_confirmation
+#                    default_about_delete_flash_message
 delete_about_document(browser)
 
-add_document(browser, "About",
-             "This website is for our fruit stand.",
-             "We have many fruits available. Choose the fruit you want.")
+# This will capture: add_about_actions_menu
+#                    add_about_save
+#                    add_about_save_flash_message
+add_about_document(browser, "About",
+                   "This website is for a fruit stand.",
+                   "We have many fruits available. Choose the fruit you want.")
 
 browser.find_element_by_class_name('brand').click()
+
+front_page_body = ("We are located at the corner of Main and 5th Street. Our "
+                   "garden is on the lot next door. Drop by anytime!")
+
+edit_front_page(browser,
+                "Fruit Stand",
+                "This fruit stand is brand new, but growing.",
+                front_page_body)
 
 # Now that we are logged in,
 add_fruits_content(browser)

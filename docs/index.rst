@@ -20,6 +20,7 @@ Kotti Basics
 
     introduction/overview
     introduction/users_and_roles
+    introduction/your_new_site
 
 Adding Content
 --------------

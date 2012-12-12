@@ -24,19 +24,17 @@ website, we will only need the Admin user account.
 
 Let's log in by clicking the Log In button on the default Kotti website's front
 page. That takes us to a page with the web address "/login" (which would be on
-the end of the base web address, e.g., "http://www.example.com/login").
+the end of the base web address, e.g., "http://www.example.com/login"). Here
+you can see where the username "Admin" and the default password "qwerty" is
+being entered:
 
 .. Image:: ../images/logging_in.png
 
-.. Note:: You need to be logged in to see Add, Edit, and other forms, and you
-          need rights as either the Admin user or a user with a role given Edit
-          rights. After logging in, you will see a menu bar at the bottom of
-          the site header, with menu choices for Private vs. Public (state),
-          View, Contents, Edit, Share, Actions, Add, Navigate. Your username is
-          at the far right, where there is a pull-down menu for setting your
-          personal site preferences.
+After submitting the username and password by clicking the LogIn button, and
+after they have been successfully matched to an existing user account, the site
+will be shown in "logged in" view:
 
-.. Image:: ../images/editor_bar.png
+.. Image:: ../images/logged_in.png
 
 For a larger Kotti website, where several people add content, the Admin user
 may create accounts for other people. One common approach is to divide the
