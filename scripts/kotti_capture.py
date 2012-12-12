@@ -54,8 +54,6 @@ def log_in(browser):
 
     RPT('logged in')
 
-    return browser
-
 def log_out(browser):
 
     elem = browser.find_element_by_link_text('Administrator')
@@ -631,13 +629,15 @@ doc_files = ['../docs/introduction/overview.rst',
 
 chrome_driver_path = "{0}/chromedriver".format(os.getcwd())
 
-# This will capture: logging_in
-#                    logged_in
-browser = log_in(webdriver.Chrome(chrome_driver_path))
-#browser = log_in(webdriver.Firefox())
+browser = webdriver.Chrome(chrome_driver_path)
+#browser = log_in(webdriver.Firefox()
 
 # Set the browser to full size to avoid wrapping issues.
 browser.maximize_window()
+
+# This will capture: logging_in
+#                    logged_in
+log_in(browser)
 
 # We have to pay attention to the order of ops somewhat, being careful about
 # adding content before making screen captures that expect certain content to
