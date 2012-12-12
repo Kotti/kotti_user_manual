@@ -33,7 +33,7 @@ BASE_URL = 'http://127.0.0.1:5000'
 
 def log_in(browser):
 
-    browser.get('http://127.0.0.1:5000/login')
+    browser.get(BASE_URL + '/login')
 
     elem = browser.find_element_by_name("login")
     elem.send_keys("Admin")
@@ -68,7 +68,7 @@ def log_out(browser):
 
 def not_logged_in(browser):
 
-    browser.get('http://127.0.0.1:5000')
+    browser.get(BASE_URL)
 
     elem_footer = browser.find_element_by_tag_name('footer')
     save_screenshot_full(browser, 'not_logged_in.png',
@@ -455,7 +455,7 @@ domVar.setAttrib = function(id, attr, val) {
         shift_key_up.perform()
 
         href_add = ActionChains(browser).send_keys_to_element(
-                elem_href, '127.0.0.1:5000/fruits')
+                elem_href, BASE_URL + '/fruits')
         href_add.perform()
 
         insert = browser.find_element_by_name("insert")
