@@ -21,9 +21,19 @@ Run Kotti::
 In a Second Terminal
 --------------------
 
+Download the Selenium Java server and run it. On Mac OS X, after downloading
+and clicking the tarball, it will explode and run. Or run with java yourself,
+with, for example:
+
+java -jar selenium-server-standalone-2.28.0.jar
+
+In a Third Terminal
+-------------------
+
 For using Chrome, see the list of drivers at
 http://code.google.com/p/chromedriver/downloads/list, then download the
-chromedriver to the scripts directory.
+chromedriver to the scripts directory. You do not have to download a
+driver for using the Firefox webdriver.
 
 Then run the script::
 

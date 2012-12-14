@@ -4,10 +4,13 @@ Documents
 
 Adding content to a new Kotti website usually involves adding top-level
 documents for main sections of the website, followed by adding documents within
-these sections. Files and images are added in course, where they are needed
-within the sections. Before you know it, a nested structure of documents
-materializes. Kotti makes this a very natural process, principally through the
-design of the Document content type.
+these sections. Documents, Files, and Images are added in course, where they
+are needed within documents. Before you know it, a nested structure of
+documents materializes. Kotti makes this a very natural process, principally
+through the design of the Document content type.
+
+We added the "About" document already, but here details are explained about the
+process. You recall that we have "Document" as a choice in the "Add" menu:
 
 .. Image:: ../images/add_menu.png
 
@@ -17,9 +20,12 @@ for keyboard entry. The body has a special widget, something like that seen in
 word processing software, for formatting text, headings, and paragraphs. Each of
 these Document properties has a unique nature.
 
-We already have a top-level document titled "About". We'll change that one
-later to show information about the fruit stand. Now let's add a new top-level
-document called "Fruits."
+Let's add a new top-level document called "Fruit Rootstock" for listing a few
+fruit tree rootstock packs available at our fruit stand. We will cover the details
+below, but here is what the add document web form looks like just before the
+"Save" button is clicked.
+
+.. Image:: ../images/add_fruit_rootstock_document_save.png
 
 Title
 -----
@@ -28,11 +34,10 @@ The title of a document is, of course, very important. Kotti is smart about how
 titles are transformed to work as key parts of the "web address" of each
 document. The counterpart to the title, the part used in the web address, is
 called the name. You do not enter the name directly. Kotti creates it from the
-title. For our "Fruits" document, the title will be "Fruits" and the name will
-be set to "fruits" by Kotti automatically (You won't see the name when you
-enter the title).
-
-.. Image:: ../images/adding_fruits_document_title.png
+title. For our "Fruit Rootstock" document, the title will be "Fruit Rootstock"
+and the name will be set to "fruit-rootstock" by Kotti automatically (You won't
+see the name when you enter the title, but you will when you look at the web
+address).
 
 You see web addresses everywhere as you use the Internet.  www.google.com is a
 web address, and so is www.bbc.com. And so is www.bbc.com/news. And so is
@@ -41,22 +46,22 @@ Resource Locator, the official name that goes back to the creation of the World
 Wide Web. When you add a Document, you don't have to worry so much about the
 rules of making good URLs from titles, because Kotti takes care it.
 
-The following table shows what the URLs for titles of documents added to a
-website section for recipes:
+The following table shows what the URLs would be for titles of documents about
+apple rootstock choices (the corresponding name is the part after the last /):
 
 ========================= ====================================================
         Title                                      URL
 ------------------------- ----------------------------------------------------
-Baked Alaska              www.somewebsite.com/recipes/baked-alaska
-Pumpkin-Ginger Cupcakes   www.somewebsite.com/recipes/pumpkin-ginger-cupcakes
-Granny Carol's Brownies   www.somewebsite.com/recipes/granny-carols-brownies
-Walnut/Pecan/Almond Mix   www.somewebsite.com/recipes/walnut-pecan-almond-mix
+Red Delicious             www.example.com/apples/red-delicious
+Bramley's Seedling        www.example.com/apples/bramleys-seedling
+King-of-the-Pippins       www.example.com/apples/king-of-the-pippins
+MM.106 Rootstock          www.example.com/apples/mm-106-rootstock
 ========================= ====================================================
 
 You see that blanks are replaced by dashes. Special characters such as
-apostrophes and backslashes are ignored, and so on. Look at the URLs again.
-Kotti ensures that they are clean and simple, and that you can make the titles
-however you want without worry.
+apostrophes are ignored, backslashes are replaced with dashes, and so on. Look
+at the URLs again.  Kotti ensures that they are clean and simple, and that you
+can make the titles however you want without worry.
 
 The title is mandatory. You have to have one to make the URL for the document.
 
@@ -73,9 +78,7 @@ Make good descriptions. Complete sentences with proper punctuation are great.
 Use words that fit the item, thinking of keywords that would match search text
 strings you imagine people would use. Keep it fairly short.
 
-We'll follow these rules for our "Fruits" document description:
-
-.. Image:: ../images/adding_fruits_document_description.png
+We follow these rules for our "Fruit Rootstock" document description.
 
 The description is optional, but it is a good habit to write one, because it
 provides more searchable text.
@@ -83,27 +86,25 @@ provides more searchable text.
 Tags
 ----
 
-Tags are keywords that are unique site-wide. If you add recipes to your site,
-create tags for different food types: desserts, brownies, cakes, etc. The tags
-entry field is smart. After you have typed a few characters, for example "bro"
-in brownies, Kotti will check the existing set of tags for the site for
+Tags are keywords that are unique site-wide.
+The tags
+entry field is smart. After you have typed a few characters, for example "roo"
+in rootstock, Kotti will check the existing set of tags for the site for
 matches, and if it finds a pre-existing tag, or several tags, that begin with
-"bro" you will see a small pop-up display of those tags to choose one. When you
+"roo" you will see a small pop-up display of those tags to choose one. When you
 have entered a new tag or selected an existing tag, hit the tab key to add
 another.
 
 Tags are optional, but as for descriptions, it is a good habit to add them,
 because doing so provides an immediate organization of content that can be
-searched categorically. If you see the brownies tag anywhere on an item, click
-it to seach for all content that has been tagged for the brownies tag.
+searched categorically. If you see the rootstock tag anywhere on an item, click
+it to seach for all content that has been tagged for the rootstock tag.
 Likewise, use the general search to find content associated with multple tags
-by using a search string such as "brownies cakes" to find all content items
-that have been tagged with either the brownies or cakes tags.
+by using a search string such as "rootstock apple" to find all content items
+that have been tagged with either the rootstock or apple tags.
 
-For our "Fruits" document, which will contain a images of fruits for sale,
-we can already add some basic tags:
-
-.. Image:: ../images/adding_fruits_document_tags.png
+When we tag our "Fruit Rootstock" document with the "rootstock" tag, as this is
+its first use, so Kotti will create it anew.
 
 Body
 ----
@@ -123,37 +124,32 @@ image. The text will wrap around the image by default, but you have several
 image-to-text formatting options. This also works like a word processing
 software, for embedding images in a document.
 
-For our "Fruits" document, which will mainly be a list of fruit images, we only
-need overview narrative:
-
-.. Image:: ../images/adding_fruits_document_body.png
+We list the available rootstock in the body of our "Fruit Rootstock" document.
 
 Saving
 ------
 
 Each Add and Edit form in Kotti has a button that you click to save. When you
 do, you will see the view change to that of the content type created. Having
-entered the title, description, and body for our "Fruits" document, we save:
+entered the title, description, tags, and body for our new document, we save
+and we then see the view for the new document:
 
-.. Image:: ../images/adding_fruits_document_save.png
-
-and we then see the view for the saved "Fruits" document:
-
-.. Image:: ../images/fruits_document_saved.png
+.. Image:: ../images/fruit_rootstock_document_save_flash_message.png
 
 Navigation in Toolbar
 ---------------------
 
 Once you have added several documents, perhaps following an outline to build a
 nested structure of documents, Kotti will handle linking the documents together
-in its menu and breadcrumbs system. You see the main sections displayed across
-the top, in the toolbar. You see the path to the current document in the
-breadcrumbs display above the title.
+in its menu and breadcrumbs system. Look again at the full screen capture
+above.
 
-The toolbar, with navigation and search box:
+You see the main sections displayed across the top, in the toolbar, with
+navigation and searchbox:
 
 .. Image:: ../images/fruits_document_toolbar.png
 
-The breadcrumbs:
+You see the path to the current document in the breadcrumbs display above the
+title:
 
 .. Image:: ../images/fruits_document_breadcrumbs.png

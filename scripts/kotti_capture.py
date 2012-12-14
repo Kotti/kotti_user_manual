@@ -183,7 +183,20 @@ def add_about_document(browser, title, description, body):
 
     RPT('document {0} added'.format(title))
 
-def add_document(browser, title, description, body):
+def add_fruit_rootstock_document(browser):
+
+    title = 'Fruit Rootstock'
+    description = ("The Fruit Stand on Main has a limited number of fruit "
+                   "rootstock packs available.")
+    tags = ['rootstock']
+    body = """These are our current rootstocks:
+
+Red Delicious
+Bramley's Seedling
+King-of-the-Pippins
+MM.106 Rootstock
+
+Email us if interested."""
 
     wait = WebDriverWait(browser, 10)
 
@@ -199,6 +212,90 @@ def add_document(browser, title, description, body):
     if description:
         elem_description = browser.find_element_by_id('deformField2')
         elem_description.send_keys(description)
+
+    if tags:
+        elem_tags = wait.until(
+                lambda br: br.find_element_by_id('deformField3'))
+        for tag in tags:
+            for li in elem_tags.find_elements_by_tag_name('li'):
+                if li.class_name == 'tagit-new':
+                    li.click()
+                    li.send_keys(tag + Keys.TAB)
+
+    if body:
+        elem_iframe = browser.switch_to_frame('deformField4_ifr')
+        # Firefox bug:
+        # http://code.google.com/p/selenium/issues/detail?id=2355
+        elem_body = wait.until(lambda br: br.find_element_by_id('tinymce'))
+        elem_body.send_keys(body)
+
+    browser.switch_to_default_content()
+
+    elem_save = browser.find_element_by_id('deformsave')
+    save_screenshot_full(browser, 'add_fruit_rootstock_document_save.png',
+                         elem_top=None, elem_bottom=elem_save)
+    elem_save.click()
+
+    def save_was_successful(browser, wait):
+        elem = wait.until(lambda br: br.find_element_by_id('messages'))
+        for child in elem.find_elements_by_xpath('./*'):
+            if 'Success' in child.text:
+                return True
+        return False
+
+    wait.until(lambda browser: save_was_successful(browser, wait))
+
+    elem_footer = wait.until(lambda br: br.find_element_by_tag_name('footer'))
+    save_screenshot_full(browser, 'add_fruit_rootstock_document_save_flash_message.png',
+                         elem_top=None, elem_bottom=elem_footer)
+
+    toolbar(browser, 'fruit_rootstock_document_toolbar')
+
+    breadcrumbs(browser, 'fruit_rootstock_document_breadcrumbs')
+
+    RPT('document {0} added'.format(title))
+
+def add_fruits_document(browser):
+
+    wait = WebDriverWait(browser, 10)
+
+    description = ("Fruit Stand on Main has a variety of currently available "
+                   "fruits.")
+    add_document(browser,
+                 "Fruits",
+                 description,
+                 ['rootstock', 'apple'],
+                 "")
+
+    elem_footer = wait.until(lambda br: br.find_element_by_tag_name('footer'))
+    save_screenshot_full(browser, 'add_fruits_save_flash_message.png',
+                         elem_top=None, elem_bottom=elem_footer)
+
+def add_document(browser, title, description, tags, body):
+
+    wait = WebDriverWait(browser, 10)
+
+    elem = browser.find_element_by_link_text('Add')
+    elem.click()
+
+    elem = browser.find_element_by_link_text("Document")
+    elem.click()
+
+    elem_title = browser.find_element_by_name('title')
+    elem_title.send_keys(title)
+
+    if description:
+        elem_description = browser.find_element_by_id('deformField2')
+        elem_description.send_keys(description)
+
+    if tags:
+        elem_tags = wait.until(
+                lambda br: br.find_element_by_id('deformField3'))
+        for tag in tags:
+            for li in elem_tags.find_elements_by_tag_name('li'):
+                if li.class_name == 'tagit-new':
+                    li.click()
+                    li.send_keys(tag + Keys.TAB)
 
     if body:
         elem_iframe = browser.switch_to_frame('deformField4_ifr')
@@ -261,21 +358,38 @@ def add_image(browser, title, description, image_abspath):
 
 # These functions produce the screen captures.
 
-def toolbar_anonymous(browser):
+def toolbar(browser, target):
 
     elem_brand = browser.find_element_by_class_name('brand')
     elem_search = browser.find_element_by_id('form-search')
     elem_navbar = browser.find_element_by_class_name('navbar-inner')
     elem_nav = elem_navbar.find_element_by_class_name('nav')
 
-    browser.save_screenshot('../docs/images/anonymous.png')
+    target_path = "../docs/images/{0}.png".format(target)
 
-    crop_bbox_of_elems_and_save('../docs/images/anonymous.png',
-                                '../docs/images/toolbar_anonymous.png',
+    browser.save_screenshot(target_path)
+
+    crop_bbox_of_elems_and_save(target_path,
+                                target_path,
                                 [elem_brand, elem_search, elem_nav],
                                 (10, 10, 10, 10))
 
-    RPT('toolbar_anonymous captured')
+    RPT("{0} captured".format(target))
+
+def breadcrumbs(browser, target):
+
+    elem_breadcrumbs = browser.find_element_by_class_name('breadcrumb')
+
+    target_path = "../docs/images/{0}.png".format(target)
+
+    browser.save_screenshot(target_path)
+
+    crop_bbox_of_elems_and_save(target_path,
+                                target_path,
+                                [elem_breadcrumbs,],
+                                (10, 10, 10, 10))
+
+    RPT("{0} captured".format(target))
 
 def editor_bar(browser):
 
@@ -382,10 +496,10 @@ def edit_about_document(browser):
         browser.execute_script("""(function() {
 var domVar;
 if (window.tinymce && window.tinymce.DOM) {
-    domVar = window.tinymce.DOM 
+    domVar = window.tinymce.DOM
 }
 else if (window.tinyMCE && window.tinyMCE.DOM) {
-    domVar = window.tinyMCE.DOM 
+    domVar = window.tinyMCE.DOM
 }
 else {
     return;
@@ -430,7 +544,7 @@ domVar.setAttrib = function(id, attr, val) {
         browser.switch_to_default_content()
 
         wait = WebDriverWait(browser, 10)
-    
+
         browser.find_element_by_css_selector("span.mceIcon.mce_link").click()
 
         def link_dialog_appeared(browser, wait):
@@ -535,7 +649,12 @@ def click_main_nav_item(browser, text):
 
 def add_fruits_content(browser):
 
-    add_document(browser, 'Fruits', '', '')
+    add_fruit_rootstock_document(browser)
+
+    # Back to root.
+    browser.find_element_by_class_name('brand').click()
+
+    add_fruits_document(browser)
 
     for fruit in fruits:
         if click_main_nav_item(browser, 'Fruits'):
@@ -555,7 +674,7 @@ def save_screenshot_full(browser, image_name, elem_top=None, elem_bottom=None):
     if not elem_bottom:
         bottom = 0
     else:
-        bottom = int(elem_bottom.location['y'] + 
+        bottom = int(elem_bottom.location['y'] +
                      elem_bottom.size['height'] + 15)
 
     wait = WebDriverWait(browser, 10)
@@ -657,7 +776,7 @@ Our normal schedule:
 
 Monday - Friday, 8 AM - 6 PM
 Saturday, 7 AM - 2 PM
-               
+
 Address:
 
 Fruit Stand on Main
@@ -675,13 +794,13 @@ browser.find_element_by_class_name('brand').click()
 
 front_page_body = """We are located downtown at a convenient location on the
 corner of Main and 5th Street.
-                    
+
 Our garden is next door. Come by anytime to see what new
 fresh veggies are available.
 
 Our Motto: We want to be your main squeeze! :)"""
 edit_front_page(browser,
-                "Fruit Stand",
+                "Fruit Stand on Main",
                 "Our fruit stand is tried and new, and still growing.",
                 front_page_body)
 
@@ -714,6 +833,6 @@ log_out(browser)
 not_logged_in(browser)
 
 # Capture a plain toolbar.
-toolbar_anonymous(browser)
+toolbar(browser, 'toolbar_anonymous')
 
 browser.quit()
