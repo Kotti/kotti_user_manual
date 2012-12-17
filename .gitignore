@@ -18,6 +18,11 @@ develop-eggs
 lib
 lib64
 
+# Docs build
+docs/_build
+docs/_static
+docs/_templates
+
 # Installer logs
 pip-log.txt
 
