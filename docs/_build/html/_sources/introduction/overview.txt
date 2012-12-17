@@ -17,7 +17,7 @@ user interface, and with the programming language Python forming the heart of
 the system on the server, backed by a powerful database engine.
 
 As a user, you don't have to know about the languages used, nor the focus on
-browser or server programming -- You just use the website. However,
+browser or server programming--you just use the website. However,
 understanding the nature of the software will help you to appreciate it, to
 build confidence in it.
 
@@ -49,12 +49,12 @@ fruit stand. Our fresh default Kotti website looks simple enough:
 
 .. Image:: ../images/not_logged_in.png
 
-You see where the site has already been given a proper "Fruit Stand" title, in
-the header area at the left of the toolbar, which has a Search box on the
-right.  There is a Welcome statement, instructions for logging in, configuring
-the site, viewing a list of available add-ons, and viewing documentation. The
-amusing footer is a signature of a software system called Pyramid that Kotti
-uses as a foundation.
+You see where the site has already been given a proper "Fruit Stand on Main"
+title when the site was created. You also see a search box on the right side of
+the toolbar at the top.  There is a welcome statement, instructions for logging
+in, configuring the site, viewing a list of available add-ons, and viewing
+documentation. The amusing footer is a signature of a software system called
+Pyramid that Kotti uses as a foundation.
 
 We have the site title already, but the rest will change when we add content
 for the fruit stand.

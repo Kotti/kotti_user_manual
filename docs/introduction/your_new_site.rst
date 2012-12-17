@@ -9,7 +9,7 @@ Both the front page and the "About" page need to be changed for a new website.
 Someone may have already set up your site, or you may be part of a larger
 organization where you work on just one part of a large site, but as we go
 through this user manual, we'll work as if you are starting with your own new
-website.
+website for a fruit stand.
 
 We will replace the default "About" page with information about the fruit stand
 offerings and schedule, and we will put introductory information on the front

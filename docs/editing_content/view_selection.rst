@@ -8,4 +8,4 @@ contains other items, a list of the items can be seen by the Contents view,
 and if a list-style view is preferred on a permanent basis for the item, the
 default view can be reset to ``Folder View`` via the Actions menu:
 
-.. Image:: ../images/actions_menu.png
+.. Image:: ../images/add_about_actions_menu.png

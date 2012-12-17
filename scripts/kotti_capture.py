@@ -137,6 +137,10 @@ def add_about_document(browser, title, description, body):
 
     wait = WebDriverWait(browser, 10)
 
+    add_menu(browser)
+
+    browser.find_element_by_class_name('brand').click()
+
     elem = browser.find_element_by_link_text('Add')
     elem.click()
 
@@ -249,9 +253,9 @@ Email us if interested."""
     save_screenshot_full(browser, 'add_fruit_rootstock_document_save_flash_message.png',
                          elem_top=None, elem_bottom=elem_footer)
 
-    toolbar(browser, 'fruit_rootstock_document_toolbar')
+    breadcrumbs(browser, 'add_fruit_rootstock_document_breadcrumbs.png')
 
-    breadcrumbs(browser, 'fruit_rootstock_document_breadcrumbs')
+    toolbar(browser, 'after_fruit_rootstock_document_toolbar.png')
 
     RPT('document {0} added'.format(title))
 
@@ -270,6 +274,178 @@ def add_fruits_document(browser):
     elem_footer = wait.until(lambda br: br.find_element_by_tag_name('footer'))
     save_screenshot_full(browser, 'add_fruits_save_flash_message.png',
                          elem_top=None, elem_bottom=elem_footer)
+
+def add_featured_fruits_document(browser):
+    add_document(browser,
+                 "Featured Fruits",
+                 "Featured fruits at Fruit Stand on Main.",
+                 ['featured'],
+                 "")
+
+def add_bramleys_seedling(browser):
+    # BBC film of original Bramley tree: http://www.bbc.co.uk/news/uk-13764153
+
+    browser.find_element_by_class_name('brand').click()
+
+    add_featured_fruits_document(browser)
+
+    add_bramleys_seedling_document(browser)
+
+def add_bramleys_seedling_document(browser):
+
+    # We are at "Featured Fruits".
+
+    image_name = "frame_from_bbc_video.png"
+    bramley_path = os.getcwd() + "/fruit_images/{0}".format(image_name)
+    add_image(browser,
+              "Bramley's Seedling Apple Tree",
+              '',
+              os.path.abspath(bramley_path))
+    image_url = \
+        "http://127.0.0.1:5000/featured-fruits/bramleys-seedling-apple-tree/image"
+
+    click_main_nav_item(browser, 'Featured Fruits')
+
+    title = "Bramley's Seedling"
+    description = ("Bramley's Seedling is a popular cooking apple, native to "
+                   "the UK.")
+    tags = ['cooking', 'juicing', 'heirloom']
+    body = ("All Bramley's Seedling apple trees can be traced to a "
+            "single tree, still growing and producing, planted in 1809 "
+            "by Mary Ann Brailsford, a young girl living in "
+            "Nottinghamshire, England. The name Bramley comes from the "
+            "man who bought the land where the tree grows in 1846.")
+
+    wait = WebDriverWait(browser, 10)
+
+    elem = browser.find_element_by_link_text('Add')
+    elem.click()
+
+    elem = browser.find_element_by_link_text("Document")
+    elem.click()
+
+    # Bug fix (See below where hang occurs if this script is not run):
+    # http://stackoverflow.com/questions/11846339/chrome-webdriver-hungs-when-currently-selected-frame-closed
+    # (See link to bug there).
+    browser.execute_script("""(function() {
+var domVar;
+if (window.tinymce && window.tinymce.DOM) {
+    domVar = window.tinymce.DOM
+}
+else if (window.tinyMCE && window.tinyMCE.DOM) {
+    domVar = window.tinyMCE.DOM
+}
+else {
+    return;
+}
+var tempVar = domVar.setAttrib;console.log(123)
+domVar.setAttrib = function(id, attr, val) {
+    if (attr == 'src' && typeof(val)== 'string' &&(val + "").trim().match(/javascript\s*:\s*("\s*"|'\s*')/)) {
+        console.log("Cool");
+        return;
+    }
+    else {
+        tempVar.apply(this, arguments);
+    }
+}
+
+}());""")
+
+    elem_title = browser.find_element_by_name('title')
+    elem_title.send_keys(title)
+
+    elem_description = browser.find_element_by_id('deformField2')
+    elem_description.send_keys(description)
+
+    elem_tags = wait.until(
+            lambda br: br.find_element_by_id('deformField3'))
+    for tag in tags:
+        for li in elem_tags.find_elements_by_tag_name('li'):
+            if li.class_name == 'tagit-new':
+                li.click()
+                li.send_keys(tag + Keys.TAB)
+
+    elem_iframe = browser.switch_to_frame('deformField4_ifr')
+    # Firefox bug:
+    # http://code.google.com/p/selenium/issues/detail?id=2355
+    elem_body = wait.until(lambda br: br.find_element_by_id('tinymce'))
+    elem_body.send_keys(body)
+
+    browser.switch_to_default_content()
+
+    elem_save = browser.find_element_by_id('deformsave')
+    save_screenshot_full(browser, 'adding_bramleys_seedling_document.png',
+                         elem_top=None, elem_bottom=elem_save)
+
+    browser.find_element_by_css_selector("span.mceIcon.mce_image").click()
+
+    def image_dialog_appeared(browser, wait):
+        elem = wait.until(
+                lambda br: br.find_element_by_class_name('clearlooks2'))
+        if elem:
+            #elem.click()
+            return True
+        return False
+
+    wait.until(lambda browser: image_dialog_appeared(browser, wait))
+
+    tinymce_popup_frame = \
+            browser.find_element_by_css_selector('iframe[id^="mce"]')
+
+    browser.switch_to_frame(tinymce_popup_frame)
+
+    elem_image = browser.switch_to_active_element()
+    elem_image.send_keys(image_url)
+
+    elem_alt = browser.find_element_by_id("alt")
+    elem_alt.click()
+    elem_alt.send_keys('Original tree in Nottinghamshire')
+
+    elem_title = browser.find_element_by_id("title")
+    elem_title.click()
+    elem_title.send_keys('Screen Grab from BBC')
+
+    save_screenshot_full(
+            browser,
+            'adding_bramleys_seedling_document_image_dialog.png',
+            elem_top=None,
+            elem_bottom=None)
+
+    elem_insert = browser.find_element_by_name("insert")
+    elem_insert.click()
+
+    # Without the bug fix script above, the dialog comes down, but it hangs
+    # here.
+
+    browser.switch_to_default_content()
+
+    elem_save = browser.find_element_by_id('deformsave')
+    save_screenshot_full(
+            browser,
+            'adding_bramleys_seedling_document_image_in_body.png',
+            elem_top=None,
+            elem_bottom=elem_save)
+
+    elem_save.click()
+
+    def save_was_successful(browser, wait):
+        elem = wait.until(lambda br: br.find_element_by_id('messages'))
+        for child in elem.find_elements_by_xpath('./*'):
+            if 'Success' in child.text:
+                return True
+        return False
+
+    wait.until(lambda browser: save_was_successful(browser, wait))
+
+    elem_footer = wait.until(lambda br: br.find_element_by_tag_name('footer'))
+    save_screenshot_full(
+            browser,
+            'adding_bramleys_seedling_document_image_saved.png',
+            elem_top=None,
+            elem_bottom=elem_footer)
+
+    RPT('document {0} added'.format(title))
+
 
 def add_document(browser, title, description, tags, body):
 
@@ -365,7 +541,7 @@ def toolbar(browser, target):
     elem_navbar = browser.find_element_by_class_name('navbar-inner')
     elem_nav = elem_navbar.find_element_by_class_name('nav')
 
-    target_path = "../docs/images/{0}.png".format(target)
+    target_path = "../docs/images/{0}".format(target)
 
     browser.save_screenshot(target_path)
 
@@ -380,7 +556,7 @@ def breadcrumbs(browser, target):
 
     elem_breadcrumbs = browser.find_element_by_class_name('breadcrumb')
 
-    target_path = "../docs/images/{0}.png".format(target)
+    target_path = "../docs/images/{0}".format(target)
 
     browser.save_screenshot(target_path)
 
@@ -484,11 +660,17 @@ def delete_about_document(browser):
 # because of bug with adding text to tinymce body.
 def edit_about_document(browser):
 
-    # The goal of this edit is to make the phrase "the fruits" in the existing
+    wait = WebDriverWait(browser, 10)
+
+    # The goal of this edit is to make the phrase "current fruits" in the existing
     # body text into a link to the "Fruits" document.
 
     if click_main_nav_item(browser, 'About'):
         browser.get(BASE_URL + "/about/@@edit")
+
+        elem_save = wait.until(lambda br: br.find_element_by_id('deformsave'))
+        save_screenshot_full(browser, 'edit_about_document_edit.png',
+                             elem_top=None, elem_bottom=elem_save)
 
         # Bug fix (See below where hang occurs if this script is not run):
         # http://stackoverflow.com/questions/11846339/chrome-webdriver-hungs-when-currently-selected-frame-closed
@@ -524,14 +706,15 @@ domVar.setAttrib = function(id, attr, val) {
         editor = browser.switch_to_active_element()
         editor.click()
 
-        move_right_keys = [Keys.ARROW_LEFT for i in xrange(10)]
+        move_left_keys = [Keys.ARROW_LEFT for i in xrange(28)]
         move = ActionChains(browser).send_keys_to_element(
-                editor, ''.join(move_right_keys))
+                editor, ''.join(move_left_keys))
         move.perform()
 
         shift_key_down = ActionChains(browser).key_down(Keys.SHIFT)
         shift_key_down.perform()
 
+        move_right_keys = [Keys.ARROW_RIGHT for i in xrange(15)]
         selection = ActionChains(browser).send_keys_to_element(
                 editor, ''.join(move_right_keys))
         selection.perform()
@@ -572,8 +755,11 @@ domVar.setAttrib = function(id, attr, val) {
                 elem_href, BASE_URL + '/fruits')
         href_add.perform()
 
-        insert = browser.find_element_by_name("insert")
-        insert.click()
+        save_screenshot_full(browser, 'edit_about_document_adding_link_url.png',
+                             elem_top=None, elem_bottom=None)
+
+        elem_insert = browser.find_element_by_name("insert")
+        elem_insert.click()
 
         # Without the bug fix script above, the dialog comes down, but it hangs
         # here, with the new link looking swell in the editor.
@@ -581,6 +767,12 @@ domVar.setAttrib = function(id, attr, val) {
         browser.switch_to_default_content()
 
         browser.find_element_by_id("deformsave").click()
+
+        save_screenshot_full(
+                browser,
+                'edit_about_document_with_link_to_fruits_document.png',
+                elem_top=None, elem_bottom=None)
+
 
 def edit_front_page(browser, title, description, body):
 
@@ -649,6 +841,9 @@ def click_main_nav_item(browser, text):
 
 def add_fruits_content(browser):
 
+    # Back to root.
+    browser.find_element_by_class_name('brand').click()
+
     add_fruit_rootstock_document(browser)
 
     # Back to root.
@@ -663,6 +858,8 @@ def add_fruits_content(browser):
             add_image(browser, fruit, '', os.path.abspath(fruit_path))
         else:
             RPT('PROBLEM with adding content')
+
+    contents_action_buttons(browser)
 
 def save_screenshot_full(browser, image_name, elem_top=None, elem_bottom=None):
 
@@ -777,6 +974,8 @@ Our normal schedule:
 Monday - Friday, 8 AM - 6 PM
 Saturday, 7 AM - 2 PM
 
+We often update our list of current fruits.
+
 Address:
 
 Fruit Stand on Main
@@ -786,6 +985,7 @@ Somewhere, SW 01010
 Email: fruits@example.com
 
 Phone: +1-509-555-0100"""
+
 add_about_document(browser, "About",
                    "This website is for Fruit Stand on Main, founded 1985.",
                    about_body)
@@ -805,6 +1005,8 @@ edit_front_page(browser,
                 front_page_body)
 
 # Now that we are logged in,
+add_bramleys_seedling(browser)
+
 add_fruits_content(browser)
 
 # Capture editor_bar:
@@ -833,6 +1035,6 @@ log_out(browser)
 not_logged_in(browser)
 
 # Capture a plain toolbar.
-toolbar(browser, 'toolbar_anonymous')
+toolbar(browser, 'toolbar_anonymous.png')
 
 browser.quit()

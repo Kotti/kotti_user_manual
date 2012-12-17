@@ -134,22 +134,21 @@ do, you will see the view change to that of the content type created. Having
 entered the title, description, tags, and body for our new document, we save
 and we then see the view for the new document:
 
-.. Image:: ../images/fruit_rootstock_document_save_flash_message.png
+.. Image:: ../images/add_fruit_rootstock_document_save_flash_message.png
 
-Navigation in Toolbar
----------------------
+Basic Navigation
+----------------
 
 Once you have added several documents, perhaps following an outline to build a
 nested structure of documents, Kotti will handle linking the documents together
-in its menu and breadcrumbs system. Look again at the full screen capture
-above.
-
-You see the main sections displayed across the top, in the toolbar, with
-navigation and searchbox:
-
-.. Image:: ../images/fruits_document_toolbar.png
+in its menu and breadcrumbs system.
 
 You see the path to the current document in the breadcrumbs display above the
 title:
 
-.. Image:: ../images/fruits_document_breadcrumbs.png
+.. Image:: ../images/add_fruit_rootstock_document_breadcrumbs.png
+
+You see the main sections displayed across the top, in the toolbar, with
+navigation and searchbox:
+
+.. Image:: ../images/after_fruit_rootstock_document_toolbar.png

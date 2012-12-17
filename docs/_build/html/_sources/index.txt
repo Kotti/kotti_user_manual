@@ -6,8 +6,9 @@
 Using Kotti
 ===========
 
-Kotti is built in the tradition of web-based content management systems,
-with an eye toward clean design of core features.
+Kotti is built in the tradition of web-based content management systems, with
+an eye toward clean design of core features, and use of a refined choice of
+foundational software components.
 
 Content types include Document, Image, and File, and a variety of other
 content types made available through customization.

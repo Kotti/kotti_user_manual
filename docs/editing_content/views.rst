@@ -36,23 +36,17 @@ an external web page, pasting in the URL of the external web page.
 We need to add a link to our "Fruits" document in the "About" document. We do
 this by clicking on "About," then clicking "Edit" in the editor bar:
 
-.. Image:: ../images/about_document_edit.png
+.. Image:: ../images/edit_about_document_edit.png
 
-Then, in the body add the following sentence::
+Then, in the body select the text "current fruits" with your mouse.  Then click the
+icon that looks like links of a chain. You will see the edit link widget.  You
+can click the browse button to the right of the URL entry field, and then find
+the "Fruits" document and click on it, or you can enter the URL manually
+(especially useful for entering URLs of other websites).
 
-    Our fruit stand has many fruits.
+.. Image:: ../images/edit_about_document_adding_link_url.png
 
-Then select the words "fruit stand" with your mouse. Then click the icon that
-looks like links of a chain. You will see the link widget:
+After saving the document, you will have a link on the "About" page from the
+"current fruits" text to the "Fruits" document:
 
-.. Image:: ../images/about_document_adding_link_browse.png
-
-Click the browse button to the right of the URL entry field, and then find the
-"Fruits" document and click on it:
-
-.. Image:: ../images/about_document_adding_link_fruits_document.png
-
-After saving the document, you will have a link from the "About" page to the
-"Fruits" document:
-
-.. Image:: ../images/about_document_with_link_to_fruits_document.png
+.. Image:: ../images/edit_about_document_with_link_to_fruits_document.png
