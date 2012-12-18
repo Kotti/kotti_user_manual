@@ -1,6 +1,5 @@
-======
-Images
-======
+Adding Images
+=============
 
 There are two ways to add images to a Kotti website:
 
@@ -58,8 +57,8 @@ called "alt" text for an image).
 Let's add the image of the Bramley's Seedling tree, planted in 1809, to a
 document about the tree. Here you see where we are adding a document called
 "Bramley's Seedling" to "Featured Fruits", which had already been added. We
-have typed text describing the history of the tree, and are now ready to add
-the image.
+have typed text describing the history of the tree, have entered three tags,
+"cooking," "juicing," and "heirloom," and are now ready to add a photograph.
 
 .. Image:: ../images/adding_bramleys_seedling_document.png
 
@@ -81,6 +80,43 @@ To finish, we save the "Bramley's Seedling" document:
 
 Method 2: Adding an Image via the Add Menu
 ------------------------------------------
+
+We want to have a list of available fruits at our fruit stand. Here we add a
+document called "Fruits," then, using the "Add" menu, we add images for each
+of the following fruits, shown with their tags:
+
+============ ==========
+   Fruit      Tag
+============ ==========
+ Apple        Core
+ Avocado      Tropical
+ Banana       Tropical
+ Cantaloupe   Melon
+ Cherry       Pit
+ Grape        Berry
+ Kiwi         Tropical
+ Lemon        Citrus
+ Nectarine    Pit
+ Orange       Citrus
+ Peach        Pit
+ Pineapple    Tropical
+ Plum         Pit
+ Strawberry   Berry
+============ ==========
+
+A content item can have more than one tag, but here they are used as fruit
+categories.
+
+For each image we click the "Fruits" document, then the "Add" menu, then we
+find the local file with the photograph of the fruit. Each one is uploaded
+and stored with each "Add" action.
+
+After the images have been added, if we click the "Fruits" document, we do
+not see the images as a list. We have to click the "Contents" link to see
+that:
+
+.. Image:: ../images/contents_view.png
+
 
 Image Handling
 --------------

@@ -1,5 +1,41 @@
-Getting Started With a New Site
--------------------------------
+A Fresh Kotti Site
+==================
+
+For the website associated with this user manual we will add content for a
+fruit stand. Our fresh default Kotti website looks simple enough:
+
+.. Image:: ../images/logged_in.png
+
+You see where the site has already been given a proper "Fruit Stand on Main"
+title when the site was created by our website hosting provider. You also see a
+search box on the right side of the toolbar at the top.  There is a welcome
+statement, instructions for logging in, configuring the site, viewing a list of
+available add-ons, and viewing documentation. The amusing footer is a signature
+of a software system called Pyramid that Kotti uses as a foundation.
+
+We have the site title already, but the rest will change when we add content
+for the fruit stand.
+
+Logging In
+==========
+
+Let's log in by clicking the "Log In" button on the default Kotti website's
+front page. That takes us to a page with the web address "/login" (which would
+be on the end of the base web address, e.g., "http://www.example.com/login").
+Here you can see where the username "Admin" and the password is being entered:
+
+.. Image:: ../images/logging_in.png
+
+You should be given a password by the person or company who set up your site.
+
+After submitting the username and password by clicking the "Log In" button, and
+after they have been successfully matched to an existing user account, the site
+will be shown in "logged in" view:
+
+.. Image:: ../images/logged_in.png
+
+Preliminary Tasks
+=================
 
 Kotti creates a default front page with general information about Kotti itself,
 and it adds a single document called "About" that has a photograph of airplanes
@@ -16,6 +52,9 @@ offerings and schedule, and we will put introductory information on the front
 page. We will add a Document called "Fruits" and to it we will add images of
 the fruits for sale.  We will tag the fruit images for fruit categories to
 which they belong.  This will be enough to demonstrate Kotti's main features.
+
+Deleting the Default About Page
+-------------------------------
 
 For the first task, let's delete the default "About" page. We are logged in, so
 we can see it. Notice that it is in the Private state (left side of screen,

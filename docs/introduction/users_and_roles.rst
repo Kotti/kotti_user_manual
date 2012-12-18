@@ -1,40 +1,25 @@
-===============
 Users and Roles
 ===============
 
-A website is usually a simple presentation of text and images and other content
+A website is usually a presentation of text and images and other content
 available for view by anyone. The content of the website is added by any number
 of ways to build websites, but there is often no concept of "logging in" to see
 content. The content is viewable by all who visit the website. This can be
-called anonymous viewing, and the general website visitor can be called an
+called ``anonymous`` viewing, and the general website visitor can be called an
 anonymous user.
 
 A CMS does involve the concept of "logging in," at least for the person adding
 content, and it involves the concept of having content in public vs. private
 state: public, for allowing open viewing by the anonymous user, as for a
 typical website, and private, for restricting viewing to the "logged in" user.
-Once a user has logged in, they can be called an authorized or an authenticated
-user, because they have given their correct username and password.
+Once a user has logged in, they can be called an ``authenticated`` user,
+because they have given their correct username and password.
 
 In its simplest form, Kotti allows a special user, called the Admin user, to
 log in and add and edit content. If the Kotti website is so simple that only
 one person will be adding content, that user will be the Admin user. The Admin
 user has full rights to do anything to the website. For our fruit stand
 website, we will only need the Admin user account.
-
-Let's log in by clicking the Log In button on the default Kotti website's front
-page. That takes us to a page with the web address "/login" (which would be on
-the end of the base web address, e.g., "http://www.example.com/login"). Here
-you can see where the username "Admin" and the default password "qwerty" is
-being entered:
-
-.. Image:: ../images/logging_in.png
-
-After submitting the username and password by clicking the LogIn button, and
-after they have been successfully matched to an existing user account, the site
-will be shown in "logged in" view:
-
-.. Image:: ../images/logged_in.png
 
 For a larger Kotti website, where several people add content, the Admin user
 may create accounts for other people. One common approach is to divide the
@@ -75,17 +60,3 @@ publish content.
 Even a small business with a handful of employees, or a small non-profit with
 just a few members, can benefit from some form of structure like this. Kotti
 can handle needs of small and large organizations and companies.
-
-The term used for the setup for scenarios described above is ``workflow``. A
-workflow is a set of policies created for a given CMS setup, wherein user
-groups and roles are defined, and relationships and responsibilities are set.
-Additional states, augmenting the default Public and Private, such as Pending,
-Postponed, Scheduled, Ready-For-Circulation, Needs-Full-Review, etc., may be
-added, depending on specific needs. As the state names suggest, this is an area
-where creativity can help to build a fine-grained system.
-
-You do not need to create a saved workflow policy to use a Kotti website. As
-user groups are created manually by the Admin user, a defacto workflow is
-created.  A saved workflow is only created when there is a need to reuse a
-given set of policies. Creating and saving workflows is covered in an advanced
-part of this documentation.

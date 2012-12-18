@@ -1,6 +1,5 @@
-========
-Overview
-========
+The Nature of Kotti
+===================
 
 A website is a website is a website. Not.
 
@@ -21,9 +20,11 @@ browser or server programming--you just use the website. However,
 understanding the nature of the software will help you to appreciate it, to
 build confidence in it.
 
+Design Goals
+============
+
 The choice of approach made by Kotti, and the software components used, reflect
-several goals desired by the seasoned content management system professionals
-and software developers who make Kotti:
+several design goals:
 
 * Keep the core simple, using a natural design.
 * Use and re-use best-of-breed software components.
@@ -32,9 +33,11 @@ and software developers who make Kotti:
 * Test the software continuously.
 
 Kotti has marched through numerous revisions to become stable, and a group of
-dedicated software developers has assembled. The future looks bright for the
-adoption of Kotti for small and large websites, for internal company systems,
-for social media, and many other niches. It is a capable CMS.
+dedicated software developers has assembled. Many of the developers have years
+of experience in CMS projects and in the languages used in Kotti. The future
+looks bright for the adoption of Kotti for small and large websites, for
+internal company systems, for social media, and many other niches. It is a
+capable CMS with high potential.
 
 The design of Kotti has content storage as something like an outline or tree,
 where content is nested in a meaningful way.  This is the natural aspect. The
@@ -43,18 +46,3 @@ added to a Kotti website in the way word-processor documents are created, but
 in the context of the web. Documents contain text and may include images,
 files, and links to other documents.  Kotti's design makes linking documents to
 one another easy.
-
-For the website associated with this user manual we will add content for a
-fruit stand. Our fresh default Kotti website looks simple enough:
-
-.. Image:: ../images/not_logged_in.png
-
-You see where the site has already been given a proper "Fruit Stand on Main"
-title when the site was created. You also see a search box on the right side of
-the toolbar at the top.  There is a welcome statement, instructions for logging
-in, configuring the site, viewing a list of available add-ons, and viewing
-documentation. The amusing footer is a signature of a software system called
-Pyramid that Kotti uses as a foundation.
-
-We have the site title already, but the rest will change when we add content
-for the fruit stand.

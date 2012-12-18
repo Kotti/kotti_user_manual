@@ -1,6 +1,5 @@
-=====
-Files
-=====
+Adding Files
+============
 
 Files are normal files that you create store on your computer, but for one
 reason or another, wish to post on your website. One common need is to post PDF

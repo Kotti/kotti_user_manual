@@ -1,6 +1,5 @@
-==============
-Custom Content
-==============
+Adding Custom Content
+=====================
 
 Kotti comes with built-in Document, Image, and File content types. These are
 general purpose content types. Keeping Kotti simple, with a focus on solid

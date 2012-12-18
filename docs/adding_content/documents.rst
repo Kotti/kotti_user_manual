@@ -1,6 +1,5 @@
-=========
-Documents
-=========
+Adding Documents
+================
 
 Adding content to a new Kotti website usually involves adding top-level
 documents for main sections of the website, followed by adding documents within
@@ -52,10 +51,10 @@ apple rootstock choices (the corresponding name is the part after the last /):
 ========================= ====================================================
         Title                                      URL
 ------------------------- ----------------------------------------------------
-Red Delicious             www.example.com/apples/red-delicious
-Bramley's Seedling        www.example.com/apples/bramleys-seedling
-King-of-the-Pippins       www.example.com/apples/king-of-the-pippins
-MM.106 Rootstock          www.example.com/apples/mm-106-rootstock
+Red Delicious             www.example.com/fruit-rootstock/red-delicious
+Bramley's Seedling        www.example.com/fruit-rootstock/bramleys-seedling
+King-of-the-Pippins       www.example.com/fruit-rootstock/king-of-the-pippins
+MM.106 Rootstock          www.example.com/fruit-rootstock/mm-106-rootstock
 ========================= ====================================================
 
 You see that blanks are replaced by dashes. Special characters such as
@@ -106,6 +105,29 @@ that have been tagged with either the rootstock or apple tags.
 When we tag our "Fruit Rootstock" document with the "rootstock" tag, as this is
 its first use, so Kotti will create it anew.
 
+A content manangement system has features that make a CMS website more powerful
+than a simple storage system. One of these features is the content tagging
+system, whereby users tag content by keywords to add an important layer of
+information and organization.
+
+Tags are added in the Edit form, between the Description and Body for a
+Document, and in a similar position for other content types. Click in the tag
+entry field to give it keyboard focus, then type keywords or keyphrases.  The
+tag entry field uses the tab key to signify that a tag has been typed. When you
+add a tag and hit the tab key, the cursor moves to become ready for entry of
+the next tag.
+
+The tags entry field knows about existing tags, and shows them as soon as you
+have typed enought letters to match one. You can type the existing tag, or you
+can click matched tag when it appears.
+
+Tags are case-sensitive. Use this to advantage, by considering whether a formal
+name works well for a tag, versus an informal word or phrase. Consider a
+service business that has a Kotti site for managing information about multiple
+clients.  Formal names of the client businesses would be appropriate tags:
+Jones Company, Edwards & Eagleford Law, Acme Plumbing, etc. But in the same CMS
+there could also be tags for general categories, such as law and plumbing. Often
+both formally and informally named tags are useful.
 Body
 ----
 
@@ -135,20 +157,3 @@ entered the title, description, tags, and body for our new document, we save
 and we then see the view for the new document:
 
 .. Image:: ../images/add_fruit_rootstock_document_save_flash_message.png
-
-Basic Navigation
-----------------
-
-Once you have added several documents, perhaps following an outline to build a
-nested structure of documents, Kotti will handle linking the documents together
-in its menu and breadcrumbs system.
-
-You see the path to the current document in the breadcrumbs display above the
-title:
-
-.. Image:: ../images/add_fruit_rootstock_document_breadcrumbs.png
-
-You see the main sections displayed across the top, in the toolbar, with
-navigation and searchbox:
-
-.. Image:: ../images/after_fruit_rootstock_document_toolbar.png

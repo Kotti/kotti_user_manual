@@ -22,16 +22,26 @@ def RPT(message):
         else:
             print message
 
-fruits = [u'Apple', u'Avocado', u'Banana']
-allfruits = [u'Apple', u'Avocado', u'Banana', u'Cantaloupe', u'Cherry', u'Grape',
-          u'Kiwi', u'Lemon', u'Nectarine', u'Orange', u'Peach', u'Pineapple',
-          u'Plum', u'Strawberry']
+fruits = [{'name': u'Apple', 'tag': 'Core'},
+          {'name': u'Avocado', 'tag': 'Tropical'},
+          {'name': u'Banana', 'tag': 'Tropical'},
+          {'name': u'Cantaloupe', 'tag': 'Melon'},
+          {'name': u'Cherry', 'tag': 'Pit'},
+          {'name': u'Grape', 'tag': 'Berry'},
+          {'name': u'Kiwi', 'tag': 'Tropical'},
+          {'name': u'Lemon', 'tag': 'Citrus'},
+          {'name': u'Nectarine', 'tag': 'Pit'},
+          {'name': u'Orange', 'tag': 'Citrus'},
+          {'name': u'Peach', 'tag': 'Pit'},
+          {'name': u'Pineapple', 'tag': 'Tropical'},
+          {'name': u'Plum', 'tag': 'Pit'},
+          {'name': u'Strawberry', 'tag': 'Berry'}]
 
 TOOLBAR_HEIGHT = 40
 MENU_HEIGHT = 40
 BASE_URL = 'http://127.0.0.1:5000'
 
-def log_in(browser):
+def log_in(browser, do_screencaptures):
 
     browser.get(BASE_URL + '/login')
 
@@ -41,16 +51,18 @@ def log_in(browser):
     elem = browser.find_element_by_name("password")
     elem.send_keys("qwerty")
 
-    elem_footer = browser.find_element_by_tag_name('footer')
-    save_screenshot_full(browser, 'logging_in.png', elem_top=None, elem_bottom=elem_footer)
+    if do_screencaptures:
+        elem_footer = browser.find_element_by_tag_name('footer')
+        save_screenshot_full(
+            browser, 'logging_in.png', elem_top=None, elem_bottom=elem_footer)
 
     elem = browser.find_element_by_name("submit")
     elem.click()
 
-    _logged_in = True
-
-    elem_footer = browser.find_element_by_tag_name('footer')
-    save_screenshot_full(browser, 'logged_in.png', elem_top=None, elem_bottom=elem_footer)
+    if do_screencaptures:
+        elem_footer = browser.find_element_by_tag_name('footer')
+        save_screenshot_full(
+            browser, 'logged_in.png', elem_top=None, elem_bottom=elem_footer)
 
     RPT('logged in')
 
@@ -61,8 +73,6 @@ def log_out(browser):
 
     elem = browser.find_element_by_link_text('Logout')
     elem.click()
-
-    _logged_in = False
 
     RPT('logged out')
 
@@ -98,7 +108,7 @@ def capture_menu(browser, image_name, link_text,
         hover = ActionChains(browser).move_to_element(elem)
         hover.perform()
 
-        image_path = "../docs/images/{0}.png".format(image_name)
+        image_path = "../docs/images/{0}".format(image_name)
         browser.save_screenshot(image_path)
 
         im = Image.open(image_path)
@@ -114,7 +124,7 @@ def capture_menu(browser, image_name, link_text,
 
     else:
 
-        image_path = "../docs/images/{0}.png".format(image_name)
+        image_path = "../docs/images/{0}".format(image_name)
         browser.save_screenshot(image_path)
 
         im = Image.open(image_path)
@@ -220,11 +230,15 @@ Email us if interested."""
     if tags:
         elem_tags = wait.until(
                 lambda br: br.find_element_by_id('deformField3'))
+        elem_ul = wait.until(
+                lambda br: br.find_element_by_class_name('tagit'))
         for tag in tags:
-            for li in elem_tags.find_elements_by_tag_name('li'):
-                if li.class_name == 'tagit-new':
-                    li.click()
-                    li.send_keys(tag + Keys.TAB)
+            for li in elem_ul.find_elements_by_tag_name('li'):
+                if li.get_attribute('class') == 'tagit-new':
+                    elem_input = li.find_element_by_tag_name('input')
+                    elem_input.click()
+                    elem_input.send_keys(tag + Keys.TAB)
+                    time.sleep(.1)
 
     if body:
         elem_iframe = browser.switch_to_frame('deformField4_ifr')
@@ -300,6 +314,7 @@ def add_bramleys_seedling_document(browser):
     add_image(browser,
               "Bramley's Seedling Apple Tree",
               '',
+              ['cooking', 'juicing', 'heirloom'],
               os.path.abspath(bramley_path))
     image_url = \
         "http://127.0.0.1:5000/featured-fruits/bramleys-seedling-apple-tree/image"
@@ -359,11 +374,15 @@ domVar.setAttrib = function(id, attr, val) {
 
     elem_tags = wait.until(
             lambda br: br.find_element_by_id('deformField3'))
+    elem_ul = wait.until(
+            lambda br: br.find_element_by_class_name('tagit'))
     for tag in tags:
-        for li in elem_tags.find_elements_by_tag_name('li'):
-            if li.class_name == 'tagit-new':
-                li.click()
-                li.send_keys(tag + Keys.TAB)
+        for li in elem_ul.find_elements_by_tag_name('li'):
+            if li.get_attribute('class') == 'tagit-new':
+                elem_input = li.find_element_by_tag_name('input')
+                elem_input.click()
+                elem_input.send_keys(tag + Keys.TAB)
+                time.sleep(.1)
 
     elem_iframe = browser.switch_to_frame('deformField4_ifr')
     # Firefox bug:
@@ -467,11 +486,15 @@ def add_document(browser, title, description, tags, body):
     if tags:
         elem_tags = wait.until(
                 lambda br: br.find_element_by_id('deformField3'))
+        elem_ul = wait.until(
+                lambda br: br.find_element_by_class_name('tagit'))
         for tag in tags:
-            for li in elem_tags.find_elements_by_tag_name('li'):
-                if li.class_name == 'tagit-new':
-                    li.click()
-                    li.send_keys(tag + Keys.TAB)
+            for li in elem_ul.find_elements_by_tag_name('li'):
+                if li.get_attribute('class') == 'tagit-new':
+                    elem_input = li.find_element_by_tag_name('input')
+                    elem_input.click()
+                    elem_input.send_keys(tag + Keys.TAB)
+                    time.sleep(.1)
 
     if body:
         elem_iframe = browser.switch_to_frame('deformField4_ifr')
@@ -496,7 +519,9 @@ def add_document(browser, title, description, tags, body):
 
     RPT('document {0} added'.format(title))
 
-def add_image(browser, title, description, image_abspath):
+def add_image(browser, title, description, tags, image_abspath):
+
+    wait = WebDriverWait(browser, 10)
 
     elem = browser.find_element_by_link_text('Add')
     elem.click()
@@ -511,10 +536,22 @@ def add_image(browser, title, description, image_abspath):
         elem_description = browser.find_element_by_name('description')
         elem_description.send_keys(description)
 
+    if tags:
+        elem_tags = wait.until(
+                lambda br: br.find_element_by_id('deformField3'))
+        elem_ul = wait.until(
+                lambda br: br.find_element_by_class_name('tagit'))
+        for tag in tags:
+            for li in elem_ul.find_elements_by_tag_name('li'):
+                if li.get_attribute('class') == 'tagit-new':
+                    elem_input = li.find_element_by_tag_name('input')
+                    elem_input.click()
+                    elem_input.send_keys(tag + Keys.TAB)
+                    time.sleep(.1)
+
     elem = browser.find_element_by_name("upload")
     elem.send_keys(image_abspath)
 
-    wait = WebDriverWait(browser, 10)
     elem_save = browser.find_element_by_name('save')
     elem_save.click()
 
@@ -529,10 +566,28 @@ def add_image(browser, title, description, image_abspath):
 
     RPT('image {0} added'.format(title))
 
-###################
-# Specific Images
+def search_and_capture_results(browser, image_name, query):
 
-# These functions produce the screen captures.
+    wait = WebDriverWait(browser, 10)
+
+    browser.find_element_by_class_name('brand').click()
+
+    elem_search = browser.find_element_by_id('form-search')
+    elem_input = elem_search.find_element_by_tag_name('input')
+    elem_input.click()
+    elem_input.send_keys(query + Keys.ENTER)
+
+    def search_completed(browser, wait):
+        elem = wait.until(lambda br: br.find_element_by_id('search-results'))
+        return True if elem else False
+
+    wait.until(lambda browser: search_completed(browser, wait))
+
+    elem_footer = browser.find_element_by_tag_name('footer')
+    save_screenshot_full(browser, image_name,
+                         elem_top=None, elem_bottom=elem_footer)
+
+    RPT("search results for {0} captured".format(query))
 
 def toolbar(browser, target):
 
@@ -551,6 +606,17 @@ def toolbar(browser, target):
                                 (10, 10, 10, 10))
 
     RPT("{0} captured".format(target))
+
+def add_navigate_view(browser):
+
+    elem_brand = browser.find_element_by_class_name('brand')
+
+    elem = browser.find_element_by_link_text('Navigate')
+    elem.click()
+
+    time.sleep(2)
+
+    browser.save_screenshot("../docs/images/navigate_view.png")
 
 def breadcrumbs(browser, target):
 
@@ -586,19 +652,27 @@ def editor_bar(browser):
         RPT('editor_bar captured')
 
 def state_menu(browser):
-    capture_menu(browser, "state_menu", "Private", 4, 3)
+    capture_menu(browser, "state_menu.png", "Private", 4, 3)
 
 def add_menu(browser):
-    capture_menu(browser, "add_menu", "Add", 4, 3)
-
-def actions_menu(browser):
-    capture_menu(browser, "actions_menu", "Actions", 4, 3,
-                 submenu_link_text='Set default view')
+    capture_menu(browser, "add_menu.png", "Add", 4, 3)
 
 def admin_menu(browser):
-    capture_menu(browser, "admin_menu", "Administrator", 4, 3)
+    capture_menu(browser, "admin_menu.png", "Administrator", 4, 3)
 
-def contents_action_buttons(browser):
+def publish_all(browser):
+    for title in ['About', 'Featured Fruits', 'Fruit Rootstock', 'Fruits']:
+        browser.find_element_by_class_name('brand').click()
+
+        click_main_nav_item(browser, title)
+
+        elem = browser.find_element_by_link_text('Private')
+        elem.click()
+
+        elem = browser.find_element_by_link_text('Make Public')
+        elem.click()
+
+def contents_view(browser):
 
     if click_main_nav_item(browser, 'Fruits'):
 
@@ -616,9 +690,57 @@ def contents_action_buttons(browser):
                                     [elem_copy, elem_hide],
                                     (10, 10, 10, 10))
 
-        RPT('contents_action_buttons captured')
+        elem_footer = browser.find_element_by_tag_name('footer')
+        save_screenshot_full(browser, 'contents_view.png',
+                             elem_top=None, elem_bottom=elem_footer)
+
+        capture_menu(browser, "set_default_view.png", "Actions", 4, 3,
+                 submenu_link_text='Set default view')
+
+        RPT('contents views captured')
     else:
         RPT('PROBLEM with contents_action_buttons capture')
+
+def fruits_view(browser):
+    click_main_nav_item(browser, 'Fruits')
+
+    elem_footer = browser.find_element_by_tag_name('footer')
+    save_screenshot_full(browser, 'fruits_view.png',
+                         elem_top=None, elem_bottom=elem_footer)
+
+def set_default_view(browser, default_view):
+    wait = WebDriverWait(browser, 10)
+
+    click_main_nav_item(browser, 'Fruits')
+
+    elem = browser.find_element_by_link_text("Actions")
+    elem.click()
+
+    elem = wait.until(
+            lambda br: br.find_element_by_link_text("Set default view"))
+    hover = ActionChains(browser).move_to_element(elem)
+    hover.perform()
+
+    elem = browser.find_element_by_link_text(default_view)
+    elem.click()
+
+def search_on_tropical_tag(browser):
+
+    click_main_nav_item(browser, 'Fruits')
+
+    elem = browser.find_element_by_link_text("Pineapple")
+    elem.click()
+
+    elem_footer = browser.find_element_by_tag_name('footer')
+    save_screenshot_full(browser, 'pineapple.png',
+                         elem_top=None, elem_bottom=elem_footer)
+
+    elem = browser.find_element_by_link_text("Tropical")
+    elem.click()
+
+    elem_footer = browser.find_element_by_tag_name('footer')
+    save_screenshot_full(browser, 'items_with_tropical_tag.png',
+                         elem_top=None, elem_bottom=elem_footer)
 
 def delete_about_document(browser):
 
@@ -666,6 +788,11 @@ def edit_about_document(browser):
     # body text into a link to the "Fruits" document.
 
     if click_main_nav_item(browser, 'About'):
+        browser.get(BASE_URL + "/about/@@edit")
+
+        # Grab this while we are here, then step back to 'About'.
+        state_menu(browser)
+
         browser.get(BASE_URL + "/about/@@edit")
 
         elem_save = wait.until(lambda br: br.find_element_by_id('deformsave'))
@@ -853,13 +980,19 @@ def add_fruits_content(browser):
 
     for fruit in fruits:
         if click_main_nav_item(browser, 'Fruits'):
-            image_name = "{0}_1200.jpg".format(fruit)
+            image_name = "{0}_1200.jpg".format(fruit['name'])
             fruit_path = os.getcwd() + "/fruit_images/{0}".format(image_name)
-            add_image(browser, fruit, '', os.path.abspath(fruit_path))
+            add_image(browser,
+                      fruit['name'],
+                      '',
+                      [fruit['tag']],
+                      os.path.abspath(fruit_path))
         else:
             RPT('PROBLEM with adding content')
 
-    contents_action_buttons(browser)
+    contents_view(browser)
+
+    set_default_view(browser, 'Folder view')
 
 def save_screenshot_full(browser, image_name, elem_top=None, elem_bottom=None):
 
@@ -946,14 +1079,13 @@ doc_files = ['../docs/introduction/overview.rst',
 chrome_driver_path = "{0}/chromedriver".format(os.getcwd())
 
 browser = webdriver.Chrome(chrome_driver_path)
-#browser = log_in(webdriver.Firefox()
 
 # Set the browser to full size to avoid wrapping issues.
 browser.maximize_window()
 
 # This will capture: logging_in
 #                    logged_in
-log_in(browser)
+log_in(browser, True)
 
 # We have to pay attention to the order of ops somewhat, being careful about
 # adding content before making screen captures that expect certain content to
@@ -1014,6 +1146,14 @@ editor_bar(browser)
 
 edit_about_document(browser)
 
+# Do captures that need all content:
+toolbar(browser, 'toolbar.png')
+add_navigate_view(browser)
+fruits_view(browser)
+search_and_capture_results(browser, 'search_results_for_pit.png', 'Pit')
+search_and_capture_results(browser, 'search_results_for_fruit.png', 'fruit')
+search_on_tropical_tag(browser)
+
 # Scan docs for needed screen captures, coming in the form of image entries in
 # the Sphinx docs. The image names should match names of functions explicitly
 # called here.
@@ -1036,5 +1176,16 @@ not_logged_in(browser)
 
 # Capture a plain toolbar.
 toolbar(browser, 'toolbar_anonymous.png')
+
+# Log back in and publish, log back out, and then capture published.
+log_in(browser, False)
+
+publish_all(browser)
+
+log_out(browser)
+
+browser.find_element_by_class_name('brand').click()
+elem_footer = browser.find_element_by_tag_name('footer')
+save_screenshot_full(browser, 'published.png', elem_top=None, elem_bottom=elem_footer)
 
 browser.quit()

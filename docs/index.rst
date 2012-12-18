@@ -13,46 +13,70 @@ foundational software components.
 Content types include Document, Image, and File, and a variety of other
 content types made available through customization.
 
-Kotti Basics
+Abbreviation: CMS = Content Management System.
+
+Introduction
 ------------
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     introduction/overview
     introduction/users_and_roles
-    introduction/your_new_site
+    introduction/workflow
+
+An Example
+----------
+
+.. toctree::
+    :maxdepth: 2
+
+    example/example
 
 Adding Content
 --------------
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     adding_content/documents
     adding_content/images
     adding_content/files
     adding_content/custom_content
 
+Navigation
+----------
+
+.. toctree::
+    :maxdepth: 2
+
+    navigation/navigation
+
 Editing Content
 ---------------
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     editing_content/views
     editing_content/contents_view
     editing_content/view_selection
 
-Tagging Content
----------------
+Searching
+---------
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
-    tagging_content/concept
-    tagging_content/searching
+    searching/searching
 
+Publishing
+---------
+
+.. toctree::
+    :maxdepth: 2
+
+    publishing/publishing
 
 Indices and tables
 ==================

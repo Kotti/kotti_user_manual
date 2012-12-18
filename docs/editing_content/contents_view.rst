@@ -1,22 +1,28 @@
-=============
 Contents View
 =============
 
 The Contents view shows contained items with data for each item: title, type,
 state (e.g. public or private), visibility (shown or hidden in navigation
-menu), and creation and modification dates. Each item has a checkbox, so you
-can select one or multiple items for doing an action via one of the buttons at
-the bottom of the view:
+menu), and creation and modification dates:
+
+.. Image:: ../images/contents_view.png
+
+Each item has a checkbox, so you can select one or multiple items for doing an
+action via one of the buttons at the bottom of the view:
 
 .. Image:: ../images/contents_action_buttons.png
 
 Copy and Cut
+------------
+
   Copy and Cut start a copy/paste or a cut/paste operation. After copying or
   cutting items, go to the place where you want to move them, and there will
   be a Paste button active and ready. This is a powerful feature for
   reorganizing content.
 
 Rename
+------
+
   Rename is used for changing the name, which is part of the web address (URL),
   and the title. If you select multiple items, then click Rename, you will be
   able to change the names and titles of all of the items in a single display.
@@ -26,9 +32,13 @@ Rename
   them with the Edit view, use this multi-edit feature of the Contents view.
 
 Delete
+------
+
   Delete is available to delete single or multiple items in one operation.
 
 Change State
+------------
+
   Change State is for changing between Public and Private state. There is a
   checkbox for changing state of items that controls whether the state change
   should be applied recursively -- whether or not it is carried to child items
@@ -44,6 +54,8 @@ Change State
   all of the car info content will instantly be made public.
 
 Move Up and Move Down
+---------------------
+
   Move Up and Move Down are used to walk a content item up or down in the
   list.  This changes the position of the item in the list, but also in the
   navigation views. For top-level items -- the ones under the home page (or
@@ -54,6 +66,8 @@ Move Up and Move Down
   view.
 
 Show and Hide
+-------------
+
   Show and Hide are for changing the visibility of items in the site-wide
   Navigation view. This is useful when you want items to be available on the
   website, perhaps for linking in documents, but you only want them to be
