@@ -1,5 +1,4 @@
 Sphinx
-kotti_user_manual
 kotti_docs_theme
 repoze.sphinx.autointerface
 repoze.lru
