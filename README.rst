@@ -14,6 +14,10 @@ Make a virtualenv and prepare to use Kotti and selenium::
   pip install -U selenium
   pip install -r requirements.txt
 
+  pip install Kotti
+
+  pip install kotti_docs_theme
+
 Run Kotti::
 
   pserve app.ini

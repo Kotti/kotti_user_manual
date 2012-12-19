@@ -240,3 +240,16 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
+
+import kotti_docs_theme
+
+html_theme_path = [kotti_docs_theme.get_theme_dir()]
+html_theme = 'kotti_docs_theme'
+html_theme_options = {
+    'github_user': 'geojeff',
+    'github_repo': 'kotti_user_manual',
+    'twitter_username': 'KottiCMS',
+    'home_url': 'http://kotti.pylonsproject.org/',
+    'mailing_list_url': 'http://groups.google.com/group/kotti',
+    'irc_channel_url': 'irc://irc.freenode.net/#kotti',
+}
