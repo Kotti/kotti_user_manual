@@ -97,14 +97,13 @@ Adding a New About Page
 We will now add a new "About" page for our fruit stand website. We want to add
 the "About" page as a top-level document -- from the "root" of the website. We
 get ready to add the "About" page by clicking on the name of the website at
-upper left. In the default Kotti website, this will say "Yet another Kotti
-site." Then we are ready to click the "Add" choice on the editor bar to add a
-Document:
+upper left ("Fruit Stand on Main").  Then we are ready to click the "Add"
+choice on the editor bar to add a Document:
 
 .. Image:: ../images/add_about_actions_menu.png
 
-We enter "About" as the title, and two short sentences for the description and
-body, and then click the "Save" button:
+We enter text for "About" as the title, description and body, and then click
+the "Save" button:
 
 .. Image:: ../images/add_about_save.png
 
@@ -119,8 +118,8 @@ Editing the Front Page
 
 Editing a document is very similar to adding one. We visit the page by clicking
 its title whereever we can see it. In the case of the front page, we get there
-the same way as above, by clicking on the "Yet another Kotti site" name at
-upper left. But now, instead of "Add," we choose "Edit" in the editor bar.
+the same way as above, by clicking on the "Fruit Stand on Main" name at upper
+left. But now, instead of "Add," we choose "Edit" in the editor bar.
 
 And we select and delete the existing description and body, replacing it with a
 bit of information about our fruit stand (Use your mouse and/or keyboard as you
