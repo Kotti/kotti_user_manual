@@ -246,7 +246,7 @@ import kotti_docs_theme
 html_theme_path = [kotti_docs_theme.get_theme_dir()]
 html_theme = 'kotti_docs_theme'
 html_theme_options = {
-    'github_user': 'geojeff',
+    'github_user': 'Kotti',
     'github_repo': 'kotti_user_manual',
     'twitter_username': 'KottiCMS',
     'home_url': 'http://kotti.pylonsproject.org/',
