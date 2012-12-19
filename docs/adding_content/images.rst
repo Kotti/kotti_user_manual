@@ -9,19 +9,19 @@ There are two ways to add images to a Kotti website:
    image as a thumbnail size image, or a number of other size choices. The
    image could be placed left, right, above, or below the text associated with
    it. It could be part of a bullet point, or in a table cell, etc.
-2. Another way is to add an Image directly from the "Add" menu.  Adding an
-   Image via the "Add" menu is equivalent, by position, to adding it to the
-   body of a document. The Image would "live" on the website at the position of
-   the document, but the image would be visible only in the Navigate display of
-   the website, because it was not added within the text of the body of a
-   document.
+2. Another way is to add an Image directly from the "Add" menu, as we did for
+   adding a Document.  Adding an Image via the "Add" menu is equivalent, by
+   position, to adding it to the body of a document. The Image would "live" on
+   the website at the position of the document at which it was added, but the
+   image would be visible only in the Navigate display of the website, because
+   it was not added within the text of the body of a document.
 
 .. Note:: Regardless of how an image is added, it will be stored at the
           position of the document to which (method 1) or at which (method 2)
           it was added. And you can always see this structure in the "Navigate"
-          display, with images shown indented within the documents with which
-          they are associated. There is also a way to use method 2 to make a
-          document show its contents as a list.
+          display, with images and other content items shown indented within
+          the documents with which they are associated. There is also a way to
+          use method 2 to make a document show its contents as a list.
 
 Most often you will want to add images to the body of documents where they are
 needed, as you would add images to a word processor document (method 1).
@@ -33,12 +33,13 @@ We will demonstrate both approaches in this user manual:
 1. We will add a document called "Featured Fruits" and within it another
    document called "Bramley's Seedling" to showcase a type of apple. We'll add
    some text to the body of the "Bramley's Seedling" document, about the
-   interesting history of this tree, and will add there also an image showing a
-   picture of the original Bramley's tree, planted by a little girl in 1809.
+   interesting history of this tree, and will add there also, using ``method
+   1``, an image showing a picture of the original Bramley's tree, planted by a
+   little girl in 1809.
 2. We will add a document called "Fruits" and will add images via the "Add"
-   menu there. We will set the default view of the document to be "Folder View"
-   to get an easy list of all the fruit images. The default view setting is in
-   the Actions menu.
+   menu there using ``method 2``. We will set the default view of the document
+   to be "Folder View" to get an easy list of all the fruit images. The default
+   view setting is in the Actions menu.
 
 Method 1: Adding an Image to a Document Body
 --------------------------------------------
@@ -46,19 +47,21 @@ Method 1: Adding an Image to a Document Body
 When you are adding or editing a document, you have the word-processor-like
 panel of icons to change the styling of text, to format paragraphs, add links,
 etc. One of these icons is the image icon, the one that features a tree. To add
-an image at some place in text you have types in the body, click or move the
-cursor to the spot where you want it. Usually this is at the beginning or end
-of a paragraph, or on a line by itself. Then click the image icon to show the
-image editing popup window to either paste the URL of the image, if it is
-available on some website, or to browse your computer for an image to upload.
-There are text entry fields for adding title and a description (sometimes
-called "alt" text for an image).
+an image at some place in text you have typed in the body, click or move the
+cursor to the spot where you want the image to be placed. Usually this is at
+the beginning or end of a paragraph, or on a line by itself. Then click the
+image icon to show the image editing popup window to either paste the URL of
+the image, if it is available on some website, or to browse your computer for
+an image to upload.  There are text entry fields for adding title and a
+description (sometimes called "alt" text for an image). This information is
+important for making your site accessible to blind people.
 
 Let's add the image of the Bramley's Seedling tree, planted in 1809, to a
 document about the tree. Here you see where we are adding a document called
-"Bramley's Seedling" to "Featured Fruits", which had already been added. We
-have typed text describing the history of the tree, have entered three tags,
-"cooking," "juicing," and "heirloom," and are now ready to add a photograph.
+"Bramley's Seedling" to "Featured Fruits", a document which had already been
+added. We have typed text describing the history of the tree, have entered
+three tags, "cooking," "juicing," and "heirloom," and are now ready to add a
+photograph.
 
 .. Image:: ../images/adding_bramleys_seedling_document.png
 
@@ -78,12 +81,15 @@ To finish, we save the "Bramley's Seedling" document:
 
 .. Image:: ../images/adding_bramleys_seedling_document_image_saved.png
 
+We see the desired result: text in the body first, and below it the image of
+the tree.
+
 Method 2: Adding an Image via the Add Menu
 ------------------------------------------
 
-We want to have a list of available fruits at our fruit stand. Here we add a
-document called "Fruits," then, using the "Add" menu, we add images for each
-of the following fruits, shown with their tags:
+We want to have a list of available fruits at our fruit stand. For this we will
+add a document called "Fruits," then, using the "Add" menu, we add images for
+each of the following fruits, shown with their tags:
 
 ============ ==========
    Fruit      Tag
@@ -111,19 +117,21 @@ For each image we click the "Fruits" document, then the "Add" menu, then we
 find the local file with the photograph of the fruit. Each one is uploaded
 and stored with each "Add" action.
 
-After the images have been added, if we click the "Fruits" document, we do
-not see the images as a list. We have to click the "Contents" link to see
-that:
+After the images have been added, if we click the "Fruits" document, we do not
+see the images as a list. There are there, at the position of the "Fruits"
+document within the website, but we have to click the "Contents" link to see
+them listed:
 
 .. Image:: ../images/contents_view.png
 
+.. Note:: The "Contents" view shows all contained items, not just images.
 
 Image Handling
 --------------
 
 There is more to the Image content type. Images can be made from photographs,
 from scanned documents, from frame grabs of video, from screen captures, from
-the output of specialized programs -- so many ways. But they mostly fall into a
+the output of specialized programs--so many ways. But they mostly fall into a
 set of familar types, with filename endings like .jpg, .png, and .gif. They
 vary in size tremendously, from thumbnail images only a few kilobytes in size
 to the real whoppers, the ones coming off modern digital cameras, even
@@ -147,8 +155,8 @@ should follow these guidelines:
   as 1200 pixels in width before uploading, or upload them as they are if they
   are less than 1200 pixels wide.
 
-Upon uploading to a Kotti website, there is behind-the-scenes work for
-preparing copies of the original image at several sizes that fit the design of
+Upon uploading to a Kotti website, there is behind-the-scenes work done to
+prepare copies of the original image at several sizes that fit the design of
 the website.  In the old days of the web, and in unsophisticated systems, you
 would have to manually do this work.
 
@@ -161,16 +169,17 @@ would give it a good title and description.
 
 After the IMG_5381.jpg image has been uploaded, it is available as:
 
-==================== ===================================================
+==================== =========================================================
     Image Title                    URL (name is last part)
-==================== ===================================================
- Bramley's Seedling   www.example.com/featured_fruits/bramleys-seedling 
-==================== ===================================================
+==================== =========================================================
+ Bramley's Seedling   www.example.com/featured_fruits/bramleys-seedling
+==================== =========================================================
 
 The name of files on your computer, such as IMG_5381.jpg, is usually not needed
 in the context of a website.  A good approach is to label images in your
 desktop computer software, as with "Bramley's Seedling", so that when you
 upload them to your website, or change something later, you can identify items.
+
 Consider working on your website after a year has passed, and you decide to
 crop the "Bramley's Seedling" image to a closer crop to the apple.  Where is
 the original image on your computer? Find the original file, IMG_5381.jpg by
@@ -213,9 +222,9 @@ additional available image URLs, along with their widths:
  www.example.com/featured_fruits/bramleys-seedling/image/span12    1160 pixels
 ================================================================= =============
 
-Use these sizes a general guideline for working with the Kotti layout system.
-You know that span12 covers the entire width of the website, span6 half of it.
-span1, at only 60 pixels wide, is small thumbnail size.
+Use these sizes as a general guideline for working with the Kotti layout
+system.  You know that span12 covers the entire width of the website, span6
+half of it.  span1, at only 60 pixels wide, is small thumbnail size.
 
 The structural layout for a Kotti website is divided into 12 columns.  The
 default Kotti website uses a full-width design, so you see no indication of the
