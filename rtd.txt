@@ -1,0 +1,4 @@
+Sphinx
+kotti_user_manual
+repoze.sphinx.autointerface
+repoze.lru
