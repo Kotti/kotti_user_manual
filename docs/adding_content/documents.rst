@@ -85,14 +85,12 @@ provides more searchable text.
 Tags
 ----
 
-Tags are keywords that are unique site-wide.
-The tags
-entry field is smart. After you have typed a few characters, for example "roo"
-in rootstock, Kotti will check the existing set of tags for the site for
-matches, and if it finds a pre-existing tag, or several tags, that begin with
-"roo" you will see a small pop-up display of those tags to choose one. When you
-have entered a new tag or selected an existing tag, hit the tab key to add
-another.
+Tags are keywords that are unique site-wide.  The tags entry field is smart.
+After you have typed a few characters, for example "roo" in rootstock, Kotti
+will check the existing set of tags for the site for matches, and if it finds a
+pre-existing tag, or several tags, that begin with "roo" you will see a small
+pop-up display of those tags to choose one. When you have entered a new tag or
+selected an existing tag, hit the tab key to add another.
 
 Tags are optional, but as for descriptions, it is a good habit to add them,
 because doing so provides an immediate organization of content that can be
@@ -105,34 +103,19 @@ that have been tagged with either the rootstock or apple tags.
 When we tag our "Fruit Rootstock" document with the "rootstock" tag, as this is
 its first use, so Kotti will create it anew.
 
-A content manangement system has features that make a CMS website more powerful
-than a simple storage system. One of these features is the content tagging
-system, whereby users tag content by keywords to add an important layer of
-information and organization.
-
-Tags are added in the Edit form, between the Description and Body for a
-Document, and in a similar position for other content types. Click in the tag
-entry field to give it keyboard focus, then type keywords or keyphrases.  The
-tag entry field uses the tab key to signify that a tag has been typed. When you
-add a tag and hit the tab key, the cursor moves to become ready for entry of
-the next tag.
-
-The tags entry field knows about existing tags, and shows them as soon as you
-have typed enought letters to match one. You can type the existing tag, or you
-can click matched tag when it appears.
-
 Tags are case-sensitive. Use this to advantage, by considering whether a formal
 name works well for a tag, versus an informal word or phrase. Consider a
-service business that has a Kotti site for managing information about multiple
-clients.  Formal names of the client businesses would be appropriate tags:
-Jones Company, Edwards & Eagleford Law, Acme Plumbing, etc. But in the same CMS
-there could also be tags for general categories, such as law and plumbing. Often
-both formally and informally named tags are useful.
+service business that has a Kotti website for managing information about
+multiple clients.  Formal names of the client businesses would be appropriate
+tags: Jones Company, Edwards & Eagleford Law, Acme Plumbing, etc. But in the
+same website there could also be tags for general categories, such as law and
+plumbing. Often both formally and informally named tags are useful.
+
 Body
 ----
 
 The Document body is where you add the real content. Add text, format words for
-bold, italic, underline, and other formatting options. Select a paragraph and
+bold, italic, underline, and other styling options. Select a paragraph and
 indent it. Select several paragraphs and make a bulleted list. Create headings.
 You have the normal range of features available in word processing software.
 
@@ -147,6 +130,9 @@ image-to-text formatting options. This also works like a word processing
 software, for embedding images in a document.
 
 We list the available rootstock in the body of our "Fruit Rootstock" document.
+In an actual fruit stand website, we would probbly add documents for each of
+these rootstock packs, but for this user manual, we will just add this one
+document.
 
 Saving
 ------
@@ -157,3 +143,12 @@ entered the title, description, tags, and body for our new document, we save
 and we then see the view for the new document:
 
 .. Image:: ../images/add_fruit_rootstock_document_save_flash_message.png
+
+.. Note:: You can add documents within other documents. At this point in a real
+          fruit stand website, perhaps we would now add individual documents
+          for each rootstock, containing information about care and feeding. We
+          would simply click the "Add" menu choice to add another document. You
+          need to pay attention to where you are when you add something,
+          however. So, we would be sure to click the main "Fruit Rootstock"
+          document each time we would add another individual rootstock
+          document.
