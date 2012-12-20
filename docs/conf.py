@@ -253,3 +253,11 @@ html_theme_options = {
     'mailing_list_url': 'http://groups.google.com/group/kotti',
     'irc_channel_url': 'irc://irc.freenode.net/#kotti',
 }
+
+# Enabled extensions
+extensions = ['sphinxcontrib.blockdiag']
+
+# Fontpath for blockdiag (truetype font)
+blockdiag_fontpath = os.path.join(os.path.abspath('.'), 'DejaVuSerif.ttf')
+
+blockdiag_antialias = True

@@ -38,7 +38,39 @@ group. For example, if Judy works with Xavier on the legal team, the Admin user
 creates a new account for Judy, then assigns her to the legal_affairs group,
 then emails her about the new account and her responsibilities.  Judy and
 Xavier will both have rights to add and edit content in the Legal Affairs
-section.
+section. Joe, Sally, Xavier, and Judy share responsibilities like this:
+
+.. blockdiag::
+
+    blockdiag {
+      Joe -- Sally -- Xavier;
+
+      // set default shape
+      default_shape = roundedbox;  // default value is 'box'
+
+      // set default colors
+      default_node_color = lightblue;
+      default_group_color = "#C0C0C0";
+      default_linecolor = "#808080";
+
+      group {
+        orientation = portrait;
+        label = 'Prospects';
+        Joe;
+      }
+
+      group {
+        orientation = portrait;
+        label = 'Existing Clients';
+        Sally;
+      }
+
+      group {
+        orientation = portrait;
+        label = 'Legal Affairs';
+        Xavier -- Judy;
+      }
+    }
 
 Kotti includes a user registration system that can be open for general users to
 sign up. This is useful for social media websites that seek out membership. It

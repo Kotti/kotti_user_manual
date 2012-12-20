@@ -18,6 +18,8 @@ Make a virtualenv and prepare to use Kotti and selenium::
 
   pip install kotti_docs_theme
 
+  wget http://sourceforge.net/projects/dejavu/files/dejavu/2.33/dejavu-fonts-ttf-2.33.tar.bz2
+
 Run Kotti::
 
   pserve app.ini

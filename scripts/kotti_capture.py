@@ -900,7 +900,6 @@ domVar.setAttrib = function(id, attr, val) {
                 'edit_about_document_with_link_to_fruits_document.png',
                 elem_top=None, elem_bottom=None)
 
-
 def edit_front_page(browser, title, description, body):
 
     wait = WebDriverWait(browser, 10)
