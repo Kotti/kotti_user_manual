@@ -1,4 +1,5 @@
 Sphinx
+PIL
 kotti_docs_theme
 sphinxcontrib-blockdiag
 repoze.sphinx.autointerface
