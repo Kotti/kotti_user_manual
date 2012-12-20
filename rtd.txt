@@ -1,6 +1,6 @@
 Sphinx
-PIL
+hg+https://bitbucket.org/Surgo/blockdiag
+sphinxcontrib-blockdiag==1.1.1
 kotti_docs_theme
-sphinxcontrib-blockdiag
 repoze.sphinx.autointerface
 repoze.lru
