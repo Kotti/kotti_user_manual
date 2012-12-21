@@ -1,0 +1,43 @@
+blockdiag {
+  orientation = landscape;
+
+  default_shape = roundedbox;
+  default_node_color = lightblue;
+  default_group_color = "#C0C0C0";
+  default_linecolor = "#808080";
+
+  Joe -- Sally -- Xavier;
+
+  Joe [fontsize=14, fontfamily='sansserif-normal'];
+  Sally [fontsize=14, fontfamily='sansserif-normal'];
+  Xavier [fontsize=14, fontfamily='sansserif-normal'];
+  Judy [fontsize=14, fontfamily='sansserif-normal'];
+
+  group {
+    label = 'Prospects';
+    fontsize = 14;
+    fontfamily = 'sansserif-bold';
+    color = 'none';
+
+    Joe;
+  }
+
+  group {
+    label = 'Existing Clients';
+    fontsize = 14;
+    fontfamily = 'sansserif-bold';
+    color = 'none';
+
+    Sally;
+  }
+
+  group {
+    orientation = portrait;
+    label = 'Legal Affairs';
+    fontsize = 14;
+    fontfamily = 'sansserif-bold';
+    color = 'none';
+
+    Xavier -- Judy;
+  }
+}

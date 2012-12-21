@@ -15,6 +15,8 @@ typical website, and private, for restricting viewing to the "logged in" user.
 Once a user has logged in, they can be called an ``authenticated`` user,
 because they have given their correct username and password.
 
+.. Image:: ../images/anonymous_vs_authenticated.png
+
 In its simplest form, Kotti allows a special user, called the Admin user, to
 log in and add and edit content. If the Kotti website is so simple that only
 one person will be adding content, that user will be the Admin user. The Admin
@@ -40,37 +42,7 @@ then emails her about the new account and her responsibilities.  Judy and
 Xavier will both have rights to add and edit content in the Legal Affairs
 section. Joe, Sally, Xavier, and Judy share responsibilities like this:
 
-.. blockdiag::
-
-    blockdiag {
-      Joe -- Sally -- Xavier;
-
-      // set default shape
-      default_shape = roundedbox;  // default value is 'box'
-
-      // set default colors
-      default_node_color = lightblue;
-      default_group_color = "#C0C0C0";
-      default_linecolor = "#808080";
-
-      group {
-        orientation = portrait;
-        label = 'Prospects';
-        Joe;
-      }
-
-      group {
-        orientation = portrait;
-        label = 'Existing Clients';
-        Sally;
-      }
-
-      group {
-        orientation = portrait;
-        label = 'Legal Affairs';
-        Xavier -- Judy;
-      }
-    }
+.. Image:: ../images/roles_music_agency.png
 
 Kotti includes a user registration system that can be open for general users to
 sign up. This is useful for social media websites that seek out membership. It
@@ -85,9 +57,11 @@ that organization. Rights can be assigned so that users in one group are
 restricted in what they can view, what they can add and edit. In the classic
 example, a newspaper could have user groups for reporters, photographers,
 editors, managers, etc. Each would have specific responsibilities and rights.
-A reporter can only write and compile articles, together with photographers. An
-editor can edit their work, but is not allowed to publish.  Only managers can
-publish content.
+A reporter can only write and compile articles, along with photographers.
+Together they could belong to a "Creators" group. An editor can edit their
+work, but is not allowed to publish.  Only managers can publish content.
+
+.. Image:: ../images/newspaper_workflow.png
 
 Even a small business with a handful of employees, or a small non-profit with
 just a few members, can benefit from some form of structure like this. Kotti

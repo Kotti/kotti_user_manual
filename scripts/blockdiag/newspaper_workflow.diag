@@ -1,0 +1,51 @@
+blockdiag {
+  orientation = landscape;
+
+  default_shape = roundedbox;
+  default_node_color = lightblue;
+  default_group_color = "#C0C0C0";
+  default_linecolor = "#808080";
+
+  Reporter [fontsize=14, fontfamily='sansserif-normal'];
+  Photographer [fontsize=14, fontfamily='sansserif-normal'];
+  Cartoonist [fontsize=14, fontfamily='sansserif-normal'];
+  Statistician [fontsize=14, fontfamily='sansserif-normal'];
+  Artist [fontsize=14, fontfamily='sansserif-normal'];
+
+  Editor [fontsize=14, fontfamily='sansserif-normal'];
+  Manager [fontsize=14, fontfamily='sansserif-normal'];
+  Newspaper [shape=box, fontsize=14, fontfamily='sansserif-normal'];
+
+  Reporter -> Editor [label="Submit", thick=3, color=black, fontsize=12, fontfamily='sansserif-normal'];
+  Editor -> Manager [label="Submit", thick=3, color=black, fontsize=12, fontfamily='sansserif-normal'];
+  Manager -> Newspaper [label="Publish", thick=3, color=black, fontsize=12, fontfamily='sansserif-normal'];
+
+  group {
+    orientation = portrait;
+    label = 'Creators';
+    fontsize = 14;
+    fontfamily = 'sansserif-bold';
+    color = 'none';
+
+    Reporter -- Photographer -- Cartoonist -- Statistician -- Artist;
+  }
+
+  group {
+    label = 'Editors';
+    fontsize = 14;
+    fontfamily = 'sansserif-bold';
+    color = 'none';
+
+    Editor;
+  }
+
+  group {
+    label = 'Managers';
+    fontsize = 14;
+    fontfamily = 'sansserif-bold';
+    color = 'none';
+
+    Manager;
+  }
+
+}

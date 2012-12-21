@@ -45,4 +45,6 @@ Document content type is the most important part of this concept. Documents are
 added to a Kotti website in the way word-processor documents are created, but
 in the context of the web. Documents contain text and may include images,
 files, and links to other documents.  Kotti's design makes linking documents to
-one another easy.
+one another happen automatically as the site structure is built. Plus, there
+are easy tools to make custom links between content items, or to other
+websites. 

@@ -1,0 +1,23 @@
+blockdiag {
+  orientation = landscape;
+
+  default_shape = roundedbox;
+  default_node_color = lightblue;
+  default_group_color = "#C0C0C0";
+  default_linecolor = "#808080";
+  
+  node_width = 170;  // default value is 128
+  node_height = 100;  // default value is 40
+
+  span_width = 140;  // default value is 64
+  span_height = 120;  // default value is 40
+
+  Workstation-1 -> Workstation-2 [label="1-A-OK\n1-Has-Flaw-Fix\n1-Has-Flaw-Cull", thick=3, color=black, fontsize=12, fontfamily='sansserif-normal'];
+  Workstation-2 -> Workstation-3 [label="2-A-OK\n2-Has-Flaw-Fix\n2-Has-Flaw-Cull", thick=3, color=black, fontsize=12, fontfamily='sansserif-normal'];
+
+  Workstation-1 [fontsize=14, fontfamily='sansserif-normal'];
+  Workstation-2 [fontsize=14, fontfamily='sansserif-normal'];
+  Workstation-3 [fontsize=14, fontfamily='sansserif-normal'];
+
+}
+

@@ -71,7 +71,7 @@ Searching
     searching/searching
 
 Publishing
----------
+----------
 
 .. toctree::
     :maxdepth: 2

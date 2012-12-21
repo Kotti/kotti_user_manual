@@ -1,0 +1,15 @@
+blockdiag {
+  orientation = landscape;
+
+  default_shape = roundedbox;
+  default_node_color = lightblue;
+  default_group_color = "#C0C0C0";
+  default_linecolor = "#808080";
+
+  Anonymous -> Authenticated [label="Log In", thick=3, color=black, fontsize=12, fontfamily='sansserif-normal'];
+
+  Anonymous [fontsize=14, fontfamily='sansserif-normal'];
+  Authenticated [fontsize=14, fontfamily='sansserif-normal'];
+
+}
+
