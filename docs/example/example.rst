@@ -10,8 +10,8 @@ You see where the site has already been given a proper "Fruit Stand on Main"
 title when the site was created by our website hosting provider. You also see a
 search box on the right side of the toolbar at the top.  There is a welcome
 statement, instructions for logging in, configuring the site, viewing a list of
-available add-ons, and viewing documentation. The amusing footer is a signature
-of a software system called Pyramid that Kotti uses as a foundation.
+available add-ons, and viewing documentation. The amusing default footer is a
+signature of a software system called Pyramid that Kotti uses as a foundation.
 
 We have the site title already, but the rest will change when we add content
 for the fruit stand.
@@ -37,15 +37,17 @@ will be shown in "logged in" view:
 Preliminary Tasks
 =================
 
-Kotti creates a default front page with general information about Kotti itself,
-and it adds a single document called "About" that has a photograph of airplanes
-and placeholder text.
+The default installation of a Kotti website has a front page with general
+information about Kotti itself, and a single document called "About" that has a
+photograph of airplanes and placeholder text. You will likely see some
+"starter" example content of some sort when your site is created. We'll go
+throught this example for the absolute default case.
 
 Both the front page and the "About" page need to be changed for a new website.
 Someone may have already set up your site, or you may be part of a larger
 organization where you work on just one part of a large site, but as we go
 through this user manual, we'll work as if you are starting with your own new
-website for a fruit stand.
+website for the fruit stand as the sole user, the Admin user.
 
 We will replace the default "About" page with information about the fruit stand
 offerings and schedule, and we will put introductory information on the front
@@ -68,9 +70,9 @@ underneath the black toolbar):
           rights. After logging in, you will see a menu bar at the bottom of
           the site header, with menu choices for Private vs. Public (state),
           View, Contents, Edit, Share, Actions, Add, Navigate. Your username is
-          at the far right (We are logged in as Administrator), where there is
-          a pull-down menu for setting your personal site preferences. Here is
-          the editor bar:
+          at the far right (We are logged in as Admin, which is labeled
+          Administrator), where there is a pull-down menu for setting your
+          personal site preferences. Here is the editor bar:
 
 .. Image:: ../images/editor_bar.png
 
@@ -97,8 +99,10 @@ Adding a New About Page
 We will now add a new "About" page for our fruit stand website. We want to add
 the "About" page as a top-level document -- from the "root" of the website. We
 get ready to add the "About" page by clicking on the name of the website at
-upper left ("Fruit Stand on Main").  Then we are ready to click the "Add"
-choice on the editor bar to add a Document:
+upper left ("Fruit Stand on Main").  You can think of this as "going home" on
+the website, if you are used to this terminology and common navigation -- click
+the name of the website to go to its "main" or "home" page. Now we are ready
+to click the "Add" choice on the editor bar to add a Document:
 
 .. Image:: ../images/add_about_actions_menu.png
 
@@ -132,4 +136,4 @@ fruit stand now:
 
 .. Image:: ../images/edit_front_page_save_flash_message.png
 
-And now we are off and running with a new site.
+And now we are off and running with a new fruit stand website.

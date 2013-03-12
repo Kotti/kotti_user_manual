@@ -6,15 +6,15 @@ which works as you probably expect that it should. The word or phrase is
 searched in titles, description, and in the body text, and matching content
 items are then presented in a search results list.
 
-We should expect to find a number of content items when we search for a
-general word like "fruit" and we do:
+For the fruit stand website, we should expect to find a number of content items
+when we search for a general word like "fruit" and we do:
 
 .. Image:: ../images/search_results_for_fruit.png
 
 Searching by Clicking on a Tag
 ------------------------------
 
-In the normal view for content items, if you click a tag, the website will be
+In the normal view for a content item, if you click a tag, the website will be
 searched for items that have been tagged with the clicked tag. Here we have
 visited the page for pineapple, and we see that it has been tagged with the
 "Tropical" tag, for the tropical fruit category.

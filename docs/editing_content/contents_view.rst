@@ -1,14 +1,14 @@
 Contents View
 =============
 
-The Contents view shows contained items with data for each item: title, type,
-state (e.g. public or private), visibility (shown or hidden in navigation
-menu), and creation and modification dates:
+The Contents view for a given location shows contained items with data for each
+item: title, type, state (e.g. public or private), visibility (shown or hidden
+in navigation menu), and creation and modification dates:
 
 .. Image:: ../images/contents_view.png
 
-Each item has a checkbox, so you can select one or multiple items for doing an
-action via one of the buttons at the bottom of the view:
+Each item has a checkbox, so you can select one or more items for performing an
+action, as described below, via one of the buttons at the bottom of the view:
 
 .. Image:: ../images/contents_action_buttons.png
 
@@ -34,7 +34,8 @@ Rename
 Delete
 ------
 
-  Delete is available to delete single or multiple items in one operation.
+  Delete is available to delete single or multiple items in one operation,
+  after confirming the operation.
 
 Change State
 ------------
@@ -50,20 +51,25 @@ Change State
   for publication. When ready to publish, you will want to change the state of
   all nested items to Public, but it would be laborious to visit the items
   individually, even with the aid of the Contents view. This is where the
-  recursive setting helps. Set it to apply the state change recursively, and
-  all of the car info content will instantly be made public.
+  recursive setting helps. You would visit the main "Cars" document, and apply
+  the state change recursively, and all of the car info content will instantly
+  be made public.
+
+.. Note:: It is a good habit, when doing large state changes, especially when
+          you publish a slug of content, to log out of the site, then browse
+          around checking things, to check for missed or unintended actions.
 
 Move Up and Move Down
 ---------------------
 
-  Move Up and Move Down are used to walk a content item up or down in the
-  list.  This changes the position of the item in the list, but also in the
-  navigation views. For top-level items -- the ones under the home page (or
-  can be called front page, landing page, etc.) -- changing the order in the
-  Contents view will change the order in the horizontal menu of main items in
-  the header. Deeper within the content nesting of the website, ordering is
-  only apparent in the Contents view itself, or in the site-wide Navigation
-  view.
+  Move Up and Move Down are used to walk a content item up or down in the list.
+  This changes the position of the item in the list, but also in the navigation
+  views. For top-level items -- the ones under the home page (or can be called
+  front page, landing page, etc.) -- changing the order in the Contents view
+  will change the order in the horizontal menu of main items in the header.
+  Deeper within the content nesting of the website, ordering is apparent in the
+  Contents view itself, or in the site-wide Navigation view, or in list-style
+  or tree-style custom navigation menus.
 
 Show and Hide
 -------------
@@ -71,4 +77,4 @@ Show and Hide
   Show and Hide are for changing the visibility of items in the site-wide
   Navigation view. This is useful when you want items to be available on the
   website, perhaps for linking in documents, but you only want them to be
-  found via these links.
+  found via these links. This can help keep navigation menus uncluttered.

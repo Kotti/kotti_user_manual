@@ -1,8 +1,8 @@
 Views
 =====
 
-Editing content uses the same, or very similar forms as the Add view. For a
-Document you see the title and description at the top, then the tags, then the
+Editing content uses the same, or very similar forms as the Add views. For a
+Document, you see the title and description at the top, then the tags, then the
 body. You see the same word processor-like user interface to change the body.
 For an Image, you see the title, description, tags, then a button to change the
 existing image -- to upload a new version of the image or an altogether new
@@ -25,12 +25,12 @@ offering several "power" features.
 Creating Links
 --------------
 
-You often want to make links from one document to another.  This is easy. When
-adding or editing the body of a document, select the word or phrase that you
-would like to make into a link, then click the button to add a link, then
-browse the website to find the target document for the link. Kotti will
-immediately format the link.  You can use the same procedure to add a link to
-an external web page, pasting in the URL of the external web page.
+You often want to make links from one document to another. When adding or
+editing the body of a document, select the word or phrase that you would like
+to make into a link, then click the button to add a link, then browse the
+website to find the target document for the link. Kotti will immediately format
+the link.  You can use the same procedure to add a link to an external web
+page, pasting in the URL of the external web page.
 
 We need to add a link to our "Fruits" document in the "About" document. We do
 this by clicking on "About," then clicking "Edit" in the editor bar:

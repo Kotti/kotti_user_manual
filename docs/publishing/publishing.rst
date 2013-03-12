@@ -34,7 +34,8 @@ entire sections by using a powerful feature called recursion::
     recursion - The root word is recur, "occur again, periodically, or
                 repeatedly," and in the context used for a Kotti website, we
                 mean "walk through all nested content within a section of the
-                website, performing an operation on all items."
+                website, performing an operation on all items within the
+                section."
 
 Consider a case where you would like to publish a large new section called
 "Fruit Tree Care and Feeding," all contained within a main document by that

@@ -5,23 +5,26 @@ There are two ways to add images to a Kotti website:
 
 1. One way is to add an image to the text of the body of a Document, using the
    word processor style interface, whereby the image is placed as a discrete
-   part of the body of the document. There would be a choice of formatting the
-   image as a thumbnail size image, or a number of other size choices. The
-   image could be placed left, right, above, or below the text associated with
-   it. It could be part of a bullet point, or in a table cell, etc.
+   part of the body of the document. There is a choice of formatting the image
+   as a thumbnail size image, or a number of other size choices. The image can
+   be placed left, right, above, or below the text associated with it. It can
+   be part of a bullet point, or in a table cell, etc.
 2. Another way is to add an Image directly from the "Add" menu, as we did for
    adding a Document.  Adding an Image via the "Add" menu is equivalent, by
    position, to adding it to the body of a document. The Image would "live" on
    the website at the position of the document at which it was added, but the
    image would be visible only in the Navigate display of the website, because
-   it was not added within the text of the body of a document.
+   it was not added within the text of the body of a document. After adding an
+   image with method 2, you can later add it to the body text using method 1,
+   because already uploaded images are available in the word processor style
+   user interface.
 
 .. Note:: Regardless of how an image is added, it will be stored at the
-          position of the document to which (method 1) or at which (method 2)
-          it was added. And you can always see this structure in the "Navigate"
-          display, with images and other content items shown indented within
-          the documents with which they are associated. There is also a way to
-          use method 2 to make a document show its contents as a list.
+          position of the document to which it was added to the body text
+          (method 1) or at which was added using the Add menu (method 2). And
+          you can always see this structure in the "Navigate" display, with
+          images and other content items shown indented within the documents
+          with which they are associated.
 
 Most often you will want to add images to the body of documents where they are
 needed, as you would add images to a word processor document (method 1).
@@ -222,24 +225,27 @@ additional available image URLs, along with their widths:
  www.example.com/featured_fruits/bramleys-seedling/image/span12    1160 pixels
 ================================================================= =============
 
-Use these sizes as a general guideline for working with the Kotti layout
-system.  You know that span12 covers the entire width of the website, span6
-half of it.  span1, at only 60 pixels wide, is small thumbnail size.
+The structural layout for a default Kotti website is divided into these 12 span
+columns, that form an invisible underlying structure.  Use these sizes as a
+general guideline for working with the Kotti layout system.  You know that
+span12 covers the entire width of the website, span6 half of it.  span1, at
+only 60 pixels wide, is small thumbnail size.
 
-The structural layout for a Kotti website is divided into 12 columns.  The
-default Kotti website uses a full-width design, so you see no indication of the
+The default Kotti website uses a full-width design using the full width of 12
 columns. If the design of the website is changed, however, as when a navigation
 menu is added on the left side, the underlying column structure manifests. The
 navigation menu might span 3 columns, leaving 9 columns for the right-hand
 side, where content items show.  The image scale that fits such a navigation
 menu area on the left, 3 columns wide, is span3. The one that fits the right
-side in such a layout is span9.  This scheme makes working with website layout
-simpler than thinking in terms of absolute pixel dimensions.
+side in such a layout is span9.
+
+The use of span columns makes working with website layout simpler than thinking
+in terms of absolute pixel dimensions.
 
 The word-processor style user interface for composing the body of a document
-has an image picker that pops up when you click the image button. You can
-simply pick the image scale you want from a list, and experiment until you find
-an image scale that works for a given need.
+has an image picker that pops up when you click the image button. Upon saving,
+you can set the image scale you want, often experimenting until you find an
+image scale that works for a given need.
 
 Images do not have to fit flush to column widths in a design layout. In the
 example above, in the area on the right that is 9 columns wide, you many want
@@ -252,4 +258,4 @@ paragraph.
           website on a tablet, or on a phone. It changes the size definitions
           of the spans dynamically, so that the site stays proportional, within
           reason, at different overall sizes.  The span system for design
-          layout avoids hard-coding to set sizes.
+          layout avoids hard-coding to set pixel dimensions.
