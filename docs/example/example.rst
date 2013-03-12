@@ -1,3 +1,5 @@
+.. _fresh-kotti-site-example:
+
 A Fresh Kotti Site
 ==================
 

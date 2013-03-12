@@ -1,12 +1,11 @@
 Users and Roles
 ===============
 
-A website is usually a presentation of text and images and other content
-available for view by anyone. The content of the website is added by any number
-of ways to build websites, but there is often no concept of "logging in" to see
-content. The content is viewable by all who visit the website. This can be
-called ``anonymous`` viewing, and the general website visitor can be called an
-anonymous user.
+A website is usually available for view by anyone. The content of the website
+is added by any number of methods to build websites, but there is often no
+concept of "logging in" to see content. The content is viewable by all who
+visit the website. This can be called ``anonymous`` viewing, and the general
+website visitor can be called an anonymous user.
 
 A CMS does involve the concept of "logging in," at least for the person adding
 content, and it involves the concept of having content in public vs. private
@@ -18,23 +17,30 @@ because they have entered their correct username and password.
 .. Image:: ../images/anonymous_vs_authenticated.png
 
 In its simplest form, Kotti allows a special user, called the Admin user, to
-log in and add and edit content. In such a simple Kotti website the person who
-will be adding content, is the Admin user. The Admin user has full rights to do
-anything to the website.
+log in and add and edit content. The Admin user has full rights to do anything
+to the website.
+
+.. Note:: If you are just such a person, the sole user for a Kotti website, you
+          may wish to skip the rest of this section, and that of the next, and
+          go directly to the section presenting an
+          :ref:`fresh-kotti-site-example`. The discussion below about user
+          roles and workflow is important for larger websites with multiple
+          users and more complex content organization.
 
 For a larger Kotti website, where several people add content, the Admin user
 may create accounts for other people. One common approach is to divide the
 website into several top-level sections that different people manage. For
 example, imagine a scenario where Joe, Sally, and Xavier are the content
 managers for a musical act agency. First the Admin user logs in (perhaps the
-Admin user is one of them; perhaps it is a fourth person), creates the three
-accounts, then sends emails with user names and passwords.  The Admin user
-creates three top-level sections of the website, notifying Joe, Sally, and
-Xavier about their responsibilities: Joe for the ``Prospects`` section, Sally
-for the ``Existing Clients`` section, and Xavier for the ``Legal Affairs``
-section.  The Admin user assigns rights to these three areas by creating three
-user groups: prospects, existing_clients, and legal_affairs. Then, by setting
-the respective groups as owners of the three website sections, a scheme for
+Admin user is one of Joe, Sally, or Xavier; perhaps it is a fourth person),
+creates the three accounts for Joe, Sally, and Xavier, then sends them emails
+with user names and passwords. The Admin user also creates three top-level
+sections of the website, notifying Joe, Sally, and Xavier about their
+responsibilities: Joe for the ``Prospects`` section, Sally for the ``Existing
+Clients`` section, and Xavier for the ``Legal Affairs`` section.  The Admin
+user assigns rights to these three areas by creating three user groups:
+prospects, existing_clients, and legal_affairs.  Then, by setting the
+respective groups as owners of the three website sections, a scheme for
 organization and responsibility is established.  Additional people can be added
 by simply assigning them to a given group. For example, if Judy works with
 Xavier on the legal team, the Admin user creates a new account for Judy, then
