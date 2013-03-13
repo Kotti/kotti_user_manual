@@ -20,34 +20,37 @@ In its simplest form, Kotti allows a special user, called the Admin user, to
 log in and add and edit content. The Admin user has full rights to do anything
 to the website.
 
-.. Note:: If you are just such a person, the sole user for a Kotti website, you
-          may wish to skip the rest of this section, and that of the next, and
-          go directly to the section presenting an
-          :ref:`fresh-kotti-site-example`. The discussion below about user
-          roles and workflow is important for larger websites with multiple
-          users and more complex content organization.
+In Kotti websites with just one user, the site administrator may simply tell
+this sole user to use the Admin account, or they might set up an account for
+the user, and give this user account full content-adding and editing rights to
+the site, equivalent to the Admin user. Either way, there is just one user
+adding content, and this is inherently simpler than a multi-user system.
 
-For a larger Kotti website, where several people add content, the Admin user
-may create accounts for other people. One common approach is to divide the
-website into several top-level sections that different people manage. For
-example, imagine a scenario where Joe, Sally, and Xavier are the content
-managers for a musical act agency. First the Admin user logs in (perhaps the
-Admin user is one of Joe, Sally, or Xavier; perhaps it is a fourth person),
-creates the three accounts for Joe, Sally, and Xavier, then sends them emails
-with user names and passwords. The Admin user also creates three top-level
-sections of the website, notifying Joe, Sally, and Xavier about their
-responsibilities: Joe for the ``Prospects`` section, Sally for the ``Existing
-Clients`` section, and Xavier for the ``Legal Affairs`` section.  The Admin
-user assigns rights to these three areas by creating three user groups:
-prospects, existing_clients, and legal_affairs.  Then, by setting the
-respective groups as owners of the three website sections, a scheme for
-organization and responsibility is established.  Additional people can be added
-by simply assigning them to a given group. For example, if Judy works with
-Xavier on the legal team, the Admin user creates a new account for Judy, then
-assigns her to the legal_affairs group, then emails her about the new account
-and her responsibilities.  Judy and Xavier will both have rights to add and
-edit content in the ``Legal Affairs`` section. Joe, Sally, Xavier, and Judy
-share responsibilities like this:
+If you are such a sole user for a Kotti website, you may wish to skip the rest
+of this section, and the next, and go directly to the section presenting
+:ref:`fresh-kotti-site-example`. The discussion below and in the next section,
+about user roles and workflow, is important for websites where multiple users
+add content and where there is a more complex content organization.
+
+For a Kotti website, where several people add content, the Admin user may
+create accounts for other people. One common approach is to divide the website
+into several top-level sections that different people manage. For example,
+imagine a scenario where Joe, Sally, and Xavier are the content managers for a
+musical act agency. First the Admin user logs in, then creates the three
+accounts for Joe, Sally, and Xavier, then sends them emails with user names and
+passwords. The Admin user also creates three top-level sections of the website,
+and notifies Joe, Sally, and Xavier about their responsibilities: Joe for the
+``Prospects`` section, Sally for the ``Existing Clients`` section, and Xavier
+for the ``Legal Affairs`` section.  The Admin user assigns rights to these
+three areas by creating three user groups: prospects, existing_clients, and
+legal_affairs.  Then, by setting the respective groups as owners of the three
+website sections, a scheme for organization and responsibility is established.
+Additional people can be added by simply assigning them to a given group. For
+example, if Judy works with Xavier on the legal team, the Admin user creates a
+new account for Judy, then assigns her to the legal_affairs group, then emails
+her about the new account and her responsibilities.  Judy and Xavier will both
+have rights to add and edit content in the ``Legal Affairs`` section. Joe,
+Sally, Xavier, and Judy share responsibilities like this:
 
 .. Image:: ../images/roles_music_agency.png
 
